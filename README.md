@@ -1,5 +1,7 @@
 # SMOALD.com — Brand-House Hub
 
+**🔗 Live:** [https://smoald.com](https://smoald.com) · also at [smoald.pages.dev](https://smoald.pages.dev)
+
 The homepage of SMOALD — a single hub linking everything I build, learn and sell, founded and run by Joshua Kay.
 
 ## What It Does

@@ -28,3 +28,12 @@ Domain setup has real gotchas: Pages custom domains need DNS records that the AP
 This Claude Code session; repo `joshuablakemorekay/smoald`.
 
 ---
+
+## 2026-06-15 — smoald.com verified live
+
+**Type:** Milestone
+
+**What I built or did**
+Confirmed the custom domain is fully live: `https://smoald.com` returns HTTP 200 over HTTPS with a valid SSL certificate, both the apex and `www` are active on Cloudflare, and the domain resolves globally. The build → deploy → custom-domain chain is complete.
+
+---
