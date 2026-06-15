@@ -1,0 +1,54 @@
+# Evaluation rubric for: Build the SMOALD Brand-House Hub
+#
+# The "output" evaluated here is the generated homepage HTML. Each criterion
+# checks an observable structural property of that markup.
+
+prompt: build-smoald-brand-hub
+version: 4
+criteria:
+  - name: three_mini_hubs_present
+    description: Homepage names all three mini-hubs — AI, Learn, Store
+    weight: 5
+    pass_condition: all(h in output for h in ['SMOALD AI', 'SMOALD Learn', 'SMOALD Store'])
+
+  - name: hub_and_spoke_map
+    description: Homepage includes the parent-hub architecture map
+    weight: 4
+    pass_condition: "'Parent Hub' in output"
+
+  - name: renamed_from_tech
+    description: No leftover "SMOALD Tech" naming after the v4 rename to SMOALD AI
+    weight: 5
+    pass_condition: "'SMOALD Tech' not in output"
+
+  - name: honest_coming_soon
+    description: Unbuilt areas are marked "coming soon" rather than faked
+    weight: 3
+    pass_condition: "'coming soon' in output.lower()"
+
+  - name: brand_accent_consistent
+    description: Uses the SMOALD orange accent token from the existing portfolio
+    weight: 2
+    pass_condition: "'#FF6A3D' in output"
+
+  - name: no_dead_private_link
+    description: Does not link the broken private-repo GitHub Pages URL
+    weight: 3
+    pass_condition: "'joshuablakemorekay.github.io' not in output"
+
+test_cases:
+  - input:
+      round: v1-build
+      ask: build the SMOALD parent hub with three mini-hubs and a spoke map
+    expected_traits:
+      - homepage names AI, Learn and Store
+      - includes a parent-hub architecture map
+      - Store marked coming soon
+
+  - input:
+      round: v4-rename
+      ask: rename SMOALD Tech to SMOALD AI and keep the spokes
+    expected_traits:
+      - 'no "SMOALD Tech" remains'
+      - '"SMOALD AI" present'
+      - branding still consistent

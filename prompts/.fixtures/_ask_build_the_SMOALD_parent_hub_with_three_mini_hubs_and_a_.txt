@@ -1,0 +1,14 @@
+<!-- SMOALD homepage (representative generated output) -->
+<h1>SMOALD - Smart & Bold</h1>
+<section class="doors">
+  <a class="door"><h2>SMOALD AI</h2><span class="badge live">Live</span></a>
+  <a class="door"><h2>SMOALD Learn</h2><span class="badge live">Live</span></a>
+  <a class="door soon"><h2>SMOALD Store</h2><span class="badge">Coming soon</span></a>
+</section>
+<section class="arch">
+  <div class="arch-node"><span class="nm">SMOALD</span><span class="ro">Parent Hub</span></div>
+  <div class="arch-col"><h3>SMOALD AI</h3><li>Web apps</li><li>Game apps</li></div>
+  <div class="arch-col"><h3>SMOALD Learn</h3><li>ThaiBridge AI</li></div>
+  <div class="arch-col"><h3>SMOALD Store</h3><li>Wear</li><li>Living</li></div>
+</section>
+<style>:root{--accent:#FF6A3D}</style>

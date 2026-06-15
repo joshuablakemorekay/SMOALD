@@ -7,3 +7,6 @@ desktop.ini
 
 # Cloudflare / wrangler
 .wrangler/
+
+# Per-run eval results — the committed results-summary.md is the source of truth
+prompts/*/results/
