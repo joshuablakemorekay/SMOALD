@@ -1,0 +1,13 @@
+Free hosting decision — representative output
+
+The right lens is commercial use on the free tier, not raw features.
+
+- Vercel (Hobby): commercial use is prohibited on the free tier — Pro ($20/mo) required.
+- GitHub Pages: prohibits e-commerce / SaaS.
+- Render: commercial use allowed, but the free Postgres expires after ~30 days and free services sleep after 15 min (cold start).
+- Netlify: commercial use allowed; hard-capped so no surprise bills.
+- Cloudflare: commercial use allowed, no expiry, unlimited static bandwidth.
+
+Recommendation: Cloudflare. Build SMOALD here. One gotcha — a Next.js app deploys on Workers via the OpenNext adapter, and the free Worker size cap is 3 MiB.
+
+Big companies mostly started on cheap/free infra (early AWS) and scaled only once revenue justified it.

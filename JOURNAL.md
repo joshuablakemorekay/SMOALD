@@ -3,6 +3,55 @@ A chronological log of key developments, decisions and learnings throughout this
 
 ---
 
+## 2026-06-08 — Designed the SMOALD brand architecture
+
+**TL;DR:** Settled on a Virgin-style hub-and-spoke brand — one parent (SMOALD) with three mini-hubs (AI, Learn, Store) — and made the key call to build the site that gets me hired *now*, not the full holding company.
+
+**Type:** Decision
+
+**What I built or did**
+Mapped SMOALD as a parent brand with divisions, modelled on Virgin Group and Meta. Worked through naming (Tech vs AI vs Dev → **AI**), merged overlapping divisions, and landed on three hubs: Build (AI), Learn, Store.
+
+**Why I did it this way**
+A founder brand lets me charge more and scale later — but six empty divisions would look hollow with nothing shipped. So: founder brand now, holding-company structure once the divisions actually exist.
+
+**How We Did It**
+1) Compared Virgin/Meta hub-and-spoke models → 2) listed every possible division → 3) merged the overlaps (Tech + AI + Commerce → one build hub; Wear + Living + Store → one Store hub) → 4) chose Anthropic-style focus for layout + Virgin-style story for the About page → 5) decided to put my portfolio *under* SMOALD, not on a separate site.
+
+**What I learned**
+Brand architecture is a real discipline. Borrow selectively — Virgin's story, Anthropic's restraint — rather than copying one site wholesale. An org chart isn't traction.
+
+**References / Conversations**
+Brainstorm sessions; archived as the [`design-smoald-brand-strategy`](./prompts/design-smoald-brand-strategy/) prompt.
+
+---
+
+## 2026-06-14 — Researched free hosting and chose Cloudflare
+
+**TL;DR:** Ran a deep, multi-source comparison of free hosting tiers and chose **Cloudflare** — the one platform that allows commercial use, never expires, and gives unlimited static bandwidth.
+
+**Type:** Decision / Research
+
+**What I built or did**
+Compared the genuinely-free tiers of Vercel, Netlify, Render and Cloudflare against one question: which lets a freelancer run a *commercial* project for free? Wrote the findings up as a sourced report (250+ sources).
+
+**Why I did it this way**
+Picking the wrong host costs money or forces a painful migration once you have paying clients. Worth getting right once.
+
+**How it works**
+The headline findings: Vercel's free Hobby tier *bans* commercial use; GitHub Pages bans e-commerce/SaaS; Render's free Postgres expires after 30 days and its services sleep. Cloudflare allows commercial use, has no expiry, and unlimited static bandwidth — so no surprise bills.
+
+**How We Did It**
+1) Framed the real question (commercial-use-on-free) → 2) ran a deep-research sweep across 250+ sources → 3) ranked platforms worst→best on "likely to force payment" (Render → Netlify → Cloudflare) → 4) chose Cloudflare → 5) noted the one gotcha: new Next.js apps go on Workers via the OpenNext adapter, with a 3 MiB free size cap.
+
+**What I learned**
+"Free" almost always has an operational catch (sleeping, expiry, size caps), not a legal one. Free is perfect for building and first customers; budget to upgrade the revenue app later.
+
+**References / Conversations**
+Deep-research session; archived as the [`choose-hosting-platform`](./prompts/choose-hosting-platform/) prompt.
+
+---
+
 ## 2026-06-15 — Built & shipped the SMOALD.com brand hub
 
 **TL;DR:** Turned a brand-architecture idea into a live, 4-page "brand house" website on Cloudflare Pages with the `smoald.com` domain — then documented the prompts that built it.

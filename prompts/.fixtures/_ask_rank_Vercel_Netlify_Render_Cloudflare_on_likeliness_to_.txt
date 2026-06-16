@@ -1,0 +1,11 @@
+Which free tier forces a paid upgrade soonest — representative output
+
+Ranked worst → best on likelihood of forcing a monthly payment:
+
+1. Render — its free Postgres expires after ~30 days and services sleep (cold start). Near-certain charge within a month for a full-stack app.
+2. Netlify — build minutes pinch first, but it's hard-capped (pauses, no surprise bill).
+3. Cloudflare — least likely to force payment: no expiry, unlimited static bandwidth.
+
+Applying the commercial use lens rules out Vercel Hobby (commercial use prohibited) entirely, regardless of limits.
+
+Recommendation: Cloudflare remains the strongest free choice; the only wall is the 3 MiB free Worker size cap, which you engineer around by keeping dependencies lean.

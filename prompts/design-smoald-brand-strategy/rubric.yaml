@@ -1,0 +1,56 @@
+# Evaluation rubric for: Design the SMOALD Brand Strategy
+#
+# The "output" evaluated here is the brand-strategy recommendation the prompt
+# produces. Each criterion checks that it reached the three-hub model, made the
+# founder-now / holding-company-later call, and placed the portfolio under the
+# parent brand.
+
+prompt: design-smoald-brand-strategy
+version: 3
+criteria:
+  - name: three_hub_model
+    description: Lands on three mini-hubs — AI, Learn, Store
+    weight: 5
+    pass_condition: all(h in output for h in ['SMOALD AI', 'SMOALD Learn', 'SMOALD Store'])
+
+  - name: hub_and_spoke
+    description: Frames the brand as a hub-and-spoke structure
+    weight: 3
+    pass_condition: "'hub-and-spoke' in output.lower() or 'hub and spoke' in output.lower()"
+
+  - name: founder_not_freelancer
+    description: Positions the user as a founder, not a freelancer for hire
+    weight: 4
+    pass_condition: "'founder' in output.lower()"
+
+  - name: hired_now_not_holding_company
+    description: Recommends building the hire-me site now, not the full holding company yet
+    weight: 4
+    pass_condition: "'holding company' in output.lower()"
+
+  - name: portfolio_under_brand
+    description: Places the portfolio under the SMOALD brand
+    weight: 3
+    pass_condition: "'portfolio' in output.lower()"
+
+  - name: virgin_model
+    description: References the Virgin-style model the structure borrows from
+    weight: 2
+    pass_condition: "'Virgin' in output"
+
+test_cases:
+  - input:
+      round: structure
+      ask: design the SMOALD brand architecture as a founder hub-and-spoke
+    expected_traits:
+      - three mini-hubs (AI, Learn, Store)
+      - framed as hub-and-spoke
+      - portfolio under the parent brand
+
+  - input:
+      round: positioning
+      ask: should I build the holding company now or the site that gets me hired
+    expected_traits:
+      - build the hire-me site now, holding company later
+      - positions the user as a founder
+      - references the Virgin model

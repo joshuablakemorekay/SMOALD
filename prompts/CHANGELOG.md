@@ -7,6 +7,39 @@ Each entry follows this format:
 
 ---
 
+## choose-hosting-platform
+
+### 2026-06-14 — v2
+**Change:** Refined the broad hosting question into a researchable one — pinned the stack (JS/Next.js), set "free covers as much as possible," and reframed the big-company angle to what they *started* on. Launched a 250+ source research sweep.
+**Reason:** v1 mixed a freelancer's budget with enterprise infrastructure and couldn't give an actionable answer.
+**Impact:** Produced a sourced ranking by commercial-use-on-free, ruling out Vercel Hobby and GitHub Pages, and a single decision — Cloudflare — with the OpenNext adapter and 3 MiB Worker cap flagged.
+
+### 2026-06-08 — v1
+**Change:** Initial broad question — which platforms are free, and what do Virgin/Apple/Amazon/Anthropic use?
+**Reason:** Start figuring out where to host SMOALD.
+**Impact:** Interesting but not actionable; bundled two different questions (a freelancer's needs vs. giant companies' infra).
+
+---
+
+## design-smoald-brand-strategy
+
+### 2026-06-10 — v3
+**Change:** Named the build hub "SMOALD AI" (over Tech/Dev), made the founder-now-not-holding-company call, and placed the portfolio under the SMOALD brand.
+**Reason:** Settle the last open questions so the structure could become a build brief.
+**Impact:** A clean three-hub model (AI/Learn/Store) with the portfolio at `/ai/hire` — the brief the build prompt then turned into the live site.
+
+### 2026-06-09 — v2
+**Change:** Merged overlapping divisions — Commerce + Tech + AI into one build hub; Wear + Living + Store into one Store hub.
+**Reason:** Several "divisions" were really the same business; six hollow ones read as fake.
+**Impact:** Six divisions collapsed into three clean ones.
+
+### 2026-06-08 — v1
+**Change:** Initial Virgin-style sketch — every possible division under one parent.
+**Reason:** Map the brand ambition.
+**Impact:** An ambitious six-division empire on paper; the seed of the "org chart isn't traction" lesson.
+
+---
+
 ## redesign-homepage-figma-merge
 
 ### 2026-06-15 — v3

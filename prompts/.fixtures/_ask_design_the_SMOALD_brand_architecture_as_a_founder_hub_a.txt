@@ -1,0 +1,12 @@
+SMOALD brand architecture — representative output
+
+Model it as a hub-and-spoke, Virgin-style: one parent brand with mini-hubs, each owning its spokes.
+
+- SMOALD (parent)
+  - SMOALD AI — web apps, game apps, AI features, e-commerce builds
+  - SMOALD Learn — ThaiBridge-AI, courses
+  - SMOALD Store — Wear, Living, essentials (coming soon)
+
+Three clean divisions, not six hollow ones. You're a founder running a company, not a freelancer for hire — so your portfolio lives under the SMOALD brand (at /ai/hire), not on a separate site.
+
+Build this founder brand now; grow into the full holding company structure later, once the divisions genuinely exist.

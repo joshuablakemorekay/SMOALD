@@ -1,0 +1,51 @@
+# Evaluation rubric for: Choose a Free Hosting Platform
+#
+# The "output" evaluated here is the research report / decision memo the prompt
+# produces. Each criterion checks an observable property of that text: that it
+# applied the commercial-use lens, compared the real candidates, and reached a
+# single, actionable recommendation.
+
+prompt: choose-hosting-platform
+version: 2
+criteria:
+  - name: recommends_cloudflare
+    description: Reaches a single, clear recommendation — Cloudflare
+    weight: 5
+    pass_condition: "'Cloudflare' in output and 'recommend' in output.lower()"
+
+  - name: applies_commercial_use_lens
+    description: Frames the decision around commercial use on the free tier
+    weight: 4
+    pass_condition: "'commercial use' in output.lower()"
+
+  - name: flags_vercel_ban
+    description: Flags that Vercel's free Hobby tier prohibits commercial use
+    weight: 4
+    pass_condition: "'Vercel' in output and ('prohibit' in output.lower() or 'bans' in output.lower())"
+
+  - name: compares_real_candidates
+    description: Compares the actual candidate platforms, not a generic list
+    weight: 3
+    pass_condition: all(p in output for p in ['Cloudflare', 'Netlify', 'Render', 'Vercel'])
+
+  - name: notes_operational_catch
+    description: Names the operational catch of free tiers (expiry, sleep, or size cap)
+    weight: 3
+    pass_condition: any(k in output for k in ['expires', 'sleep', 'cold start', '3 MiB', 'OpenNext'])
+
+test_cases:
+  - input:
+      round: v2-research
+      ask: which genuinely-free host allows commercial use for a Next.js freelancer
+    expected_traits:
+      - recommends Cloudflare
+      - flags Vercel Hobby's commercial-use ban
+      - notes a free-tier operational catch
+
+  - input:
+      round: compare-payment-cliff
+      ask: rank Vercel Netlify Render Cloudflare on likeliness to force a paid upgrade
+    expected_traits:
+      - compares all four platforms
+      - applies the commercial-use lens
+      - reaches a single recommendation
