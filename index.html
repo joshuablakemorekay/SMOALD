@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SMOALD — Smart &amp; Bold | Build · Learn · Shop</title>
-<meta name="description" content="SMOALD is a brand house founded by Joshua Kay. Build with SMOALD AI, learn with SMOALD Learn, and shop with SMOALD Store." />
+<title>SMOALD — Smart &amp; Bold | Build · Learn · Shop · Live</title>
+<meta name="description" content="SMOALD is a brand house founded by Joshua Kay. Build with SMOALD AI, learn with SMOALD Learn, shop with SMOALD Store, and live well with SMOALD Lifestyle." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -17,6 +17,7 @@
     --build:#FF6A3D;   --build-soft:rgba(255,106,61,.13);
     --learn:#FFB23D;   --learn-soft:rgba(255,178,61,.13);
     --shop:#F04438;    --shop-soft:rgba(240,68,56,.13);
+    --life:#34D399;    --life-soft:rgba(52,211,153,.13);
     /* legacy aliases so existing sections keep working */
     --accent:var(--build); --accent-2:var(--learn); --accent-soft:var(--build-soft);
     --maxw:1120px;
@@ -73,30 +74,35 @@
   .hero-btn.learn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,178,61,.26)}
   .hero-btn.shop{color:var(--shop);border-color:rgba(240,68,56,.5);background:var(--shop-soft)}
   .hero-btn.shop:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(240,68,56,.28)}
+  .hero-btn.life{color:var(--life);border-color:rgba(52,211,153,.5);background:var(--life-soft)}
+  .hero-btn.life:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(52,211,153,.28)}
 
   /* DOORS / CARDS */
   .doors{padding:54px 0 96px}
-  .doors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .doors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:20px}
   .door{position:relative;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:30px 30px 28px;min-height:308px;transition:transform .22s,border-color .22s;overflow:hidden}
   .door::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity .28s;pointer-events:none}
   .door.build::after{background:radial-gradient(circle at 18% -10%,var(--build-soft),transparent 58%)}
   .door.learn::after{background:radial-gradient(circle at 18% -10%,var(--learn-soft),transparent 58%)}
   .door.shop::after{background:radial-gradient(circle at 18% -10%,var(--shop-soft),transparent 58%)}
+  .door.life::after{background:radial-gradient(circle at 18% -10%,var(--life-soft),transparent 58%)}
   .door:hover{transform:translateY(-6px)}
   .door:hover::after{opacity:1}
   .door.build:hover{border-color:rgba(255,106,61,.4)}
   .door.learn:hover{border-color:rgba(255,178,61,.4)}
   .door.shop:hover{border-color:rgba(240,68,56,.4)}
+  .door.life:hover{border-color:rgba(52,211,153,.4)}
   .door-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;position:relative;z-index:1}
   .door-ico{width:52px;height:52px;border-radius:13px;display:grid;place-items:center}
   .door.build .door-ico{background:var(--build-soft);color:var(--build);border:1px solid rgba(255,106,61,.35)}
   .door.learn .door-ico{background:var(--learn-soft);color:var(--learn);border:1px solid rgba(255,178,61,.35)}
   .door.shop .door-ico{background:var(--shop-soft);color:var(--shop);border:1px solid rgba(240,68,56,.35)}
+  .door.life .door-ico{background:var(--life-soft);color:var(--life);border:1px solid rgba(52,211,153,.35)}
   .door-ico svg{width:24px;height:24px}
   .door-arrow{color:var(--muted-2);transition:transform .2s,color .2s}
   .door:hover .door-arrow{transform:translate(4px,-4px);color:var(--text)}
   .door .verb{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;position:relative;z-index:1}
-  .door.build .verb{color:var(--build)} .door.learn .verb{color:var(--learn)} .door.shop .verb{color:var(--shop)}
+  .door.build .verb{color:var(--build)} .door.learn .verb{color:var(--learn)} .door.shop .verb{color:var(--shop)} .door.life .verb{color:var(--life)}
   .door h2{font-family:var(--display);font-weight:700;font-size:1.55rem;letter-spacing:-.015em;margin-bottom:10px;position:relative;z-index:1}
   .door p{color:var(--muted);font-size:.98rem;line-height:1.6;flex:1;position:relative;z-index:1}
   .door .stat{display:flex;flex-wrap:wrap;gap:16px;margin-top:22px;position:relative;z-index:1}
@@ -106,6 +112,7 @@
   .door.build .stat .live i{background:var(--build);color:var(--build)}
   .door.learn .stat .live i{background:var(--learn);color:var(--learn)}
   .door.shop .stat .live i{background:var(--shop);color:var(--shop)}
+  .door.life .stat .live i{background:var(--life);color:var(--life)}
   .door .stat .soon i{background:transparent;border:1.5px solid var(--muted-2)}
 
   /* ECOSYSTEM */
@@ -121,17 +128,19 @@
   .eco-line[data-line="build"].on{stroke:var(--build);filter:drop-shadow(0 0 4px var(--build))}
   .eco-line[data-line="shop"].on{stroke:var(--shop);filter:drop-shadow(0 0 4px var(--shop))}
   .eco-line[data-line="learn"].on{stroke:var(--learn);filter:drop-shadow(0 0 4px var(--learn))}
+  .eco-line[data-line="life"].on{stroke:var(--life);filter:drop-shadow(0 0 4px var(--life))}
   .eco-node{position:absolute;transform:translate(-50%,-50%);background:#161C24;border:1.5px solid var(--line-strong);border-radius:50%;display:grid;place-items:center;cursor:pointer;color:var(--muted);transition:border-color .25s,box-shadow .25s,color .25s,background .25s;padding:0}
   .eco-node .ico{display:grid;place-items:center;gap:5px;text-align:center}
   .eco-node .ico svg{width:26px;height:26px}
   .eco-node .ico b{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
   .eco-node.hub{width:21%;height:21%;z-index:3}
   .eco-node.hub .ico svg{width:30px;height:30px}
-  .eco-node.build,.eco-node.shop,.eco-node.learn{width:30%;height:30%;z-index:2}
+  .eco-node.build,.eco-node.shop,.eco-node.learn,.eco-node.life{width:30%;height:30%;z-index:2}
   .eco-node.active{background:#1B232D}
   .eco-node.build.active{border-color:var(--build);color:var(--build);box-shadow:0 0 0 1px var(--build),0 0 28px rgba(255,106,61,.4)}
   .eco-node.shop.active{border-color:var(--shop);color:var(--shop);box-shadow:0 0 0 1px var(--shop),0 0 28px rgba(240,68,56,.4)}
   .eco-node.learn.active{border-color:var(--learn);color:var(--learn);box-shadow:0 0 0 1px var(--learn),0 0 28px rgba(255,178,61,.4)}
+  .eco-node.life.active{border-color:var(--life);color:var(--life);box-shadow:0 0 0 1px var(--life),0 0 28px rgba(52,211,153,.4)}
   .eco-node.hub.active{border-color:var(--build);color:var(--build);box-shadow:0 0 0 1px var(--build),0 0 26px rgba(255,106,61,.4)}
   /* orbiting dots */
   .orbit{position:absolute;inset:-13%;border-radius:50%;opacity:0;transition:opacity .3s;color:inherit;pointer-events:none}
@@ -152,7 +161,7 @@
   .eco-panel.show{display:block;animation:fade .3s ease}
   @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   .eco-panel .pk{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
-  .eco-panel.build .pk{color:var(--build)} .eco-panel.shop .pk{color:var(--shop)} .eco-panel.learn .pk{color:var(--learn)} .eco-panel.hub .pk{color:var(--build)}
+  .eco-panel.build .pk{color:var(--build)} .eco-panel.shop .pk{color:var(--shop)} .eco-panel.learn .pk{color:var(--learn)} .eco-panel.life .pk{color:var(--life)} .eco-panel.hub .pk{color:var(--build)}
   .eco-panel h3{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.015em;margin-bottom:14px}
   .eco-panel ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
   .eco-panel li{display:flex;align-items:center;gap:10px;font-size:.95rem;color:var(--text)}
@@ -161,6 +170,7 @@
   .eco-panel.build li.on .d{background:var(--build);color:var(--build)}
   .eco-panel.shop li.on .d{background:var(--shop);color:var(--shop)}
   .eco-panel.learn li.on .d{background:var(--learn);color:var(--learn)}
+  .eco-panel.life li.on .d{background:var(--life);color:var(--life)}
   .eco-panel li.off{color:var(--muted)}
   .eco-panel li .soon{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);margin-left:auto}
   .eco-panel li a{color:inherit;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
@@ -169,7 +179,7 @@
   .eco-panel.shop li .live{color:var(--shop)}
   .eco-panel p{color:var(--muted);font-size:1rem;line-height:1.65;margin-bottom:18px}
   .eco-panel .enter{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.84rem;transition:gap .2s}
-  .eco-panel.build .enter{color:var(--build)} .eco-panel.shop .enter{color:var(--shop)} .eco-panel.learn .enter{color:var(--learn)}
+  .eco-panel.build .enter{color:var(--build)} .eco-panel.shop .enter{color:var(--shop)} .eco-panel.learn .enter{color:var(--learn)} .eco-panel.life .enter{color:var(--life)}
   .eco-panel .enter:hover{gap:14px}
 
   /* FOUNDER */
@@ -245,6 +255,7 @@
       <a href="ai.html">AI</a>
       <a href="learn.html">Learn</a>
       <a href="store.html">Store</a>
+      <a href="lifestyle.html">Lifestyle</a>
       <a href="#contact" class="nav-cta">Work with us</a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
@@ -257,12 +268,13 @@
   <div class="wrap">
     <div class="hero-tag">Smart &amp; Bold</div>
     <h1 class="hero-logo"><img src="assets/smoald-logo-hero.png" alt="SMOALD" /></h1>
-    <p class="hero-sub">One brand house, three doors. <strong class="b">Build</strong> with AI, <strong class="l">learn</strong> with us, or <strong class="s">shop</strong> with us.</p>
+    <p class="hero-sub">One brand house, four doors. <strong class="b">Build</strong> with AI, <strong class="l">learn</strong> with us, <strong class="s">shop</strong> with us, or <strong style="color:var(--life)">live</strong> with us.</p>
     <p class="hero-founder">Founded &amp; run by Joshua Kay</p>
     <div class="hero-btns">
       <a href="ai.html" class="hero-btn build">Build →</a>
       <a href="learn.html" class="hero-btn learn">Learn →</a>
       <a href="store.html" class="hero-btn shop">Shop →</a>
+      <a href="lifestyle.html" class="hero-btn life">Live →</a>
     </div>
   </div>
 </header>
@@ -305,6 +317,17 @@
         <div class="stat"><span class="live"><i></i>1 live</span><span class="soon"><i></i>2 coming soon</span></div>
       </a>
 
+      <a href="lifestyle.html" class="door life reveal">
+        <div class="door-top">
+          <div class="door-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.3 4.7-4.7 2.3 2.3-4.7z"/></svg></div>
+          <span class="door-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <span class="verb">Live with us</span>
+        <h2>SMOALD Lifestyle</h2>
+        <p>Travel and wellness for a smart, bold life — guided trips and tour guides with SMOALD Travel, plus SMOALD Fitness &amp; Wellness. The newest door, taking shape now.</p>
+        <div class="stat"><span class="soon"><i></i>2 coming soon</span></div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -320,29 +343,35 @@
     <div class="eco-stage reveal">
       <div class="eco-viz" id="ecoViz">
         <svg class="eco-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <line class="eco-line" data-line="build" x1="50" y1="52" x2="50" y2="20"/>
-          <line class="eco-line" data-line="shop"  x1="50" y1="52" x2="24" y2="80"/>
-          <line class="eco-line" data-line="learn" x1="50" y1="52" x2="76" y2="80"/>
+          <line class="eco-line" data-line="build" x1="50" y1="50" x2="50" y2="18"/>
+          <line class="eco-line" data-line="learn" x1="50" y1="50" x2="82" y2="50"/>
+          <line class="eco-line" data-line="shop"  x1="50" y1="50" x2="50" y2="82"/>
+          <line class="eco-line" data-line="life"  x1="50" y1="50" x2="18" y2="50"/>
         </svg>
 
-        <button class="eco-node build" data-node="build" style="left:50%;top:20%" aria-label="Build — SMOALD AI">
+        <button class="eco-node build" data-node="build" style="left:50%;top:18%" aria-label="Build — SMOALD AI">
           <span class="orbit"><i></i><i></i><i></i><i></i></span>
           <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><b>Build</b></span>
         </button>
 
-        <button class="eco-node hub" data-node="hub" style="left:50%;top:52%" aria-label="SMOALD — parent hub">
+        <button class="eco-node learn" data-node="learn" style="left:82%;top:50%" aria-label="Learn — SMOALD Learn">
+          <span class="orbit"><i></i><i></i><i></i><i></i></span>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/></svg><b>Learn</b></span>
+        </button>
+
+        <button class="eco-node hub" data-node="hub" style="left:50%;top:50%" aria-label="SMOALD — parent hub">
           <span class="orbit"><i></i><i></i><i></i><i></i></span>
           <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><ellipse cx="12" cy="12" rx="4" ry="9"/></svg></span>
         </button>
 
-        <button class="eco-node shop" data-node="shop" style="left:24%;top:80%" aria-label="Shop — SMOALD Store">
+        <button class="eco-node shop" data-node="shop" style="left:50%;top:82%" aria-label="Shop — SMOALD Store">
           <span class="orbit"><i></i><i></i><i></i><i></i></span>
           <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><b>Shop</b></span>
         </button>
 
-        <button class="eco-node learn" data-node="learn" style="left:76%;top:80%" aria-label="Learn — SMOALD Learn">
+        <button class="eco-node life" data-node="life" style="left:18%;top:50%" aria-label="Live — SMOALD Lifestyle">
           <span class="orbit"><i></i><i></i><i></i><i></i></span>
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/></svg><b>Learn</b></span>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.3 4.7-4.7 2.3 2.3-4.7z"/></svg><b>Live</b></span>
         </button>
       </div>
 
@@ -355,7 +384,7 @@
         <div class="eco-panel hub" data-panel="hub">
           <div class="pk">Parent Hub</div>
           <h3>SMOALD</h3>
-          <p>One brand house, three doors — Build, Learn and Shop. A parent hub with three mini-hubs, each running its own set of products and grown one finished project at a time.</p>
+          <p>One brand house, four doors — Build, Learn, Shop and Live. A parent hub with four mini-hubs, each running its own set of products and grown one finished project at a time.</p>
         </div>
 
         <div class="eco-panel build" data-panel="build">
@@ -394,6 +423,16 @@
           </ul>
           <a href="store.html" class="enter">Take a peek →</a>
         </div>
+
+        <div class="eco-panel life" data-panel="life">
+          <div class="pk">Mini-hub · Live</div>
+          <h3>SMOALD Lifestyle</h3>
+          <ul>
+            <li class="off"><span class="d"></span>SMOALD Travel — trips &amp; tour guides<span class="soon">Soon</span></li>
+            <li class="off"><span class="d"></span>SMOALD Fitness &amp; Wellness<span class="soon">Soon</span></li>
+          </ul>
+          <a href="lifestyle.html" class="enter">Enter SMOALD Lifestyle →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -406,7 +445,7 @@
       <div class="reveal">
         <span class="eyebrow">// The founder</span>
         <h2>Founded by Joshua — smart, bold, and building in public.</h2>
-        <p>SMOALD started as one person with a laptop and a habit of shipping real things. <strong>Today it's a brand house</strong> — software and AI now, commerce and lifestyle next — grown one finished project at a time.</p>
+        <p>SMOALD started as one person with a laptop and a habit of shipping real things. <strong>Today it's a brand house</strong> — software and AI, with commerce and lifestyle now taking shape — grown one finished project at a time.</p>
         <p>When you work with SMOALD, you're not hiring a freelancer for a one-off. You're partnering with a founder building something that lasts.</p>
       </div>
       <div class="acronym reveal">
@@ -443,6 +482,7 @@
       <a href="ai.html">AI</a>
       <a href="learn.html">Learn</a>
       <a href="store.html">Store</a>
+      <a href="lifestyle.html">Lifestyle</a>
       <a href="mailto:joshua@smoald.com">Email</a>
       <a href="https://github.com/joshuablakemorekay" target="_blank" rel="noopener">GitHub</a>
     </div>
