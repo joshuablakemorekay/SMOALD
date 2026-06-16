@@ -163,6 +163,10 @@
   .eco-panel.learn li.on .d{background:var(--learn);color:var(--learn)}
   .eco-panel li.off{color:var(--muted)}
   .eco-panel li .soon{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);margin-left:auto}
+  .eco-panel li a{color:inherit;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+  .eco-panel.shop li a:hover{color:var(--shop);border-color:var(--shop)}
+  .eco-panel li .live{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;margin-left:auto}
+  .eco-panel.shop li .live{color:var(--shop)}
   .eco-panel p{color:var(--muted);font-size:1rem;line-height:1.65;margin-bottom:18px}
   .eco-panel .enter{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.84rem;transition:gap .2s}
   .eco-panel.build .enter{color:var(--build)} .eco-panel.shop .enter{color:var(--shop)} .eco-panel.learn .enter{color:var(--learn)}
@@ -298,7 +302,7 @@
         <span class="verb">Shop with us</span>
         <h2>SMOALD Store</h2>
         <p>An online store for SMOALD's own products — wear, homeware and everyday essentials. Being built one real step at a time, the moment the foundation can carry it.</p>
-        <div class="stat"><span class="soon"><i></i>3 coming soon</span></div>
+        <div class="stat"><span class="live"><i></i>1 live</span><span class="soon"><i></i>2 coming soon</span></div>
       </a>
 
     </div>
@@ -385,7 +389,7 @@
           <h3>SMOALD Store</h3>
           <ul>
             <li class="off"><span class="d"></span>SMOALD Wear — clothing<span class="soon">Soon</span></li>
-            <li class="off"><span class="d"></span>SMOALD Living — homeware<span class="soon">Soon</span></li>
+            <li class="on"><span class="d"></span><a href="https://joshuablakemorekay.github.io/SMOALD-Living/" target="_blank" rel="noopener">SMOALD Living — homeware</a><span class="live">Live</span></li>
             <li class="off"><span class="d"></span>SMOALD Essentials — everyday<span class="soon">Soon</span></li>
           </ul>
           <a href="store.html" class="enter">Take a peek →</a>

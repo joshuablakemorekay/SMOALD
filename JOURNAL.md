@@ -112,3 +112,23 @@ This repo doesn't auto-publish on a git push — it only goes live when I run th
 This Claude Code session; repo `joshuablakemorekay/smoald`.
 
 ---
+
+## 2026-06-16 — First Store brand goes live: SMOALD Living
+
+**TL;DR:** SMOALD Living (the homeware storefront) is now live, so I wired it into the hub — its first real link out to a shipped Store product.
+
+**Type:** Build
+
+**What I built or did**
+Rebranded the old "SMOLD & Co." storefront to **SMOALD Living** and added its live link in three places: the Store page card (now clickable, marked "Live"), the homepage ecosystem panel (Living switched from "Soon" to a "Live" link), and the Store door counter (now "1 live · 2 coming soon").
+
+**Why I did it this way**
+The site claimed Living was "coming soon" while it was actually live — so the priority was making the hub tell the truth, reusing the existing "live vs soon" styling rather than inventing new design.
+
+**What I learned**
+A brand's name and status live in more spots than you expect — three separate places on the hub alone. Hunting them all down is what keeps the story consistent.
+
+**References / Conversations**
+This Claude Code session; live site `joshuablakemorekay.github.io/SMOALD-Living/`.
+
+---

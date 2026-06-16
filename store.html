@@ -59,6 +59,10 @@
   .pv .emoji{font-size:1.7rem;line-height:1;margin-bottom:14px}
   .pv h3{font-family:var(--display);font-weight:600;font-size:1.2rem;letter-spacing:-.01em;margin-bottom:8px}
   .pv p{color:var(--muted);font-size:.95rem;line-height:1.55}
+  .pv.live{border-color:rgba(255,106,61,.4)}
+  .pv.live:hover{border-color:var(--accent)}
+  .pv.live p strong{color:var(--accent);font-weight:600}
+  .live-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid rgba(255,106,61,.3);padding:3px 8px;border-radius:999px;vertical-align:middle;margin-left:7px}
 
   .btn{font-family:var(--body);font-weight:600;font-size:.98rem;padding:14px 26px;border-radius:999px;cursor:pointer;transition:transform .15s,box-shadow .2s,background .2s,border-color .2s;display:inline-flex;align-items:center;gap:9px;border:1px solid transparent}
   .btn-primary{background:var(--accent);color:#15110D}
@@ -120,11 +124,11 @@
           <h3>SMOALD Wear</h3>
           <p>A clothing line built around the brand — smart, bold, and made to last.</p>
         </div>
-        <div class="pv">
+        <a class="pv live" href="https://joshuablakemorekay.github.io/SMOALD-Living/" target="_blank" rel="noopener">
           <div class="emoji">🏠</div>
-          <h3>SMOALD Living</h3>
-          <p>Homeware with a clean, considered feel — for spaces that work as good as they look.</p>
-        </div>
+          <h3>SMOALD Living<span class="live-tag">Live</span></h3>
+          <p>Homeware with a clean, considered feel — for spaces that work as good as they look. <strong>Browse the live demo →</strong></p>
+        </a>
         <div class="pv">
           <div class="emoji">🛒</div>
           <h3>SMOALD Essentials</h3>
