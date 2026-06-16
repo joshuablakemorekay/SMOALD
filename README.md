@@ -2,6 +2,8 @@
 
 **🔗 Live:** [https://smoald.com](https://smoald.com) · also at [smoald.pages.dev](https://smoald.pages.dev)
 
+> **🧪 Branch preview (`living-experiment`):** [living-experiment.smoald.pages.dev](https://living-experiment.smoald.pages.dev) — work-in-progress *four-door* version with the new **SMOALD Lifestyle** hub (Travel + Fitness & Wellness). Not yet merged to `main`; the production site above is unaffected.
+
 The homepage of SMOALD — a single hub linking everything I build, learn and sell, founded and run by Joshua Kay.
 
 ## What It Does
