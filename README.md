@@ -37,7 +37,10 @@ Turned the brand-architecture brief into a live, 4-page "brand house" on Cloudfl
 ### 2026-06-15 — Homepage redesign from a Figma design
 I merged a Figma design I liked — a red/yellow/orange colour system and an interactive "Ecosystem" visual — into my existing homepage, keeping all my copy, founder framing and sub-pages intact. I built it as a preview first so the live site stayed safe, deployed the redesign, then swapped in my real logo (removing its background automatically with a small Python script). **Key lesson:** this site only goes live when I run the deploy command — a git push alone doesn't publish it.
 
+### 2026-06-16 — Shipped the first Store product: SMOALD Living
+SMOALD Living (my homeware storefront) went live, so I wired it into the hub and made the Store page tell the truth — its card is now a live link, the ecosystem panel and door counter show "1 live", and the old "coming soon" badge and title became "first product live". **Key lesson:** a product's status lives in more places than you'd think (a card, a panel, a counter, a badge, even the page title) — a launch only feels finished after a sweep across all of them.
+
 ## What's Next
-- Flip "coming soon" spokes to "live" as Store and Learn products ship
+- Flip the remaining "coming soon" spokes to "live" as more Store and Learn products ship *(SMOALD Living ✓)*
 - Add a CV PDF + LinkedIn link to the portfolio page
 - Consider folding the standalone portfolio repo fully into this hub

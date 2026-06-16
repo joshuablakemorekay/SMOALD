@@ -115,18 +115,21 @@ This Claude Code session; repo `joshuablakemorekay/smoald`.
 
 ## 2026-06-16 — First Store brand goes live: SMOALD Living
 
-**TL;DR:** SMOALD Living (the homeware storefront) is now live, so I wired it into the hub — its first real link out to a shipped Store product.
+**TL;DR:** SMOALD Living (the homeware storefront) is now live, so I wired it into the hub — its first real link out to a shipped Store product — and updated the Store page copy to match.
 
 **Type:** Build
 
 **What I built or did**
-Rebranded the old "SMOLD & Co." storefront to **SMOALD Living** and added its live link in three places: the Store page card (now clickable, marked "Live"), the homepage ecosystem panel (Living switched from "Soon" to a "Live" link), and the Store door counter (now "1 live · 2 coming soon").
+Rebranded the old "SMOLD & Co." storefront to **SMOALD Living** and surfaced it across the hub: the Store page card is now a clickable "Live" link, the homepage ecosystem panel switched Living from "Soon" to a "Live" link, and the Store door counter reads "1 live · 2 coming soon". I also softened the Store page's "coming soon" badge to "First product live" and updated its title + meta to match.
 
 **Why I did it this way**
-The site claimed Living was "coming soon" while it was actually live — so the priority was making the hub tell the truth, reusing the existing "live vs soon" styling rather than inventing new design.
+The site claimed Living was "coming soon" while it was actually live — so the priority was making the hub tell the truth everywhere, reusing the existing "live vs soon" styling rather than inventing new design.
+
+**How We Did It**
+1) Found every spot the hub mentioned SMOALD Living or the Store's status. 2) Turned the Store card and ecosystem-panel line into live links to the storefront. 3) Bumped the Store door counter to "1 live · 2 coming soon". 4) Softened the page badge, title and meta so nothing still said "coming soon". 5) Deployed to Cloudflare Pages and verified each change live on smoald.com.
 
 **What I learned**
-A brand's name and status live in more spots than you expect — three separate places on the hub alone. Hunting them all down is what keeps the story consistent.
+A brand's name and status live in more spots than you expect — the card, the panel, the counter, the badge, even the page title and search description. Hunting them all down is what keeps the story consistent.
 
 **References / Conversations**
 This Claude Code session; live site `joshuablakemorekay.github.io/SMOALD-Living/`.
