@@ -158,3 +158,29 @@ Adding one hub ripples everywhere — a tri-colour system, a 3-spoke diagram and
 This Claude Code session; branch `living-experiment` (not yet merged to main).
 
 ---
+
+## 2026-06-23 — Rebranded SMOALD to a red + gold light theme and shipped it live
+
+**TL;DR:** Redesigned the whole site from the old dark theme to a clean white background with the SMOALD red + gold colours and my real logo — then merged the four-door version into `main` and took it live at smoald.com.
+
+**Type:** Milestone
+
+**What I built or did**
+Flipped every page from dark to white-background red + gold. Added my real lightning-bolt logo (nav mark + favicon) and a crisp text wordmark (SMO red · AL gold · D red). Pulled all the repeated CSS/JS into one shared stylesheet and script, and rebuilt the Store page to lead with the live SMOALD Living product. Settled on four doors — AI · Learn · Store · Lifestyle — as the final site.
+
+**Why I did it this way**
+The dark theme didn't match my actual brand. I worked on safe branches first and only merged once I was happy, so the live site never broke mid-change.
+
+**How it works**
+One `style.css` themes every page; each page just sets a `data-hub` for its accent colour. Strictly red + gold — gold is kept for highlights, never big button fills.
+
+**How We Did It**
+1) Branched off `main` for a safe `redesign` → 2) extracted the shared CSS/JS and fixed the Store page → 3) flipped to the red + gold light theme with the real logo → 4) applied the same theme to the four-door `living-experiment` branch → 5) recoloured the Lifestyle hub from green to gold → 6) merged four-door into `main` (clean fast-forward) → 7) deployed to Cloudflare Pages and verified smoald.com live.
+
+**What I learned**
+A deep gold reads as orange when it fills a button — so even a two-colour brand needs rules about *where* each colour goes. And keeping the CSS in one shared file turned the whole reskin into a handful of edits instead of hundreds.
+
+**References / Conversations**
+This Claude Code session; repo `joshuablakemorekay/SMOALD`, live at https://smoald.com.
+
+---

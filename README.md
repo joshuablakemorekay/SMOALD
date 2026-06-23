@@ -2,12 +2,11 @@
 
 **🔗 Live:** [https://smoald.com](https://smoald.com) · also at [smoald.pages.dev](https://smoald.pages.dev)
 
-> **🧪 Branch preview (`living-experiment`):** [living-experiment.smoald.pages.dev](https://living-experiment.smoald.pages.dev) — work-in-progress *four-door* version with the new **SMOALD Lifestyle** hub (Travel + Fitness & Wellness). Not yet merged to `main`; the production site above is unaffected.
-
-The homepage of SMOALD — a single hub linking everything I build, learn and sell, founded and run by Joshua Kay.
+The homepage of SMOALD — a single hub linking everything I build, learn, sell and live, founded and run by Joshua Kay.
 
 ## What It Does
-- A parent homepage with three "doors": **SMOALD AI** (build), **SMOALD Learn** (learn), **SMOALD Store** (shop)
+- A parent homepage with four "doors": **SMOALD AI** (build), **SMOALD Learn** (learn), **SMOALD Store** (shop) and **SMOALD Lifestyle** (live well)
+- A clean **red + gold theme** on white, with the SMOALD lightning-bolt logo
 - A **hub-and-spoke map** showing every product under each hub — live vs. coming soon
 - A page per mini-hub listing its spokes
 - Serves my full developer portfolio in-house at `/ai/hire` (with a `/hire` shortcut)
@@ -15,6 +14,7 @@ The homepage of SMOALD — a single hub linking everything I build, learn and se
 
 ## Built With
 - **HTML & CSS** — static, hand-built pages, no framework
+- **One shared stylesheet + script** — every page is themed from a single `assets/style.css` (red + gold, switched per page via a `data-hub` attribute) with shared `assets/site.js` for behaviour
 - **Cloudflare Pages** — hosting & deploys (via the `wrangler` CLI); chosen after a [250+ source hosting comparison](./prompts/choose-hosting-platform/) for allowing commercial use on its free tier
 - **Cloudflare DNS** — the `smoald.com` custom domain
 - **`/prompts` library + GitHub Actions** — documents and auto-tests the prompts that built the site
@@ -45,8 +45,10 @@ SMOALD Living (my homeware storefront) went live, so I wired it into the hub and
 ### 2026-06-16 — Added a fourth hub: SMOALD Lifestyle (on an experiment branch)
 I grew the brand house from three doors to four — a new green/teal **SMOALD Lifestyle** hub with two coming-soon spokes (SMOALD Travel and SMOALD Fitness & Wellness). I reshaped the homepage to match: a new door card, updated hero, and the interactive Ecosystem diagram redrawn from a triangle into a diamond — plus Lifestyle added to every nav and footer. I did it all on a `living-experiment` branch so the live site stayed safe. **Key lesson:** adding one hub ripples everywhere — a tri-colour system, a 3-spoke diagram and copy that said "three doors" all had to become four — so branching first let me restructure freely without touching smoald.com.
 
+### 2026-06-23 — Rebranded to red + gold and went live (four doors)
+I redesigned the whole site from the old dark theme to a clean white background with the SMOALD **red + gold** brand colours and my real lightning-bolt logo, then merged the four-door version (adding **SMOALD Lifestyle**) into `main` and deployed it live. Along the way I pulled all the repeated CSS/JS into one shared stylesheet, rebuilt the Store page around the live SMOALD Living product, and recoloured the Lifestyle hub from green to gold. **Key lesson:** a deep gold reads as orange when it fills a button — even a two-colour brand needs rules about *where* each colour goes; and one shared stylesheet turned the whole reskin into a handful of edits, not hundreds.
+
 ## What's Next
-- Merge the SMOALD Lifestyle hub to `main` and go live once I'm happy with it
 - Flip the remaining "coming soon" spokes to "live" as more Store, Learn and Lifestyle products ship *(SMOALD Living ✓)*
 - Add a CV PDF + LinkedIn link to the portfolio page
 - Consider folding the standalone portfolio repo fully into this hub
