@@ -1,8 +1,5 @@
 <p align="center">
-  <img src="./assets/smoald-bolt.png" alt="SMOALD logo" height="130" />
-</p>
-<p align="center">
-  <img src="./assets/smoald-wordmark.png" alt="SMOALD" height="58" />
+  <img src="./assets/smoald-readme-banner.png" alt="SMOALD" width="360" />
 </p>
 
 # SMOALD.com — Brand-House Hub
