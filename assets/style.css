@@ -44,22 +44,25 @@
   --mono:"JetBrains Mono",ui-monospace,monospace;
 }
 
-/* ---- per-hub theming: set <body data-hub="..."> and the page recolours ---- */
-body[data-hub="learn"]{
-  --accent:var(--gold); --accent-2:var(--red);
-  --accent-soft:var(--gold-soft); --accent-shadow:rgba(236,162,0,.34);
-  --on-accent:#2A1E06;  /* gold is light — use dark text on it */
-}
-body[data-hub="shop"]{
+/* ---- per-hub theming: set <body data-hub="..."> and the page recolours ----
+   Every hub is red-primary + gold-secondary on white, so the whole site stays
+   consistently red + gold (the deep gold reads as orange when used as a big
+   fill, so it's kept for highlights/gradients, not button/badge fills). */
+body[data-hub="learn"],
+body[data-hub="shop"],
+body[data-hub="life"]{
   --accent:var(--red); --accent-2:var(--gold);
   --accent-soft:var(--red-soft); --accent-shadow:rgba(226,6,19,.30);
   --on-accent:#FFFFFF;
 }
-body[data-hub="life"]{
-  --accent:var(--gold); --accent-2:var(--red);
-  --accent-soft:var(--gold-soft); --accent-shadow:rgba(236,162,0,.34);
-  --on-accent:#2A1E06;  /* gold is light — use dark text on it */
-}
+
+/* Learn + Lifestyle keep a bright, shiny-gold heading accent so the pages
+   clearly read as red + gold (never orange) — red fills, gold highlight. */
+body[data-hub="learn"] .hero h1 .accent,
+body[data-hub="life"] h1 .accent{
+  background:linear-gradient(180deg,#FFDA5B 0%,#FFC107 55%,#F0A500 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
 
 /* ---- base ---- */
 *{box-sizing:border-box;margin:0;padding:0}
