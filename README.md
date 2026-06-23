@@ -1,3 +1,10 @@
+<p align="center">
+  <img src="./assets/smoald-bolt.png" alt="SMOALD logo" height="130" />
+</p>
+<p align="center">
+  <img src="./assets/smoald-wordmark.png" alt="SMOALD" height="58" />
+</p>
+
 # SMOALD.com — Brand-House Hub
 
 **🔗 Live:** [https://smoald.com](https://smoald.com) · also at [smoald.pages.dev](https://smoald.pages.dev)
