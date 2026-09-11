@@ -117,13 +117,13 @@
           <span class="live-tag">● Live</span>
         </div>
         <h3>ThaiBridge AI</h3>
-        <p class="case-sub">A language-learning app with real accounts, real payments and a built-in AI tutor</p>
+        <p class="case-sub">A language-learning app with real accounts, working subscription billing and a built-in AI tutor</p>
 
         <h4>The problem</h4>
         <p>I set myself the hardest version of a first web app deliberately. Anyone can build a to-do list. I wanted to prove I could build the parts a real online product actually needs — proper user accounts, genuine card payments, and a feature people would come back for — because those are exactly the parts that are easy to fake and hard to get right.</p>
 
         <h4>What I built</h4>
-        <p>A Flask application with user accounts, Stripe subscription billing, and a Claude-powered tutor that answers questions in context. Around 9,000 lines across 86 routes and 56 pages, with roughly 1,500 automated tests and continuous integration, running live on its own domain.</p>
+        <p>A Flask application with user accounts, Stripe subscription billing, and a Claude-powered tutor that answers questions in context. Around 9,000 lines across 86 routes and 56 pages, with 1,523 automated tests and continuous integration, running live on its own domain.</p>
 
         <h4>The decision I'd point to</h4>
         <p>Anything the browser can edit, a user can fake. So the database — and only the database — decides who has paid, and it's written solely by a signed, server-to-server message from Stripe. A tampered cookie can't unlock a paid feature. That one decision removed an entire category of bugs and cheats, and it's the kind of thinking I'd bring to your project too.</p>
@@ -133,7 +133,7 @@
           <li>A real test card payment verified end to end</li>
           <li>Accounts confirmed to survive a redeploy without data loss</li>
           <li>The AI feature capped so it can't run up an unexpected bill</li>
-          <li>~1,500 automated tests running on every change</li>
+          <li>1,523 automated tests running on every change</li>
         </ul>
 
         <ul class="stack">
@@ -269,7 +269,7 @@
     </div>
     <div class="foot-legal">
       <p><!-- TRADING-DETAILS: replace with registered trading name + address before launch -->
-      <strong>[TRADING NAME]</strong> — a UK sole trader. [ADDRESS LINE 1], [TOWN], [POSTCODE].</p>
+      <strong>Joshua Kay</strong>, trading as SMOALD — a UK sole trader. <!-- BUSINESS-ADDRESS: replace before this goes live -->[BUSINESS ADDRESS]</p>
       <p class="foot-copy">© 2026 Joshua Kay · SMOALD</p>
     </div>
   </div>
