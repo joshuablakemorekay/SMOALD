@@ -26,7 +26,22 @@ The homepage of SMOALD — a single hub linking everything I build, learn, sell 
 ## How to Run It
 1. Clone the repo
 2. Open `index.html` in your browser — it's a static site, no build step
-3. To deploy: `wrangler pages deploy . --project-name=smoald`
+3. To deploy: **push to `main`** — `.github/workflows/deploy.yml` publishes to
+   Cloudflare Pages and then checks smoald.com is really serving the new build.
+
+   To deploy by hand instead (the account id is needed because the Pages token
+   cannot list accounts, and `wrangler login` refuses while `CLOUDFLARE_API_TOKEN`
+   is set):
+
+   ```
+   export CLOUDFLARE_ACCOUNT_ID=709dfa1ba244a9d4e780015aa4ea426c
+   wrangler pages deploy . --project-name=smoald --branch=main
+   ```
+
+   Note Pages strips `.html` and redirects, so `/services.html` serves at
+   `/services` — keep canonicals, the sitemap and internal links on the clean
+   form. And check a deploy by its **content**, never its status code: while the
+   site was stale every path still returned 200.
 
 ## My Journey
 *In the order it happened — from first decision to live site.*
