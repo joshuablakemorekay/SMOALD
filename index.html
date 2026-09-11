@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SMOALD — Smart &amp; Bold | Build · Learn · Shop · Live</title>
-<meta name="description" content="SMOALD is a brand house founded by Joshua Kay. Build with SMOALD AI, learn with SMOALD Learn, shop with SMOALD Store, and live well with SMOALD Lifestyle." />
+<title>SMOALD — Websites, Web Apps &amp; Templates for UK Businesses</title>
+<meta name="description" content="I build business websites, web applications and ready-made templates — and handle the domain, DNS, SSL and hosting too. UK sole trader. Websites from £450." />
+<link rel="canonical" href="https://smoald.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://smoald.com/" />
+<meta property="og:site_name" content="SMOALD" />
+<meta property="og:title" content="Websites, web apps &amp; templates for UK businesses" />
+<meta property="og:description" content="Custom websites and web apps built and deployed by one developer — plus ready-made templates you can buy today. Websites from £450." />
+<meta property="og:image" content="https://smoald.com/assets/og-default.png" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Websites, web apps &amp; templates for UK businesses" />
+<meta name="twitter:description" content="Custom websites and web apps built and deployed by one developer — plus ready-made templates you can buy today." />
+<meta name="twitter:image" content="https://smoald.com/assets/og-default.png" />
 <link rel="icon" href="assets/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" href="assets/favicon-32.png" />
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
@@ -12,253 +24,311 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/style.css" />
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "SMOALD",
+  "description": "Web development for UK businesses — business websites, web applications, Cloudflare domain and hosting setup, and ready-made website templates.",
+  "url": "https://smoald.com/",
+  "email": "joshua@smoald.com",
+  "founder": { "@type": "Person", "name": "Joshua Kay" },
+  "areaServed": "GB",
+  "priceRange": "££",
+  "knowsAbout": ["Web development","Flask","Python","Cloudflare","DNS","SSL","Stripe integration","Website deployment","Website maintenance"],
+  "sameAs": ["https://github.com/joshuablakemorekay"]
+}
+</script>
 </head>
 <body data-hub="build">
+
+<a href="#main" class="skip">Skip to content</a>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="wrap nav-inner">
     <a href="index.html" class="brand" aria-label="SMOALD home"><img src="assets/smoald-bolt.png" class="bolt" alt="" />SMOALD</a>
     <div class="nav-links" id="navLinks">
-      <a href="#ecosystem">Ecosystem</a>
-      <a href="ai.html">AI</a>
-      <a href="learn.html">Learn</a>
-      <a href="store.html">Store</a>
-      <a href="lifestyle.html">Lifestyle</a>
-      <a href="#contact" class="nav-cta">Work with us</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="products.html">Templates</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="#enquire" class="nav-cta">Get a quote</a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
   </div>
 </nav>
 
+<main id="main">
+
 <!-- HERO -->
-<header class="hero home" id="top">
+<header class="hero home-lead" id="top">
   <div class="hero-glow"></div>
   <div class="wrap">
-    <div class="hero-tag">Smart &amp; Bold</div>
-    <h1 class="hero-wordmark" aria-label="SMOALD"><span class="r">SMO</span><span class="g">AL</span><span class="r">D</span></h1>
-    <p class="hero-sub">One brand house, four doors. <strong class="b">Build</strong> with AI, <strong class="l">learn</strong> with us, <strong class="s">shop</strong> with us, or <strong class="l">live</strong> with us.</p>
-    <p class="hero-founder">Founded &amp; run by Joshua Kay</p>
-    <div class="hero-btns">
-      <a href="ai.html" class="hero-btn build">Build →</a>
-      <a href="learn.html" class="hero-btn learn">Learn →</a>
-      <a href="store.html" class="hero-btn shop">Shop →</a>
-      <a href="lifestyle.html" class="hero-btn life">Live →</a>
+    <span class="eyebrow">// Smart &amp; Bold</span>
+    <h1>Websites, web apps and ready-made templates for <span class="accent">UK businesses.</span></h1>
+    <p class="hero-sub">I design, build and deploy the whole thing — including the domain, DNS, SSL and hosting most developers hand off. You deal with me directly, start to finish.</p>
+    <div class="cta-row">
+      <a href="#enquire" class="btn btn-primary">Start a project →</a>
+      <a href="products.html" class="btn btn-ghost">Browse templates</a>
+    </div>
+    <div class="hero-facts">
+      <span><strong>From £450</strong> for a business website</span>
+      <span class="dot" aria-hidden="true">·</span>
+      <span>UK sole trader</span>
+      <span class="dot" aria-hidden="true">·</span>
+      <span>Built by one person, not passed to a junior</span>
     </div>
   </div>
 </header>
 
-<!-- DOORS / CARDS -->
-<section class="doors">
+<!-- WHAT I DO -->
+<section class="section" id="services">
   <div class="wrap">
-    <div class="doors-grid">
-
-      <a href="ai.html" class="door build reveal">
-        <div class="door-top">
-          <div class="door-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
-          <span class="door-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </div>
-        <span class="verb">Build with us</span>
-        <h2>SMOALD AI</h2>
-        <p>Web apps, AI tools and full-stack builds — taken from a first idea all the way to a finished, live product. This is where you hire the team.</p>
-        <div class="stat"><span class="live"><i></i>6 live</span></div>
-      </a>
-
-      <a href="learn.html" class="door learn reveal">
-        <div class="door-top">
-          <div class="door-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/></svg></div>
-          <span class="door-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </div>
-        <span class="verb">Learn with us</span>
-        <h2>SMOALD Learn</h2>
-        <p>AI courses, workshops and learning products — including ThaiBridge AI, a live language-learning app with a built-in AI tutor.</p>
-        <div class="stat"><span class="live"><i></i>1 live</span><span class="soon"><i></i>3 coming soon</span></div>
-      </a>
-
-      <a href="store.html" class="door shop reveal">
-        <div class="door-top">
-          <div class="door-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
-          <span class="door-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </div>
-        <span class="verb">Shop with us</span>
-        <h2>SMOALD Store</h2>
-        <p>An online store for SMOALD's own products — wear, homeware and everyday essentials. Being built one real step at a time, the moment the foundation can carry it.</p>
-        <div class="stat"><span class="live"><i></i>1 live</span><span class="soon"><i></i>2 coming soon</span></div>
-      </a>
-
-      <a href="lifestyle.html" class="door life reveal">
-        <div class="door-top">
-          <div class="door-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.3 4.7-4.7 2.3 2.3-4.7z"/></svg></div>
-          <span class="door-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </div>
-        <span class="verb">Live with us</span>
-        <h2>SMOALD Lifestyle</h2>
-        <p>Travel and wellness for a smart, bold life — guided trips and tour guides with SMOALD Travel, plus SMOALD Fitness &amp; Wellness. The newest door, taking shape now.</p>
-        <div class="stat"><span class="soon"><i></i>2 coming soon</span></div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ECOSYSTEM (interactive hub-and-spokes) -->
-<section class="eco" id="ecosystem">
-  <div class="wrap">
-    <div class="eco-head reveal">
-      <h2>The Ecosystem</h2>
-      <p>Hover a node to explore each part of SMOALD. Lit means live; the rest are on the way.</p>
+    <div class="section-head reveal">
+      <span class="eyebrow">// What I do</span>
+      <h2>Two ways to work with me.</h2>
+      <p>Have something built to fit your business, or buy a template today and put it live yourself. Both end with a site that's genuinely yours.</p>
     </div>
 
-    <div class="eco-stage reveal">
-      <div class="eco-viz" id="ecoViz">
-        <svg class="eco-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <line class="eco-line" data-line="build" x1="50" y1="50" x2="50" y2="18"/>
-          <line class="eco-line" data-line="learn" x1="50" y1="50" x2="82" y2="50"/>
-          <line class="eco-line" data-line="shop"  x1="50" y1="50" x2="50" y2="82"/>
-          <line class="eco-line" data-line="life"  x1="50" y1="50" x2="18" y2="50"/>
-        </svg>
-
-        <button class="eco-node build" data-node="build" style="left:50%;top:18%" aria-label="Build — SMOALD AI">
-          <span class="orbit"><i></i><i></i><i></i><i></i></span>
-          <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><b>Build</b></span>
-        </button>
-
-        <button class="eco-node learn" data-node="learn" style="left:82%;top:50%" aria-label="Learn — SMOALD Learn">
-          <span class="orbit"><i></i><i></i><i></i><i></i></span>
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/></svg><b>Learn</b></span>
-        </button>
-
-        <button class="eco-node hub" data-node="hub" style="left:50%;top:50%" aria-label="SMOALD — parent hub">
-          <span class="orbit"><i></i><i></i><i></i><i></i></span>
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><ellipse cx="12" cy="12" rx="4" ry="9"/></svg></span>
-        </button>
-
-        <button class="eco-node shop" data-node="shop" style="left:50%;top:82%" aria-label="Shop — SMOALD Store">
-          <span class="orbit"><i></i><i></i><i></i><i></i></span>
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><b>Shop</b></span>
-        </button>
-
-        <button class="eco-node life" data-node="life" style="left:18%;top:50%" aria-label="Live — SMOALD Lifestyle">
-          <span class="orbit"><i></i><i></i><i></i><i></i></span>
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.3 4.7-4.7 2.3 2.3-4.7z"/></svg><b>Live</b></span>
-        </button>
+    <div class="twoway">
+      <div class="way reveal">
+        <span class="way-tag">Built for you</span>
+        <h3>Custom web development</h3>
+        <p>Business websites, web applications, redesigns and everything underneath them — hosting, domains, SSL, deployment and ongoing care.</p>
+        <ul class="ticks">
+          <li>Business websites from <strong>£450</strong></li>
+          <li>Web applications with accounts and payments</li>
+          <li>Cloudflare domain, DNS &amp; SSL setup from <strong>£145</strong></li>
+          <li>Maintenance plans from <strong>£30/month</strong></li>
+        </ul>
+        <a href="services.html" class="enter">See services &amp; prices →</a>
       </div>
 
-      <div class="eco-detail" id="ecoDetail">
-        <div class="eco-empty">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><ellipse cx="12" cy="12" rx="4" ry="9"/></svg>
-          <span>Hover a node to explore</span>
-        </div>
-
-        <div class="eco-panel hub" data-panel="hub">
-          <div class="pk">Parent Hub</div>
-          <h3>SMOALD</h3>
-          <p>One brand house, four doors — Build, Learn, Shop and Live. A parent hub with four mini-hubs, each running its own set of products and grown one finished project at a time.</p>
-        </div>
-
-        <div class="eco-panel build" data-panel="build">
-          <div class="pk">Mini-hub · Build</div>
-          <h3>SMOALD AI</h3>
-          <ul>
-            <li class="on"><span class="d"></span>Web apps</li>
-            <li class="on"><span class="d"></span>Game apps</li>
-            <li class="on"><span class="d"></span>AI features &amp; integration</li>
-            <li class="on"><span class="d"></span>E-commerce store builds</li>
-            <li class="on"><span class="d"></span>Prompt engineering</li>
-            <li class="on"><span class="d"></span>Full-stack development</li>
-          </ul>
-          <a href="ai.html" class="enter">Enter SMOALD AI →</a>
-        </div>
-
-        <div class="eco-panel learn" data-panel="learn">
-          <div class="pk">Mini-hub · Learn</div>
-          <h3>SMOALD Learn</h3>
-          <ul>
-            <li class="on"><span class="d"></span>ThaiBridge AI</li>
-            <li class="off"><span class="d"></span>Language learning apps<span class="soon">Soon</span></li>
-            <li class="off"><span class="d"></span>Education products<span class="soon">Soon</span></li>
-            <li class="off"><span class="d"></span>AI tutoring tools<span class="soon">Soon</span></li>
-          </ul>
-          <a href="learn.html" class="enter">Enter SMOALD Learn →</a>
-        </div>
-
-        <div class="eco-panel shop" data-panel="shop">
-          <div class="pk">Mini-hub · Shop</div>
-          <h3>SMOALD Store</h3>
-          <ul>
-            <li class="off"><span class="d"></span>SMOALD Wear — clothing<span class="soon">Soon</span></li>
-            <li class="on"><span class="d"></span><a href="https://joshuablakemorekay.github.io/SMOALD-Living/" target="_blank" rel="noopener">SMOALD Living — homeware</a><span class="live">Live</span></li>
-            <li class="off"><span class="d"></span>SMOALD Essentials — everyday<span class="soon">Soon</span></li>
-          </ul>
-          <a href="store.html" class="enter">Take a peek →</a>
-        </div>
-
-        <div class="eco-panel life" data-panel="life">
-          <div class="pk">Mini-hub · Live</div>
-          <h3>SMOALD Lifestyle</h3>
-          <ul>
-            <li class="off"><span class="d"></span>SMOALD Travel — trips &amp; tour guides<span class="soon">Soon</span></li>
-            <li class="off"><span class="d"></span>SMOALD Fitness &amp; Wellness<span class="soon">Soon</span></li>
-          </ul>
-          <a href="lifestyle.html" class="enter">Enter SMOALD Lifestyle →</a>
-        </div>
+      <div class="way reveal">
+        <span class="way-tag alt">Ready made</span>
+        <h3>Website templates</h3>
+        <p>Designs I've built and run in production, packaged so you can use them on your own site — with documentation, a clear licence and optional installation.</p>
+        <ul class="ticks">
+          <li>Full source code, yours to edit</li>
+          <li>Licences for personal, client and resale use</li>
+          <li>Installation service if you'd rather not</li>
+          <li>Built on a design already running live</li>
+        </ul>
+        <a href="products.html" class="enter">Browse templates →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOUNDER -->
-<section class="founder" id="about">
+<!-- SERVICE SPOKES -->
+<section class="section band-soft" style="padding-top:0">
   <div class="wrap">
-    <div class="founder-grid">
+    <div class="spoke-grid">
+      <div class="spoke reveal"><span class="em">🌐</span><div><h3>Business websites</h3><p>Mobile-first, fast, and findable.</p></div></div>
+      <div class="spoke reveal"><span class="em">⚙️</span><div><h3>Web applications</h3><p>Accounts, databases, payments, admin.</p></div></div>
+      <div class="spoke reveal"><span class="em">🎨</span><div><h3>Redesigns</h3><p>Your content, rebuilt properly.</p></div></div>
+      <div class="spoke reveal"><span class="em">☁️</span><div><h3>Domains, DNS &amp; SSL</h3><p>Cloudflare setup, done right.</p></div></div>
+      <div class="spoke reveal"><span class="em">🚀</span><div><h3>Deployment &amp; hosting</h3><p>Live, secure and quick to load.</p></div></div>
+      <div class="spoke reveal"><span class="em">🛠️</span><div><h3>Maintenance</h3><p>Backups, updates, small changes.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT WORK -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">// Recent work</span>
+      <h2>Things I've built and put live.</h2>
+      <p>Every one of these is running right now, on a real domain, with a link you can click.</p>
+    </div>
+
+    <div class="work-grid">
+
+      <article class="work reveal">
+        <div class="work-head">
+          <span class="work-kind">Business website · Pro bono</span>
+          <span class="live-tag">● Live</span>
+        </div>
+        <h3>T.P.A. Honey Farm</h3>
+        <p>A bilingual Thai/English website for a working honey farm — product catalogue, photo gallery, detail pages and contact, built in Flask and deployed live. Modernised from their existing site.</p>
+        <ul class="stack">
+          <li>Flask</li><li>Python</li><li>Bilingual</li><li>Render</li>
+        </ul>
+        <p class="work-note">Built without charge for a friend's business.</p>
+        <div class="work-links">
+          <a href="https://tpa-honey-website.onrender.com" target="_blank" rel="noopener">Visit site ↗</a>
+          <a href="https://github.com/joshuablakemorekay/tpa-honey-website" target="_blank" rel="noopener">Code ↗</a>
+        </div>
+      </article>
+
+      <article class="work reveal feature-work">
+        <div class="work-head">
+          <span class="work-kind">Web application · My own product</span>
+          <span class="live-tag">● Live</span>
+        </div>
+        <h3>ThaiBridge AI</h3>
+        <p>A subscription language-learning app with real user accounts, Stripe billing and a built-in AI tutor. The database is the only source of truth for who has paid, written solely by a signed webhook — so a tampered cookie can't unlock paid features.</p>
+        <ul class="stack">
+          <li>Flask</li><li>PostgreSQL</li><li>Stripe</li><li>Claude API</li><li>~1,500 tests</li>
+        </ul>
+        <p class="work-note">Designed, built and run by me. Live on a custom domain.</p>
+        <div class="work-links">
+          <a href="https://thaibridge-ai.smoald.com" target="_blank" rel="noopener">Visit app ↗</a>
+          <a href="https://github.com/joshuablakemorekay/thaibridge-ai" target="_blank" rel="noopener">Code ↗</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="work-more reveal">
+      <a href="portfolio.html" class="btn btn-ghost">See the full portfolio →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section band-soft">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">// How it works</span>
+      <h2>Three steps, no surprises.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><span class="num">01</span><h3>Tell me what you need</h3><p>A rough idea is enough. We talk it through and I tell you honestly what it'll take, what it'll cost and how long it'll be.</p></div>
+      <div class="step reveal"><span class="num">02</span><h3>I build it</h3><p>A 50% deposit starts the work. You see it taking shape as it goes, and two rounds of changes are included.</p></div>
+      <div class="step reveal"><span class="num">03</span><h3>It goes live — and it's yours</h3><p>I handle the domain, SSL and deployment. The code and copyright transfer to you on final payment. Care plans available after that.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WIDER SMOALD -->
+<section class="section wider">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">// The wider SMOALD</span>
+      <h2>Web development is one part of a bigger brand.</h2>
+      <p>SMOALD is a brand house I'm building one finished project at a time. The development work above is the part that's open for business today — here's the rest.</p>
+    </div>
+    <div class="doors-mini">
+      <a href="learn.html" class="dm reveal">
+        <h3>SMOALD Learn</h3>
+        <p>Learning products and courses, including ThaiBridge AI.</p>
+        <span class="dm-stat"><span class="live-tag">● 1 live</span></span>
+      </a>
+      <a href="store.html" class="dm reveal">
+        <h3>SMOALD Store</h3>
+        <p>Wear, homeware and everyday essentials.</p>
+        <span class="dm-stat"><span class="live-tag">● 1 live</span></span>
+      </a>
+      <a href="lifestyle.html" class="dm reveal">
+        <h3>SMOALD Lifestyle</h3>
+        <p>Travel, fitness and wellness — the newest door.</p>
+        <span class="dm-stat"><span class="soon-tag">In progress</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ENQUIRY -->
+<section class="section enquire-sec" id="enquire">
+  <div class="wrap">
+    <div class="enquire-grid">
       <div class="reveal">
-        <span class="eyebrow">// The founder</span>
-        <h2>Founded by Joshua — smart, bold, and building in public.</h2>
-        <p>SMOALD started as one person with a laptop and a habit of shipping real things. <strong>Today it's a brand house</strong> — software and AI, with commerce and lifestyle now taking shape — grown one finished project at a time.</p>
-        <p>When you work with SMOALD, you're not hiring a freelancer for a one-off. You're partnering with a founder building something that lasts.</p>
+        <span class="eyebrow">// Start a project</span>
+        <h2>Tell me what you need.</h2>
+        <p class="enquire-lede">Fill this in and I'll come back to you with an honest answer — including if I think you'd be better off with something other than what you asked for.</p>
+        <ul class="ticks spaced">
+          <li>No obligation and no sales call</li>
+          <li>A price and a timeline, not "it depends"</li>
+          <li>I reply to every enquiry personally</li>
+        </ul>
+        <p class="enquire-alt">Prefer email? <a href="mailto:joshua@smoald.com">joshua@smoald.com</a></p>
       </div>
-      <div class="acronym reveal">
-        <div class="acro-row"><span class="letter">S</span><span class="word">Smart</span></div>
-        <div class="acro-row"><span class="letter">B</span><span class="word">Bold</span></div>
-        <div class="acro-row"><span class="letter">AI</span><span class="word">Artificial Intelligence</span></div>
-        <div class="acro-row"><span class="letter">L</span><span class="word">Lifestyle</span></div>
-        <div class="acro-row"><span class="letter">D</span><span class="word">Development</span></div>
-      </div>
+
+      <form class="enquiry-form reveal" id="enquiryForm" method="POST" action="/api/enquiry" novalidate>
+        <div class="field">
+          <label for="ef-name">Your name</label>
+          <input type="text" id="ef-name" name="name" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="ef-email">Email</label>
+          <input type="email" id="ef-email" name="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="ef-business">Business name <span class="opt">(optional)</span></label>
+          <input type="text" id="ef-business" name="business" autocomplete="organization" />
+        </div>
+        <div class="field">
+          <label for="ef-need">What do you need?</label>
+          <select id="ef-need" name="need" required>
+            <option value="">Choose one…</option>
+            <option>A new business website</option>
+            <option>A redesign of my existing site</option>
+            <option>A web application</option>
+            <option>Domain, DNS, SSL or hosting help</option>
+            <option>Website maintenance</option>
+            <option>A template — or help installing one</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ef-budget">Rough budget</label>
+          <select id="ef-budget" name="budget" required>
+            <option value="">Choose one…</option>
+            <option>Under £500</option>
+            <option>£500 – £1,000</option>
+            <option>£1,000 – £2,500</option>
+            <option>£2,500 – £5,000</option>
+            <option>Over £5,000</option>
+            <option>I genuinely don't know yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ef-message">Tell me a bit more</label>
+          <textarea id="ef-message" name="message" rows="4" required placeholder="What the business does, what you want the site to achieve, and any deadline you're working to."></textarea>
+        </div>
+        <div class="field hp" aria-hidden="true">
+          <label for="ef-website">Leave this empty</label>
+          <input type="text" id="ef-website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+        <button type="submit" class="btn btn-primary form-submit" id="efSubmit">Send enquiry →</button>
+        <p class="form-small">I'll only use your details to reply to this enquiry. See the <a href="legal/privacy.html">privacy notice</a>.</p>
+        <p class="form-status" id="efStatus" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="eyebrow">// Work with us</span>
-      <h2>Let's build <span class="accent">something.</span></h2>
-      <p>Got a project, an idea, or just a question? The fastest door is SMOALD AI — but you can always just email.</p>
-      <div class="contact-row">
-        <a href="ai.html" class="btn btn-primary">Hire SMOALD AI →</a>
-        <a href="mailto:joshua@smoald.com" class="btn btn-ghost">joshua@smoald.com</a>
-      </div>
-    </div>
-  </div>
-</section>
+</main>
 
 <!-- FOOTER -->
 <footer>
   <div class="wrap foot-inner">
     <div class="foot-brand">SMOALD<span>Smart · Bold · AI · Lifestyle · Development</span></div>
     <div class="foot-links">
-      <a href="ai.html">AI</a>
-      <a href="learn.html">Learn</a>
-      <a href="store.html">Store</a>
-      <a href="lifestyle.html">Lifestyle</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="products.html">Templates</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="legal/privacy.html">Privacy</a>
+      <a href="legal/terms.html">Terms</a>
       <a href="mailto:joshua@smoald.com">Email</a>
       <a href="https://github.com/joshuablakemorekay" target="_blank" rel="noopener">GitHub</a>
     </div>
-    <div class="foot-copy">© 2026 Joshua Kay · SMOALD</div>
+    <div class="foot-legal">
+      <p><!-- TRADING-DETAILS: replace with registered trading name + address before launch -->
+      <strong>[TRADING NAME]</strong> — a UK sole trader. [ADDRESS LINE 1], [TOWN], [POSTCODE].</p>
+      <p class="foot-copy">© 2026 Joshua Kay · SMOALD</p>
+    </div>
   </div>
 </footer>
 
 <script src="assets/site.js" defer></script>
+<script src="assets/enquiry.js" defer></script>
 </body>
 </html>
