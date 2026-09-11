@@ -45,13 +45,29 @@
       panels.forEach(p => p.classList.toggle('show', p.dataset.panel === name));
       detail.classList.toggle('has', !!name);
     }
+    // Touch devices never fire mouseenter, so hover alone left the diagram
+    // dead on a phone. Tap now toggles the panel and keeps it open.
+    let pinned = '';
+    const hoverable = window.matchMedia('(hover: hover)').matches;
+
     nodes.forEach(n => {
       const name = n.dataset.node;
-      n.addEventListener('mouseenter', () => setActive(name));
-      n.addEventListener('mouseleave', () => setActive(''));
-      n.addEventListener('focus', () => setActive(name));
-      n.addEventListener('blur', () => setActive(''));
-      n.addEventListener('click', (e) => e.preventDefault());
+      if (hoverable) {
+        n.addEventListener('mouseenter', () => { if (!pinned) setActive(name); });
+        n.addEventListener('mouseleave', () => { if (!pinned) setActive(''); });
+      }
+      n.addEventListener('focus', () => { if (!pinned) setActive(name); });
+      n.addEventListener('blur', () => { if (!pinned) setActive(''); });
+      n.addEventListener('click', (e) => {
+        e.preventDefault();
+        pinned = pinned === name ? '' : name;
+        setActive(pinned || (hoverable ? name : ''));
+      });
+    });
+
+    // Tapping away closes the pinned panel.
+    document.addEventListener('click', (e) => {
+      if (pinned && !viz.contains(e.target)) { pinned = ''; setActive(''); }
     });
   }
 })();
