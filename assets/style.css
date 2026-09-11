@@ -388,3 +388,9 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
   body{font-size:16px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+
+/* `.nav-links a` (0,1,1) outranks `.nav-cta` (0,1,0), so without this the CTA
+   button renders muted grey on the accent fill instead of white. */
+.nav-links a.nav-cta,
+.nav-links a.nav-cta:hover,
+.nav-links a.nav-cta.active{color:var(--on-accent)}
