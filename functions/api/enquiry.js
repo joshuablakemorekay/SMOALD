@@ -8,9 +8,25 @@
  *
  *   RESEND_API_KEY   secret   API key from resend.com (free tier: 3,000/month)
  *   CONTACT_TO       plain    where enquiries are sent, e.g. joshua@smoald.com
- *   CONTACT_FROM     plain    a verified sender, e.g. enquiries@smoald.com
+ *   CONTACT_FROM     plain    the sender address (see below)
  *
  * Mark RESEND_API_KEY as a SECRET, never a plain variable, and never commit it.
+ *
+ * TWO WAYS TO SET CONTACT_FROM
+ *
+ *   1. Quick start, no DNS needed. Use `onboarding@resend.dev`. Resend allows
+ *      this sender without verifying a domain, but it will only deliver to the
+ *      address the Resend account was opened with — so sign up using the same
+ *      address as CONTACT_TO and the form works straight away. Enquiries
+ *      arrive from "SMOALD enquiries <onboarding@resend.dev>".
+ *
+ *   2. Proper setup, once the DNS records are in. Verify smoald.com in Resend,
+ *      add the records it gives you to Cloudflare DNS, then switch this to
+ *      `enquiries@smoald.com`. Better deliverability, and the sender reads as
+ *      your own domain rather than Resend's.
+ *
+ * Start with 1 so the form is live today; move to 2 when convenient. Nothing
+ * in the code changes — only this one environment variable.
  */
 
 const LIMITS = {
