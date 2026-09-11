@@ -1,0 +1,5 @@
+# smoald.com
+User-agent: *
+Allow: /
+
+Sitemap: https://smoald.com/sitemap.xml
