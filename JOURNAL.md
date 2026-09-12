@@ -211,6 +211,101 @@ This Claude Code session; repo `joshuablakemorekay/SMOALD`, live at https://smoa
 
 ---
 
+## 2026-09-11 — Turned the hub into a business that can be hired
+
+**TL;DR:**
+- smoald.com stopped being a brand showcase and became something that sells: six packages, fixed-price jobs, and four legal pages.
+- A working enquiry form on Pages Functions, proven by an email actually arriving.
+- Deploys became automatic — which is how I found the live site had been two months out of date.
+
+**Type:** Feature / Infrastructure
+
+**What I built or did**
+Rewrote the homepage to lead with the offer rather than the brand, and added `services`, `pricing`, `portfolio`, `about`, `contact` and `products`, plus privacy, terms, licence and refunds. Built the enquiry endpoint as a Pages Function on Resend — honeypot, length caps, HTML escaping, origin check. Added a sitemap, robots, a social preview image, clean-URL redirects and `ProfessionalService` markup with the trading location.
+
+**Why I did it this way**
+The whole point was to earn money, and nothing on the site let anyone buy or even enquire. Before any of it went near the live site I asked:
+
+> "Before we continue, can you confirm that this isn't affecting the exsisting web apps: thaibridge-ai and smoald.com? And that for smoald.com it's only adding to it?"
+
+and the brief was explicit from the start:
+
+> "Do not fabricate credentials or client results."
+
+so the copy claims six real packages and no clients I do not have. Two overstated claims were pulled out later the same evening.
+
+**How We Did It**
+1) Rewrote the homepage around the offer → 2) added the sales pages, then the legal pages → 3) built the enquiry Function and confirmed a real email landed in Gmail → 4) added the SEO files → 5) found every URL returning 200 while still serving the *old* homepage → 6) discovered Cloudflare Pages had no git integration at all: deploys were a command someone had to remember → 7) added the GitHub Actions workflow → 8) fixed a nav bug where `.nav-links a` quietly outranked `.nav-cta` and greyed out the button text.
+
+**What I learned**
+A 200 is not proof of anything — the site had been stale for two months while every path answered perfectly. And "it goes live when someone remembers to run a command" is a bug in the process, not the code; the fix was a workflow, not a reminder.
+
+**Engineering Contribution**
+
+*Decisions made:*
+- Pages Functions over a third-party form service: no monthly fee, no data leaving the account, and the spam protection is a hidden field rather than a CAPTCHA that punishes real people.
+- `onRequestPost` plus `onRequestGet` rather than a catch-all `onRequest`, which would have shadowed the POST handler and broken the form silently.
+- Two claims removed from the copy rather than softened. Half-true is still untrue.
+
+*Improvements made to generated code:*
+- Field length caps and HTML escaping on the endpoint, so a long or hostile submission cannot fill the inbox or inject markup into the email.
+- The deploy workflow verifies by *content* — it greps the live page for a word that only the new build contains — because the status code had already lied once.
+
+*Roughly how much was accepted as-is vs engineered on:*
+The page markup mostly went in as drafted. The endpoint and the deploy pipeline did not: both were reworked after the first version proved either unsafe or unverified.
+
+**References / Conversations**
+This Claude Code session; repo `joshuablakemorekay/SMOALD`, live at https://smoald.com.
+
+---
+
+## 2026-09-12 — Made the design a product, and got listed where buyers look
+
+**TL;DR:**
+- Extracted the ThaiBridge design into its own theme repo with a live demo — a reusable product rather than one site's stylesheet.
+- Settled the VAT question with evidence: Stripe is merchant of record, so the advertised price is the price charged.
+- Listed the business on Google and PeoplePerHour, and fixed the honey farm's 21-second load.
+
+**Type:** Product / Research / Fix
+
+**What I built or did**
+Pulled the design out of ThaiBridge into `classic-modern-theme`: 1,127 lines of CSS behind 33 colour tokens, a second colourway in 24 values, five demo pages, a README, a changelog and a three-tier licence. Fixed ThaiBridge's pricing so the checkout stops quoting a different number from the advert. Pre-rendered the honey farm to static and made its contact address clickable again. Set up Google Business Profile and Search Console, and wrote the PeoplePerHour profile and its first five offers.
+
+**Why I did it this way**
+On the VAT I was told twice that Stripe should not be charging it, and pushed back twice:
+
+> "yes, look at the ThaiBridge Stripe Tax issue because I tell you again. I am not registered with VAT."
+
+I was right. Stripe is merchant of record, so it owes the VAT, not me — the fix was to mark prices tax-inclusive rather than to turn tax off. And on PeoplePerHour the rule was mine before anything was touched:
+
+> "set up the profile and hourlies on PPH now as long as it doesn't affect anything on my existing profile i.e. don't remove anything without my permission."
+
+**How We Did It**
+1) Fixed the honey farm — 21.6s to 0.26s by pre-rendering, and its email link had been broken on every page → 2) settled the VAT with the Stripe API rather than opinion → 3) extracted the theme → 4) rebranded it properly, which meant replacing every brand-coloured `rgba()` with `color-mix()` so a new palette actually takes → 5) wrote the README, licence and changelog → 6) Google Business Profile, then Search Console: 16 pages discovered → 7) PeoplePerHour profile and five offers → 8) added licences to three repos.
+
+**What I learned**
+Pushing back was the right call, and I had to do it twice to be heard. The lesson on my side: check which account you are actually looking at before concluding anything — a whole line of reasoning was consistent, confident, and about the wrong Stripe account entirely.
+
+**Engineering Contribution**
+
+*Decisions made:*
+- Sell the design *and* the engine, but only ship the design. The theme is finished; the application starter is not, so the product page says "in preparation" rather than taking money for a half-packaged download.
+- Tax-inclusive prices set in code, not in the Stripe dashboard, so the number in the advert and the number charged cannot drift apart.
+- Five offers priced £95–£395, deliberately the small self-contained jobs. With no reviews, a £595 rebuild is a harder sell than a £95 contact form that proves I turn up.
+
+*Improvements made to generated code:*
+- The extracted stylesheet was scoped to `.site-nav` rather than the bare `nav` element — the original styled *every* nav on the page, which is why ThaiBridge's sidebar still has dark text on a dark gradient today.
+- Brand-coloured `rgba()` literals became `color-mix()` against the tokens (42 of them). Pure black and white shadows stayed as they were, because those are palette-independent and converting them would have been change for its own sake.
+- A template-scanning test now guards the VAT rule, written after the first fix missed one page. I proved the test works by reintroducing the bug.
+
+*Roughly how much was accepted as-is vs engineered on:*
+Little of the theme survived extraction unchanged — the tokens were renamed away from ThaiBridge's subject matter, the hardcoded background came out, and the nav scoping was a genuine bug fix rather than a port.
+
+**References / Conversations**
+This Claude Code session; repos `joshuablakemorekay/SMOALD`, `classic-modern-theme`, `thaibridge-ai`, `tpa-honey-website`. Theme demo at https://classic-modern-demo.pages.dev.
+
+---
+
 ## 2026-09-12 — The theme goes on sale, and the site stops publishing its own notes
 
 **TL;DR:**
