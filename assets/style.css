@@ -731,3 +731,28 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
 .fx-cta:hover{text-decoration:underline}
 .fx-note{margin-top:24px;font-size:.88rem;color:var(--muted);max-width:70ch}
 @media(max-width:640px){.fx{padding:20px}}
+
+/* ---- product: live status, shot, and licence tiers ---- */
+.prod-status.is-live{background:var(--red-soft);border-color:var(--red-line)}
+.prod-status.is-live .ps-dot{background:var(--red)}
+
+.prod-shot{display:block;width:100%;height:auto;border-radius:12px;
+  border:1px solid var(--line);box-shadow:var(--shadow);margin:0 0 20px}
+
+.demo-callout{background:var(--gold-soft);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;padding:14px 18px;margin:0 0 4px;font-size:.93rem;
+  color:var(--muted)}
+.demo-callout a{color:var(--accent);text-decoration:none}
+.demo-callout a:hover{text-decoration:underline}
+
+/* Three tiers stacked in the buy column. The middle one is lifted because
+   it is the one most buyers should choose, not because it earns most. */
+.tier{width:100%;border:1px solid var(--line);border-radius:12px;padding:16px;
+  margin-bottom:12px;background:var(--panel);display:flex;flex-direction:column;gap:3px}
+.tier-featured{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.tier-name{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted-2)}
+.tier-price{font-family:var(--display);font-size:1.7rem;font-weight:800;
+  line-height:1.05;color:var(--text)}
+.tier-what{font-size:.84rem;color:var(--muted);margin-bottom:10px}
+.tier-btn{width:100%;justify-content:center;text-align:center;font-size:.88rem}
