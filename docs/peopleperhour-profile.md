@@ -229,3 +229,34 @@ With no reviews, the first two are the hardest. Worth knowing:
 
 The prices here match `smoald.com/pricing`. If either changes, change both —
 a buyer who finds two different numbers stops trusting either.
+
+---
+
+## PayPal — written, never run (checked 2026-09-12)
+
+Worth about two hours, then it becomes a truthful claim and a set of tags that
+get searched a lot.
+
+**What exists in thaibridge-ai:** a real integration — ~59 references in
+`app.py`, routes at `/subscribe/<tier>/paypal` and `/paypal/success`, OAuth
+token handling, order creation and capture, and a `provider` column on the
+payments table that already accepts `'paypal'`.
+
+**Why it is not claimable yet:**
+
+- Zero `PAYPAL_*` variables in `.env` — never configured, even locally
+- No PayPal test file; Stripe has a full suite, PayPal has none of its own
+- The live checkout page says it out loud: "PAYPAL NOT SET UP"
+
+So it is code that has never processed a payment, not even in sandbox. Hiring
+someone on that basis means finding the first bug on a customer's money.
+
+**To make it true:**
+
+1. Get PayPal sandbox credentials
+2. Add `PAYPAL_CLIENT_ID` and `PAYPAL_CLIENT_SECRET` to `.env`
+3. Run one sandbox payment all the way through
+4. Write a test alongside the Stripe ones
+
+**Then:** edit the backend-setup offer to mention PayPal, and add the `PayPal`
+and `PayPal integration` tags. Editing a live offer takes a minute.
