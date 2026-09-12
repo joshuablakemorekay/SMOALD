@@ -40,19 +40,42 @@ jobs:
         # The repo root used to ship as-is, which published every working file:
         # notes, scripts, the workflow, the dev journal. `.assetsignore` does
         # not apply to `wrangler pages deploy` — it is a Workers Assets
-        # feature, and wrangler uploaded all 90 files anyway. So the exclusion
+        # feature, and wrangler uploaded all 90 files anyway. So the choice
         # happens here instead, where it is visible and cannot be ignored.
         #
-        # rsync reads the same .assetsignore, so the list lives in one place.
+        # .deployfilter is an allowlist: see that file for why.
         run: |
           mkdir -p .deploy
-          rsync -a --delete \
-            --exclude '.git' \
-            --exclude '.deploy' \
-            --exclude-from='.assetsignore' \
+          rsync -a --delete --prune-empty-dirs \
+            --filter='merge .deployfilter' \
             ./ .deploy/
           echo "Staged for deploy:"
           find .deploy -type f | sort | sed 's/^/  /'
+
+          # An allowlist can fail in the other direction and stage a site with
+          # holes in it. Deploying that would take real pages off smoald.com,
+          # so check the load-bearing ones survived before anything ships.
+          missing=0
+          for required in \
+            index.html \
+            products.html \
+            services.html \
+            contact.html \
+            legal/licence.html \
+            assets/style.css \
+            functions/api/enquiry.js \
+            _redirects
+          do
+            if [ ! -f ".deploy/$required" ]; then
+              echo "  MISSING  $required"
+              missing=1
+            fi
+          done
+          if [ "$missing" = "1" ]; then
+            echo "::error::Staging dropped files the site needs. Fix .deployfilter — nothing has been deployed."
+            exit 1
+          fi
+          echo "✅ Everything the site needs is staged."
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
@@ -78,3 +101,35 @@ jobs:
           done
           echo "::warning::smoald.com did not show the new build within ~2.5 minutes."
           echo "The deploy may still be propagating — check https://smoald.com by hand."
+
+      - name: Confirm nothing internal is being served
+        # This repo once published its own notes at public URLs, including a
+        # third party's email address. The first fix for it silently did
+        # nothing and was reported as working, because nobody asked the live
+        # site. So ask the live site, and fail the build rather than warn:
+        # a privacy regression that only prints a warning is one nobody reads.
+        run: |
+          leaked=0
+          for path in \
+            docs/buyer-email.md \
+            docs/peopleperhour-profile.md \
+            docs/tpa-outreach-email.md \
+            scripts/make_og_image.py \
+            .github/workflows/deploy.yml \
+            JOURNAL.md \
+            .gitignore
+          do
+            code=$(curl -s -o /dev/null -w '%{http_code}' \
+                   --max-time 20 "https://smoald.com/$path?cachebust=$RANDOM")
+            if [ "$code" = "404" ]; then
+              echo "  ok    404  $path"
+            else
+              echo "  LEAK  $code  $path"
+              leaked=1
+            fi
+          done
+          if [ "$leaked" = "1" ]; then
+            echo "::error::Internal files are public on smoald.com. Check .assetsignore and the staging step above."
+            exit 1
+          fi
+          echo "✅ Nothing internal is being served."

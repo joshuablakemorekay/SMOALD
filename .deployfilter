@@ -1,0 +1,52 @@
+# What gets published to smoald.com.
+#
+# Read by rsync in .github/workflows/deploy.yml:
+#     rsync -a --delete --prune-empty-dirs --filter='merge .deployfilter' ./ .deploy/
+#
+# Rules are "+" (publish) and "-" (withhold), and the FIRST match wins, so
+# order matters. This is an ALLOWLIST: the final "- *" withholds everything
+# that no rule above has claimed.
+#
+# Why an allowlist rather than a list of exclusions:
+#
+# The deploy used to ship the repository root as-is, which published every
+# working file on the site — notes, scripts, the workflow, the dev journal.
+# One of those notes carried a third party's email address at a public URL.
+# The first repair listed those paths as exclusions, and that works right up
+# until somebody adds a folder nobody thought to exclude. Inverting it makes
+# the default safe: a new folder is private until it is named here, and the
+# failure mode is a missing page rather than a leaked one.
+#
+# Adding a real part of the site? Add a "+" line. The CI step after the
+# deploy checks the internal paths really are 404, so a mistake in either
+# direction fails the build rather than going quietly live.
+
+# Never, under any circumstances.
+- /.git/
+- /.deploy/
+
+# Let rsync walk into directories; --prune-empty-dirs drops the ones that
+# end up with nothing in them. Without this, no rule below could ever match.
++ */
+
+# The site itself.
++ /*.html
++ /ai/**
++ /assets/**
++ /legal/**
+
+# Pages Functions — the enquiry form's server side.
++ /functions/**
+
+# The prompt library, which is part of the portfolio.
++ /prompts/**
+
+# Root-level files the site or search engines need.
++ /_redirects
++ /robots.txt
++ /sitemap.xml
++ /LICENSE
++ /README.md
+
+# Everything else stays private.
+- *
