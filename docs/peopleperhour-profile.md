@@ -77,19 +77,60 @@ for it.
 ## Hourlies (fixed-price offers)
 
 These matter more than the profile. PPH surfaces Hourlies in search, and a
-buyer can purchase one without ever posting a job. Start with these six.
+buyer can purchase one without ever posting a job.
+
+**PPH caps delivery at five days.** Nothing longer can be posted at all, which
+is why the two big builds below were originally cut.
+
+### Live (6)
 
 | Title | Price | Delivery |
 |---|---|---|
-| I will build you a 5-page business website, live in 7 days | £495 | 7 days |
-| I will redesign your outdated website and keep your content | £595 | 10 days |
-| I will set up your domain, DNS and SSL on Cloudflare | £145 | 2 days |
-| I will fix your slow website and deploy it properly | £165 | 3 days |
-| I will add a working contact form to your website | £95 | 2 days |
-| I will add an AI chat assistant to your website | £395 | 7 days |
+| Build your 5-page business website, live in 5 days | £445 | 5 days |
+| Add Stripe payments, a database and file storage to your web app | £395 | 5 days |
+| Set up your business online — Google, Meta and business email | £165 | 5 days |
+| Fix your slow website and get it loading in under a second | £165 | 5 days |
+| Set up your domain, DNS and SSL on Cloudflare | £145 | 5 days |
+| Add a contact form to your website that actually reaches you | £95 | 5 days |
 
 Prices sit slightly above the race-to-the-bottom and well below an agency.
 They match smoald.com/pricing — keep the two in step.
+
+### The five-day cap, and how the website build got past it
+
+A site built from nothing needs seven to ten days honestly, so for a while
+there was no offer on the profile that sold an actual website — the gap in
+the lineup, and the most valuable thing missing from it.
+
+The Classic & Modern theme closed it. The design already exists and has run in
+production, so the five days go on the buyer's content rather than on deciding
+what the site should look like. Five days is now an honest promise rather than
+an optimistic one, and the offer says exactly that rather than leaving a buyer
+to wonder how it is possible.
+
+Priced at £445 against the £495 originally planned for seven days: faster and
+cheaper is the right trade while there are no reviews to trade on.
+
+### Posting an offer — what the form actually requires
+
+- **Title: 64 characters**, and it follows "I can", so start with a verb
+- **Short description: 150 characters**
+- **Delivery: 5 days maximum**, no exceptions
+- **An image is mandatory.** The form fails validation without one, and it is
+  easy to miss because the error appears back up the page. 1200×800, and no
+  business name or URL in it — the same rule as the text.
+- Tags come from a fixed list. "Small business website" and "Business website"
+  do not exist; "Website design", "Website development", "Responsive website"
+  and "Html/html5" do.
+
+### What PPH will not allow in an offer
+
+- Your company name, your full name, or any contact detail, in the title or
+  description
+- A link sending buyers to your own site for the full details
+
+Both are worth remembering before writing, not after — they rule out the
+"you can see my own work at…" close that would otherwise end the description.
 
 ### Hourly description template
 
@@ -114,12 +155,14 @@ WHAT IS NOT INCLUDED
 The domain and hosting themselves — those go to the registrar and host, at
 cost, in your name. Usually £8–15 a year for a domain, and hosting is often
 free for a site this size. I will tell you honestly which you need.
-
-You can see my own work at smoald.com
 ```
 
 The "what is not included" section wins work rather than losing it. Buyers on
 PPH are used to being surprised by extras.
+
+This template used to end "You can see my own work at smoald.com". That line
+is removed: PPH does not allow an offer to name your business or send buyers
+to your own site for the details. Let the offer stand on its own.
 
 ---
 
