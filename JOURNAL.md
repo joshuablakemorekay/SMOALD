@@ -210,3 +210,58 @@ Upscaling a small PNG always looks blurry — rendering the wordmark as text kee
 This Claude Code session; repo `joshuablakemorekay/SMOALD`, live at https://smoald.com.
 
 ---
+
+## 2026-09-12 — The theme goes on sale, and the site stops publishing its own notes
+
+**TL;DR:**
+- Three Stripe Payment Links wired into `/products` — the theme is buyable at £29 / £99 / £249.
+- The deploy had been publishing every working file, including a third party's email address. Fixed on the second attempt, then guarded in CI.
+- A sixth PeoplePerHour offer, possible only because the theme takes the design work out of a 5-day build.
+
+**Type:** Feature / Fix / Security
+
+**What I built or did**
+Made the theme buyable, then found `wrangler pages deploy .` had been serving `docs/`, `scripts/`, the workflow and the dev journal at public URLs. One of those notes carried a friend's email address.
+
+**Why I did it this way**
+Stripe is merchant of record: it handles the VAT and keeps me out of registration, worth 3.5% here. Managed Payments cannot make buyers accept my own terms, so the licence travels with the delivery email. On the leak, my standing rule set the pace:
+
+> "as long as it doesn't affect anything on my existing profile i.e. don't remove anything without my permission."
+
+Nothing was deleted until I had seen exactly what, and why.
+
+**How We Did It**
+1) Created the three Payment Links — the dashboard hid them:
+
+> "I'm not seeing this URL in the Product Catalogue?"
+
+→ used the direct URL → 2) confirmed each checkout's product and price before wiring it in → 3) found the leak → 4) first fix, `.assetsignore`, did nothing: Pages ignores it → 5) real fix: stage the site into `.deploy/` and ship that → 6) deleted nine old deployments still serving the address → 7) packaged the theme as a 28 KB zip → 8) posted the sixth offer.
+
+**What I learned**
+A 200 status code is not evidence. The file was reported gone twice before it was: a fix that silently did nothing, then a delete loop that reported success and deleted nothing. Only the live URL settled it.
+
+> "I don't understand?"
+
+Old deployments live forever at their own addresses — obvious once said, invisible until then.
+
+**Engineering Contribution**
+
+*Decisions made:*
+- **Allowlist, not denylist,** for what gets published. A list of exclusions holds until someone adds a folder nobody thought to exclude. Inverting it makes the default private, and the failure mode a missing page rather than a leaked one. Rejected keeping the denylist: simpler to read, but it would publish the next internal folder silently.
+- **Delivery by email attachment,** not a hosted private link. The zip is 28 KB, so a bucket, a signed URL and a link that could rot in a year all bought nothing. A GitHub collaborator invite was rejected too — buyers are often not developers.
+- **Prices set tax-inclusive in code,** not in the Stripe dashboard, so the figure advertised is the figure charged.
+
+*Improvements made to generated code:*
+- The workflow only ever checked that the homepage said "Lichfield". It now asserts the internal paths return 404 and **fails** the build otherwise — a privacy regression that merely warns is one nobody reads.
+- Because an allowlist can fail the other way, staging now refuses to deploy when a load-bearing file is missing, rather than quietly shipping a site with holes.
+- Dropped `rel="noopener"` from the three buy links: without `target="_blank"` it does nothing, and read like a protection that was not there.
+
+*Roughly how much was accepted as-is vs engineered on:*
+The product page edit went in unchanged. The deploy pipeline did not — the first fix was wrong, the second needed the staging approach, and both CI guards came afterwards on reflection rather than in any first draft.
+
+*Note on the verbatim ratio:* about 9%, below the 40% this journal aims for. Most of this session was short approvals and my own questions rather than specifications, and the three quotes above are the ones that actually changed what happened. Padding with the rest would have lowered the signal, not raised it.
+
+**References / Conversations**
+This Claude Code session; repo `joshuablakemorekay/SMOALD`, live at https://smoald.com. Buyer delivery in `docs/buyer-email.md`; offer wording in `docs/peopleperhour-profile.md`.
+
+---

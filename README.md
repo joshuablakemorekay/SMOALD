@@ -19,7 +19,10 @@ The homepage of SMOALD — a single hub linking everything I build, learn, sell 
 ## Built With
 - **HTML & CSS** — static, hand-built pages, no framework
 - **One shared stylesheet + script** — every page is themed from a single `assets/style.css` (red + gold, switched per page via a `data-hub` attribute) with shared `assets/site.js` for behaviour
-- **Cloudflare Pages** — hosting & deploys (via the `wrangler` CLI); chosen after a [250+ source hosting comparison](./prompts/choose-hosting-platform/) for allowing commercial use on its free tier
+- **Cloudflare Pages** — hosting; chosen after a [250+ source hosting comparison](./prompts/choose-hosting-platform/) for allowing commercial use on its free tier
+- **GitHub Actions** — deploys on every push to `main`: stages the public files from `.deployfilter`, ships them, then checks the live site is serving the new build *and* that nothing internal is reachable
+- **Cloudflare Pages Functions** — the enquiry form's server side, in `functions/api/`
+- **Stripe Payment Links** — the theme's three licence tiers, with Stripe as merchant of record
 - **Cloudflare DNS** — the `smoald.com` custom domain
 - **`/prompts` library + GitHub Actions** — documents and auto-tests the prompts that built the site
 
@@ -29,14 +32,20 @@ The homepage of SMOALD — a single hub linking everything I build, learn, sell 
 3. To deploy: **push to `main`** — `.github/workflows/deploy.yml` publishes to
    Cloudflare Pages and then checks smoald.com is really serving the new build.
 
-   To deploy by hand instead (the account id is needed because the Pages token
-   cannot list accounts, and `wrangler login` refuses while `CLOUDFLARE_API_TOKEN`
-   is set):
+   **Do not run `wrangler pages deploy .` from the repo root.** That publishes
+   every working file — notes, scripts, this workflow — which is how a third
+   party's email address once ended up live on the site. Stage it first, the
+   way CI does. (The account id is needed because the Pages token cannot list
+   accounts, and `wrangler login` refuses while `CLOUDFLARE_API_TOKEN` is set.)
 
    ```
    export CLOUDFLARE_ACCOUNT_ID=709dfa1ba244a9d4e780015aa4ea426c
-   wrangler pages deploy . --project-name=smoald --branch=main
+   rsync -a --delete --prune-empty-dirs --filter='merge .deployfilter' ./ .deploy/
+   wrangler pages deploy .deploy --project-name=smoald --branch=main
    ```
+
+   `.deployfilter` is an allowlist: nothing reaches smoald.com unless it is
+   named there, so a new internal folder is private by default.
 
    Note Pages strips `.html` and redirects, so `/services.html` serves at
    `/services` — keep canonicals, the sitemap and internal links on the clean
@@ -70,7 +79,13 @@ I redesigned the whole site from the old dark theme to a clean white background 
 ### 2026-06-23 — Polished the launch: LinkedIn link + branded README banner
 After going live, I added my real LinkedIn link to the portfolio page (contact + footer) and redeployed, then gave this README a proper brand cover banner — the lightning bolt above the SMOALD wordmark on a white card. **Key lesson:** a transparent logo follows GitHub's light/dark theme, so I baked a white card into the image to keep it on the brand's white background; and upscaling a small PNG looks blurry, so I render the wordmark as *text* to keep it crisp at any size.
 
+### 2026-09-12 — Put the theme on sale, and stopped the site publishing its own notes
+The Classic & Modern theme became genuinely buyable — three Stripe Payment Links at £29 / £99 / £249, wired into `/products` only after loading each checkout to confirm it showed the right product at the right price. Then I found the deploy had been publishing the whole repo root, so my working notes — one of them carrying a friend's email address — were live at public URLs. I fixed it by staging the site into a clean folder before shipping, switched to an allowlist so a new internal folder is private by default, deleted nine old deployments that still served the address, and added a CI step that now fails the build if anything internal is reachable. **Key lesson:** a 200 status code is not evidence — the file was reported gone twice before it actually was, once because the fix silently did nothing and once because a delete loop reported success while deleting nothing. Only asking the live URL settled it.
+
 ## What's Next
 - Flip the remaining "coming soon" spokes to "live" as more Store, Learn and Lifestyle products ship *(SMOALD Living ✓)*
 - Add a CV PDF + LinkedIn link to the portfolio page
 - Consider folding the standalone portfolio repo fully into this hub
+- Sell the first theme licence, and automate the delivery email once it is worth automating
+- A Flask/Jinja edition of the Classic &amp; Modern theme
+- No automated tests yet — the CI deploy checks (is the new build live, is anything internal public, did staging drop a required file) are the only safety net
