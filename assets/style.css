@@ -711,3 +711,23 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
   font-family:var(--mono);font-size:1rem;line-height:1.5;color:var(--muted-2)}
 .fit-alt{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
   font-size:.88rem;color:var(--muted)}
+
+/* ---- fixed-price jobs ---- */
+.fixed-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.fx{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.fx-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  margin-bottom:10px}
+.fx-head h3{font-size:1.15rem;margin:0}
+/* The number is the point of this section, so it gets the display face. */
+.fx-price{font-family:var(--display);font-size:1.5rem;font-weight:800;
+  color:var(--accent);line-height:1;white-space:nowrap}
+.fx > p{color:var(--muted);font-size:.93rem;margin:0}
+.fx-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;
+  margin-top:auto;padding-top:18px}
+.fx-time{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted-2)}
+.fx-cta{font-weight:600;font-size:.9rem;color:var(--accent);text-decoration:none}
+.fx-cta:hover{text-decoration:underline}
+.fx-note{margin-top:24px;font-size:.88rem;color:var(--muted);max-width:70ch}
+@media(max-width:640px){.fx{padding:20px}}
