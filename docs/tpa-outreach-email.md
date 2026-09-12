@@ -1,7 +1,8 @@
 # T.P.A. Honey Farm — outreach email
 
 **Sent:** 12 September 2026, 09:42 UTC
-**To:** tpa_farm@yahoo.com
+**To:** the T.P.A. Honey Farm contact address (withheld — it is a third
+party's address and this repository is public)
 **Subject:** The email link on your website was broken — I've fixed it
 
 Kept here so the wording exists outside Gmail, and as a starting point if a
