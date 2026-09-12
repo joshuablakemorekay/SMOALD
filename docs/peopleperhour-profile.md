@@ -1,0 +1,231 @@
+# PeoplePerHour — profile and offers
+
+Ready to paste. Written for someone with **no reviews yet**, which changes the
+strategy: you cannot win on ratings, so you win on being specific, being UK
+based, and being able to point at things that are live.
+
+---
+
+## The positioning problem
+
+PPH is full of "web designer · 5★ · fast delivery · unlimited revisions", much
+of it priced below what a UK freelancer can live on. Competing there on price
+is unwinnable and not worth winning.
+
+Three things separate you, and all three are true today:
+
+1. **You handle the infrastructure.** Domain, DNS, SSL, hosting, deployment.
+   Most web designers hand a client a folder of files and leave them to it.
+2. **You build AI features that work.** A Claude-powered assistant with usage
+   caps, live in production. Almost nobody at this price point can do that.
+3. **You are the person who builds it.** No agency, no account manager, no
+   junior. For a small business that is reassurance, not a limitation.
+
+Lead with those. Never lead with "I know Python" or "I use AI tools" — buyers
+do not care what you know, they care what they end up with.
+
+---
+
+## Profile title
+
+```
+UK Web Developer — Business Websites, Web Apps & Cloudflare Setup
+```
+
+PPH weights the title heavily in search. It names what is bought (websites, web
+apps), where you are (UK), and the thing few others offer (Cloudflare).
+
+---
+
+## Profile description
+
+```
+I build websites and web applications for UK businesses — and I handle the
+parts most developers hand back to you: domain, DNS, SSL, hosting and
+deployment.
+
+You deal with me directly from the first message to the day it goes live.
+There is no account manager and nothing gets passed to a junior.
+
+Recent work:
+
+· A bilingual Thai/English website for a working honey farm — product
+  catalogue, gallery and contact pages, rebuilt from a dated site and now
+  loading in under a second.
+
+· ThaiBridge AI — a subscription web app with user accounts, Stripe billing
+  and a built-in AI tutor. Around 9,000 lines, 1,500 automated tests, live on
+  its own domain. Both are linked below and both are running right now.
+
+I also build AI chat assistants into websites — the kind that answer customer
+questions — with usage limits so they cannot run up a bill.
+
+I use AI coding tools as part of how I work, which is how one person ships at
+this pace. Everything I hand over is reviewed, tested and deployed by someone
+who understands every line of it.
+
+Based in Lichfield, working with clients across the UK and remotely.
+smoald.com
+```
+
+**Do not claim** years of experience, team size, or client numbers you do not
+have. A buyer who checks and finds it untrue is gone, and PPH removes profiles
+for it.
+
+---
+
+## Hourlies (fixed-price offers)
+
+These matter more than the profile. PPH surfaces Hourlies in search, and a
+buyer can purchase one without ever posting a job. Start with these six.
+
+| Title | Price | Delivery |
+|---|---|---|
+| I will build you a 5-page business website, live in 7 days | £495 | 7 days |
+| I will redesign your outdated website and keep your content | £595 | 10 days |
+| I will set up your domain, DNS and SSL on Cloudflare | £145 | 2 days |
+| I will fix your slow website and deploy it properly | £165 | 3 days |
+| I will add a working contact form to your website | £95 | 2 days |
+| I will add an AI chat assistant to your website | £395 | 7 days |
+
+Prices sit slightly above the race-to-the-bottom and well below an agency.
+They match smoald.com/pricing — keep the two in step.
+
+### Hourly description template
+
+```
+WHAT YOU GET
+· [the concrete deliverable, in plain words]
+· Deployed live on your own domain, with SSL
+· Works properly on phones — most of your visitors are on one
+· Two rounds of changes included
+
+HOW IT WORKS
+1. You tell me what your business does and what you want the site to achieve
+2. I build it and send you a link to review
+3. You ask for changes, I make them
+4. It goes live, and the code is yours
+
+WHAT I NEED FROM YOU
+Your text and images, your logo if you have one, and access to your domain
+(or I can register one for you at cost).
+
+WHAT IS NOT INCLUDED
+The domain and hosting themselves — those go to the registrar and host, at
+cost, in your name. Usually £8–15 a year for a domain, and hosting is often
+free for a site this size. I will tell you honestly which you need.
+
+You can see my own work at smoald.com
+```
+
+The "what is not included" section wins work rather than losing it. Buyers on
+PPH are used to being surprised by extras.
+
+---
+
+## Skills / tags
+
+```
+Web Development · Website Design · Flask · Python · HTML · CSS · JavaScript
+Cloudflare · DNS · SSL · Website Migration · Website Maintenance
+Stripe Integration · Web Application Development · AI Chatbot
+Responsive Design · Landing Pages · Bug Fixing
+```
+
+Leave off anything not shipped — no React, Node, Django, WordPress or Shopify
+until there is a real build behind it.
+
+---
+
+## Portfolio pieces
+
+Add in this order. Each needs a screenshot, a link and two or three sentences.
+
+1. **T.P.A. Honey Farm** — a real business, bilingual, live. Say plainly it
+   was unpaid work for a friend's business; the honesty costs nothing and
+   protects you if anyone asks.
+2. **ThaiBridge AI** — accounts, payments, AI. The depth piece.
+3. **smoald.com** — your own site. Shows you can do the whole job including
+   the infrastructure.
+4. **SMOALD Living** — an e-commerce front end, if you want a fourth.
+
+Screenshots are ready in `Desktop\SMOALD-profile-photos\`.
+
+---
+
+## Who to go after
+
+- Food and drink producers — you have one, and it is a portfolio piece
+- Trades and local services with no site, or one that is visibly old
+- Anyone whose site is slow, unencrypted, or broken on a phone
+- Small shops outgrowing a marketplace stall
+- Other freelancers and agencies who need a technical pair of hands
+- Bilingual or Thai/English businesses — genuinely rare, and you have proof
+
+---
+
+## Proposal structure
+
+Five short paragraphs. Never a template — buyers see dozens a day and can spot
+one instantly.
+
+1. **Repeat their problem in your own words**, with one specific detail from
+   their post that proves you read it.
+2. **Say how you would build it.** Approach, not jargon.
+3. **Link the one most relevant thing you have built**, and say why it is
+   relevant to them.
+4. **Give a price and a timeline.** Never "depends on requirements".
+5. **Ask one real question** that only somebody who understood the job would
+   ask.
+
+Send fewer, better proposals. Twenty considered ones beat two hundred
+templated ones, and PPH charges you credits either way.
+
+### Example
+
+```
+Hi [name],
+
+You have a working Wix site but it is slow on mobile and you cannot edit the
+menu without it breaking the layout — that combination usually means the theme
+is fighting the content rather than anything being wrong with what you have
+written.
+
+I would rebuild it as a fast static site with the menu in a single file you
+can edit yourself, so changing a price does not risk the layout. I would keep
+your existing addresses so you do not lose whatever search ranking you have.
+
+I did something similar for a honey farm recently — bilingual product
+catalogue, and it went from around twenty seconds to load to under one. You can
+see it at tpa-honey-website.pages.dev.
+
+£595 and about 10 days, including moving the domain and getting SSL working.
+
+One question: do you want to keep taking table bookings through the current
+system, or is that something you would like changed at the same time?
+
+Joshua
+```
+
+---
+
+## The first five jobs
+
+With no reviews, the first two are the hardest. Worth knowing:
+
+- **Bid slightly low on your first two**, then never again. You are buying
+  reviews, not setting a rate. Say so to yourself so it does not become a
+  habit.
+- **Deliver early.** An early delivery is the single most reliable way to get
+  five stars and a repeat client.
+- **Ask for the review.** Most buyers forget. One polite message when you hand
+  over is enough.
+- **Turn every job into a maintenance conversation.** A £495 site that becomes
+  £45 a month is worth more by the end of year one than the build was.
+
+---
+
+## Keep in step with the site
+
+The prices here match `smoald.com/pricing`. If either changes, change both —
+a buyer who finds two different numbers stops trusting either.
