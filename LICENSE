@@ -1,0 +1,66 @@
+Copyright (c) 2026 Joshua Kay, trading as SMOALD. All rights reserved.
+
+SMOALD — https://smoald.com
+
+
+THE SHORT VERSION
+
+This is the source of my business website. It is public so the work can be
+read and judged — by a client deciding whether to hire me, or by anybody
+curious how it is built. It is not open source, and the branding is not
+yours to use under any circumstances.
+
+
+WHAT YOU MAY DO
+
+- Read the source code.
+- Quote short extracts in a review, article or teaching material, with
+  attribution.
+- Borrow a technique. Ideas are not owned; this file is about the code and
+  the brand, not about how anyone solves a problem.
+
+
+WHAT YOU MAY NOT DO WITHOUT WRITTEN PERMISSION
+
+- Use this code, in whole or in part, in another site or project.
+- Copy the design, layout, stylesheets or page structure into another site.
+- Redistribute, republish, sell, sublicense or host this software.
+- Remove or alter this notice.
+
+
+BRAND ASSETS — NEVER
+
+The SMOALD name, the wordmark, the bolt device, the logo files in assets/,
+and the red-and-gold identity are trade marks of this business. No permission
+is given to use them, in any form, altered or unaltered, for any purpose. That
+includes "inspired by" versions.
+
+This is not the same as the code restriction above, and there is no version of
+asking that makes it available.
+
+
+THE WRITING
+
+The page copy — service descriptions, the about page, pricing explanations and
+the legal pages — took real work and is covered by the same restriction as the
+code. Rewriting a competitor's site by swapping the nouns is obvious to anyone
+who reads both.
+
+
+COMMERCIAL LICENSING
+
+The site design may be made available commercially as a template, separately
+from this repository and without the SMOALD branding. If that is what you are
+after, ask.
+
+joshua@smoald.com
+
+
+NO WARRANTY
+
+This software is provided "as is", without warranty of any kind, express or
+implied. In no event shall the author be liable for any claim, damages or
+other liability arising from the software or its use.
+
+
+This notice states an intention in plain English. It is not legal advice.
