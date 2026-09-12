@@ -74,15 +74,16 @@ most developers leave to you — domain, DNS, SSL, hosting and deployment.
 You deal with me directly from the first message to the day your site goes
 live. There is no account manager, and nothing gets passed to somebody else.
 
-Services include business websites, redesigns, custom web applications with
-accounts and payments, Cloudflare setup and migration, and monthly maintenance.
-Websites start at £450, with a fixed price and timeline agreed before any work
-begins. The code and copyright transfer to you on final payment.
+Services include business websites, redesigns, web applications with user
+accounts and card payments, AI chat assistants built into your site, Cloudflare
+setup and migration, and monthly maintenance. Websites start at £450, with a
+fixed price and timeline agreed before any work begins. The code and copyright
+transfer to you on final payment.
 
 Based in Lichfield, working with businesses across the UK.
 ```
 
-*(709 characters.)* No keyword stuffing — Google reads it, but so do people,
+*(710 characters.)* No keyword stuffing — Google reads it, but so do people,
 and the people are the ones who get in touch.
 
 ---
@@ -100,6 +101,7 @@ smoald.com/pricing — keep them in step if either changes.
 | Web application development | from £2,500 | User accounts, databases, card payments, admin areas and AI features. Quoted and delivered in phases. |
 | Domain, DNS and SSL setup | from £145 | Domain registration or transfer, Cloudflare DNS, working SSL, email routing and deployment. Available on its own. |
 | Website maintenance | from £30/month | Uptime monitoring, backups, updates and small changes, with no long tie-in. |
+| AI chatbot and assistant integration | quoted | A chat assistant built into your site that answers customer questions, with usage limits so it cannot run up a bill. |
 
 ---
 
@@ -139,3 +141,25 @@ of an office.
 `index.html` carries `ProfessionalService` structured data naming Lichfield and
 Staffordshire, so the site already tells Google where you are. The profile
 confirms it from the other direction.
+
+
+---
+
+## Deliberately NOT listed yet
+
+**Social media marketing.** The Meta Social Media Marketing Professional
+Certificate is still in progress and no campaign has been run for anyone. The
+about page on smoald.com says the same thing — that it will be offered "when
+that's ready rather than before". Listing it on Google would bring enquiries
+that would have to be learned on a customer's money.
+
+Add it when the certificate is finished **and** one real campaign has been run,
+even an unpaid one. Then it is a second income stream with something behind it.
+
+**Mobile app development.** Google offers this as a suggested service under
+"Website designer". Skipped — no mobile app has been shipped. The games are
+desktop and browser builds.
+
+**Online retail** as a business type. Nothing on smoald.com can be bought yet;
+the templates are still marked "in preparation". Tick it the day a working buy
+button exists, not before — Google checks the site against what is declared.
