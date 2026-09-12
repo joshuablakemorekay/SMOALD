@@ -36,14 +36,33 @@ jobs:
       - name: Check out the site
         uses: actions/checkout@v4
 
+      - name: Stage only the files that belong on the public site
+        # The repo root used to ship as-is, which published every working file:
+        # notes, scripts, the workflow, the dev journal. `.assetsignore` does
+        # not apply to `wrangler pages deploy` — it is a Workers Assets
+        # feature, and wrangler uploaded all 90 files anyway. So the exclusion
+        # happens here instead, where it is visible and cannot be ignored.
+        #
+        # rsync reads the same .assetsignore, so the list lives in one place.
+        run: |
+          mkdir -p .deploy
+          rsync -a --delete \
+            --exclude '.git' \
+            --exclude '.deploy' \
+            --exclude-from='.assetsignore' \
+            ./ .deploy/
+          echo "Staged for deploy:"
+          find .deploy -type f | sort | sed 's/^/  /'
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # The site is static — nothing to build, so the repo root ships as-is.
-          # `functions/` is picked up automatically as Pages Functions.
-          command: pages deploy . --project-name=smoald --branch=main
+          # The site is static — nothing to build. `.deploy/` is the staged
+          # copy from the previous step; `functions/` inside it is picked up
+          # automatically as Pages Functions.
+          command: pages deploy .deploy --project-name=smoald --branch=main
 
       - name: Confirm the new build is actually being served
         run: |
