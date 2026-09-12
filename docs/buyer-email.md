@@ -11,18 +11,31 @@ product, so it needs sending the same day.
 
 1. Open the Stripe payment in the dashboard and note the **buyer's name, email
    and which licence they bought**.
-2. Swap `[NAME]`, `[LINK]` and `[TIER]`.
+2. Swap `[NAME]` and `[TIER]`, and **attach the zip**:
+   `web-projects/classic-modern-theme-1.0.0.zip` (28 KB).
 3. **Delete the two tier paragraphs that do not apply.** Sending all three
    reads as a form letter and invites an argument about which one they have.
-4. Check the download link works from a signed-out browser before sending.
+4. Rebuild the zip first if the theme has changed since the last sale, and
+   bump the version in its filename to match `CHANGELOG.md`.
 
 ## Delivery method
 
-A zip on a private link — Cloudflare R2 or an unlisted Pages URL — rather than
-a GitHub collaborator invite. Buyers are often designers or small business
-owners with no GitHub account, and "make an account and accept an invite"
-before they have even seen the files is friction at the worst moment. Repo
-access stays available to anyone who asks for it.
+The zip goes **as an email attachment**. It is 28 KB, which is nothing, so
+there is no hosting to arrange, no private link to keep alive and nothing to
+rot in a year's time. It also means no URL exists that could be passed around.
+
+Rejected, and why:
+
+- **A private download link** (Cloudflare R2, an unlisted Pages path) — more
+  moving parts than a 28 KB file deserves, and the link works for anyone who
+  ends up with it.
+- **A GitHub collaborator invite** — buyers are often designers or small
+  business owners with no GitHub account, and "make an account and accept an
+  invite" before they have even seen the files is friction at the worst
+  possible moment. Still worth offering to anyone who asks for repo access.
+
+Revisit this if the package ever grows past a few megabytes, or if sales get
+frequent enough that sending each one by hand stops being reasonable.
 
 ---
 
@@ -36,7 +49,7 @@ Hello [NAME],
 
 Thank you for buying Classic &amp; Modern. Here is everything you need.
 
-**Download:** [LINK]
+The theme is attached to this email as a zip.
 
 **Your licence: [TIER]**
 
@@ -95,8 +108,9 @@ joshua@smoald.com · smoald.com
   open a text file to find out what they bought.
 - **Stripe is named for the invoice, not Onelink.** Stripe is the name buyers
   recognise. If anyone queries the name on their statement, explain it then.
-- **No download deadline.** Tempting for tidiness, but a dead link a year later
-  generates refund requests rather than preventing them.
+- **The files are attached, not linked.** A buyer who keeps the email keeps the
+  product. Nothing expires, and there is no link to go dead a year later and
+  generate a refund request.
 - **Support limits are stated plainly and match the licence.** 60 days support,
   12 months fixes and updates — the same figures as `LICENSE` and the README.
   If one changes, change all three.
