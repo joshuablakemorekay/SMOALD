@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your download — Classic &amp; Modern | SMOALD</title>
+<meta name="description" content="Thank you for buying the Classic &amp; Modern theme. Your download is here." />
+<meta name="robots" content="noindex" />
+<link rel="canonical" href="https://smoald.com/templates-thanks" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://smoald.com/pricing" />
+<meta property="og:site_name" content="SMOALD" />
+<meta property="og:title" content="Pricing — what a website actually costs" />
+<meta property="og:description" content="Clear UK pricing for websites, web apps, hosting setup and maintenance. Third-party costs listed separately and charged at cost." />
+<meta property="og:image" content="https://smoald.com/assets/og-default.png" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Pricing — what a website actually costs" />
+<meta name="twitter:description" content="Clear UK pricing for websites, web apps, hosting setup and maintenance." />
+<meta name="twitter:image" content="https://smoald.com/assets/og-default.png" />
+<link rel="icon" href="assets/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" href="assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/style.css" />
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body data-hub="build">
+
+<a href="#main" class="skip">Skip to content</a>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand" aria-label="SMOALD home"><img src="assets/smoald-bolt.png" class="bolt" alt="" />SMOALD</a>
+    <div class="nav-links" id="navLinks">
+      <a href="/services">Services</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/products" class="active">Templates</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/contact" class="nav-cta">Get a quote</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero" id="top">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <div class="crumb"><a href="/">SMOALD</a> / <a href="/products">Templates</a> / Your download</div>
+    <h1>Thank you. <span class="accent">Here's your theme.</span></h1>
+    <p class="hero-sub" id="status">Checking your payment with Stripe&hellip;</p>
+    <div class="cta-row">
+      <a id="dl" class="btn btn-primary" href="#" hidden>Download classic-modern-theme.zip &darr;</a>
+      <a href="https://classic-modern-demo.pages.dev" target="_blank" rel="noopener" class="btn btn-ghost">Open the live demo &#8599;</a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap-x">
+    <div class="section-head reveal">
+      <span class="eyebrow">// Getting started</span>
+      <h2>Three things to do first.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><span class="num">01</span><h3>Unzip it, open index.html</h3><p>That is the whole installation &mdash; no build step, nothing to install.</p></div>
+      <div class="step reveal"><span class="num">02</span><h3>Read docs/site-outline.md</h3><p>Ten minutes drawing your site before you copy a page saves the menu growing one item at a time.</p></div>
+      <div class="step reveal"><span class="num">03</span><h3>Change the colours</h3><p>One block at the top of css/theme.css. Everything follows &mdash; buttons, borders, hover states, the lot.</p></div>
+    </div>
+    <p>Keep this page's address: the download link works again any time you come back to it. Questions, or the download won't start? Email <a href="mailto:joshua@smoald.com">joshua@smoald.com</a> with your Stripe receipt and I'll send the file by hand.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-brand">SMOALD<span>Smart · Bold · AI · Lifestyle · Development</span></div>
+    <div class="foot-links">
+      <a href="/services">Services</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/products">Templates</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/legal/privacy">Privacy</a>
+      <a href="/legal/terms">Terms</a>
+      <a href="mailto:joshua@smoald.com">Email</a>
+      <a href="https://github.com/joshuablakemorekay" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="foot-legal">
+      <p><!-- TRADING-DETAILS: replace with registered trading name + address before launch -->
+      <strong>Joshua Kay</strong>, trading as SMOALD — a UK sole trader based in Lichfield, working with clients across the UK.</p>
+      <p class="foot-copy">© 2026 Joshua Kay · SMOALD</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var id = new URLSearchParams(location.search).get('session_id');
+  var status = document.getElementById('status');
+  var dl = document.getElementById('dl');
+  if (!id) {
+    status.textContent = 'This page needs the link Stripe sent you after paying. Check your receipt email, or email joshua@smoald.com.';
+    return;
+  }
+  var url = '/api/download?session_id=' + encodeURIComponent(id);
+  fetch(url, { method: 'HEAD' }).then(function (r) {
+    if (r.ok) {
+      status.textContent = 'Payment confirmed. Your download is ready — it is a 30 KB zip.';
+      dl.href = url;
+      dl.hidden = false;
+    } else {
+      return r.text().then(function (t) { status.textContent = t || 'Something went wrong checking the payment.'; });
+    }
+  }).catch(function () {
+    status.textContent = 'Could not reach the download service. Try again in a moment, or email joshua@smoald.com.';
+  });
+})();
+</script>
+<script src="assets/site.js" defer></script>
+</body>
+</html>
