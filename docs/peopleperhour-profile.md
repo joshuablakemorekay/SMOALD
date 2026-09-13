@@ -278,14 +278,15 @@ With no reviews, the first two are the hardest. Worth knowing:
 
 ## Restyle offer copy
 
-Checked against the form limits: title 60/64, short description 149/150,
-3-day delivery, no company name or link anywhere.
+Checked against the form limits: title 60/64, short description 144/150,
+3-day delivery, no company name or link anywhere. (The first draft counted
+149 by hand and was 151 — PPH rejected it. Count with `len()`, not by eye.)
 
 **Title:** Restyle your existing website with a ready-made premium theme
 
 **Short description:** Your pages and content moved onto a classic, book-style
-theme, recoloured to your brand and live on your domain in 3 days. Commercial
-licence included.
+theme in your brand colours, live on your domain in 3 days. Commercial licence
+included.
 
 **Price:** £245 · **Delivery:** 3 days · **Category:** Tech → Website
 Development · **Tags:** Website design, Responsive website, Html/html5
@@ -325,7 +326,8 @@ cost; hosting is often free for a site this size.
 
 Image: `docs/pph-restyle-theme.png` from `scripts/make_pph_restyle_image.py`
 — a before/after of a plain page and the same page on the theme, no name or
-URL on it. Posted 2026-09-13 with "Remotely" selected and no add-ons.
+URL on it. Posted 2026-09-13 (offer id 1131818) with "Remotely" selected, no
+add-ons, and the "Feature your Offer" upsell declined as usual.
 
 ---
 
