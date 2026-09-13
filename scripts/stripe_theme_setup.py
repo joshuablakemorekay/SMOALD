@@ -77,14 +77,25 @@ def find_product(lookup):
     return None
 
 
-def retire_old(product_ids, keep_prices):
+def active_links():
+    """Every active Payment Link with the price and product ids it sells.
+
+    Listing links does not include their line items, so each needs a second
+    call; doing that once here and sharing the result keeps find_link and
+    retire_old from each walking the whole list separately."""
+    links = []
+    for link in stripe("get", "/v1/payment_links", "-d", "active=true", "-d", "limit=100")["data"]:
+        items = stripe("get", f"/v1/payment_links/{link['id']}/line_items")["data"]
+        links.append((link,
+                      {li["price"]["id"] for li in items},
+                      {li["price"]["product"] for li in items}))
+    return links
+
+
+def retire_old(links, product_ids, keep_prices):
     """Deactivate any other live link or price for these products, so the
     old price cannot still be bought through a link someone bookmarked."""
-    res = stripe("get", "/v1/payment_links", "-d", "active=true", "-d", "limit=100")
-    for link in res["data"]:
-        items = stripe("get", f"/v1/payment_links/{link['id']}/line_items")
-        prices = {li["price"]["id"] for li in items["data"]}
-        products = {li["price"]["product"] for li in items["data"]}
+    for link, prices, products in links:
         if products & product_ids and not prices & keep_prices:
             stripe("post", f"/v1/payment_links/{link['id']}", "-d", "active=false")
             print(f"retired link  {link['id']}  {link['url']}")
@@ -103,11 +114,9 @@ def find_price(product_id, amount):
     return None
 
 
-def find_link(price_id):
-    res = stripe("get", "/v1/payment_links", "-d", "active=true", "-d", "limit=100")
-    for link in res["data"]:
-        items = stripe("get", f"/v1/payment_links/{link['id']}/line_items")
-        if any(li["price"]["id"] == price_id for li in items["data"]):
+def find_link(price_id, links):
+    for link, prices, _ in links:
+        if price_id in prices:
             return link
     return None
 
@@ -118,6 +127,7 @@ def main():
     print(f"account {acct['id']} ({acct['settings']['dashboard']['display_name']}), {mode} mode\n")
 
     links, product_ids, keep_prices = {}, set(), set()
+    existing = active_links()
     for lookup, name, amount, tax_code, desc in TIERS:
         product = find_product(lookup) or stripe(
             "post", "/v1/products",
@@ -135,7 +145,7 @@ def main():
         # old price can be archived; Stripe refuses to archive a default.
         if product.get("default_price") != price["id"]:
             product = stripe("post", f"/v1/products/{product['id']}", "-d", f"default_price={price['id']}")
-        link = find_link(price["id"]) or stripe(
+        link = find_link(price["id"], existing) or stripe(
             "post", "/v1/payment_links",
             "-d", f"line_items[0][price]={price['id']}", "-d", "line_items[0][quantity]=1",
             "-d", f"metadata[tier]={lookup}", "-d", "metadata[product]=classic-modern-theme",
@@ -158,7 +168,7 @@ def main():
         print(f"{lookup:<11} £{amount/100:>6.2f}  {product['id']}  {price['id']}\n            {link['url']}")
 
     print()
-    retire_old(product_ids, keep_prices)
+    retire_old(existing, product_ids, keep_prices)
     print("\nPaste into products.html:")
     print(json.dumps(links, indent=2))
 
