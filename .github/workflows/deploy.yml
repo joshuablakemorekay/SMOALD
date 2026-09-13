@@ -132,6 +132,8 @@ jobs:
             docs/buyer-email.md \
             docs/peopleperhour-profile.md \
             docs/tpa-outreach-email.md \
+            docs/theme-downloads.md \
+            scripts/stripe_theme_setup.py \
             scripts/make_og_image.py \
             .github/workflows/deploy.yml \
             JOURNAL.md \
