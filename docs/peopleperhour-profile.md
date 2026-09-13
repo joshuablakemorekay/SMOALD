@@ -82,28 +82,23 @@ buyer can purchase one without ever posting a job.
 **PPH caps delivery at five days.** Nothing longer can be posted at all, which
 is why the two big builds below were originally cut.
 
-### Live (6)
+### Live (7)
 
 | Title | Price | Delivery |
 |---|---|---|
 | Build your 5-page business website, live in 5 days | £445 | 5 days |
 | Add Stripe payments, a database and file storage to your web app | £395 | 5 days |
+| Restyle your existing website with a ready-made premium theme | £245 | 3 days |
 | Set up your business online — Google, Meta and business email | £165 | 5 days |
 | Fix your slow website and get it loading in under a second | £165 | 5 days |
 | Set up your domain, DNS and SSL on Cloudflare | £145 | 5 days |
 | Add a contact form to your website that actually reaches you | £95 | 5 days |
 
-### Drafted, not yet posted (1)
-
-| Title | Price | Delivery |
-|---|---|---|
-| Restyle your existing website with a ready-made premium theme | £245 | 3 days |
-
-Drafted 2026-09-13. The cheaper door into the theme: the £445 offer builds a
-site from nothing, this one moves a site that already exists — content and
-pages the buyer already has — onto the theme, in their colours, with a
-commercial licence included. It is the PPH twin of the "Website restyle onto
-the theme" row on smoald.com/pricing. Full copy is in
+The restyle offer (posted 2026-09-13) is the cheaper door into the theme: the
+£445 offer builds a site from nothing, this one moves a site that already
+exists — content and pages the buyer already has — onto the theme, in their
+colours, with a commercial licence included. It is the PPH twin of the
+"Website restyle onto the theme" row on smoald.com/pricing. Full copy is in
 [Restyle offer copy](#restyle-offer-copy) below.
 
 Prices sit slightly above the race-to-the-bottom and well below an agency.
@@ -328,9 +323,9 @@ offer is the one for that. Hosting and the domain stay in your name, at
 cost; hosting is often free for a site this size.
 ```
 
-Image still to make: 1200×800, the theme's three-column layout as a
-before/after, no name or URL on it. Once posted, move the row up into
-"Live" and drop this section's "not yet posted" heading.
+Image: `docs/pph-restyle-theme.png` from `scripts/make_pph_restyle_image.py`
+— a before/after of a plain page and the same page on the theme, no name or
+URL on it. Posted 2026-09-13 with "Remotely" selected and no add-ons.
 
 ---
 
