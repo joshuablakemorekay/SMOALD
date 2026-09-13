@@ -36,6 +36,17 @@ jobs:
       - name: Check out the site
         uses: actions/checkout@v4
 
+      - name: Test the Functions before anything ships
+        # The download Function stands between a paying customer and their
+        # file. Its tests stub Stripe and GitHub and run offline in under a
+        # second; if one fails, nothing below this step runs and the last
+        # good build stays live. Node 22 for the same fetch/Response globals
+        # the Cloudflare runtime provides.
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test
+
       - name: Stage only the files that belong on the public site
         # The repo root used to ship as-is, which published every working file:
         # notes, scripts, the workflow, the dev journal. `.assetsignore` does
