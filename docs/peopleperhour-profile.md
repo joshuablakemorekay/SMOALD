@@ -93,6 +93,19 @@ is why the two big builds below were originally cut.
 | Set up your domain, DNS and SSL on Cloudflare | £145 | 5 days |
 | Add a contact form to your website that actually reaches you | £95 | 5 days |
 
+### Drafted, not yet posted (1)
+
+| Title | Price | Delivery |
+|---|---|---|
+| Restyle your existing website with a ready-made premium theme | £245 | 3 days |
+
+Drafted 2026-09-13. The cheaper door into the theme: the £445 offer builds a
+site from nothing, this one moves a site that already exists — content and
+pages the buyer already has — onto the theme, in their colours, with a
+commercial licence included. It is the PPH twin of the "Website restyle onto
+the theme" row on smoald.com/pricing. Full copy is in
+[Restyle offer copy](#restyle-offer-copy) below.
+
 Prices sit slightly above the race-to-the-bottom and well below an agency.
 They match smoald.com/pricing — keep the two in step.
 
@@ -265,6 +278,59 @@ With no reviews, the first two are the hardest. Worth knowing:
   over is enough.
 - **Turn every job into a maintenance conversation.** A £495 site that becomes
   £45 a month is worth more by the end of year one than the build was.
+
+---
+
+## Restyle offer copy
+
+Checked against the form limits: title 60/64, short description 149/150,
+3-day delivery, no company name or link anywhere.
+
+**Title:** Restyle your existing website with a ready-made premium theme
+
+**Short description:** Your pages and content moved onto a classic, book-style
+theme, recoloured to your brand and live on your domain in 3 days. Commercial
+licence included.
+
+**Price:** £245 · **Delivery:** 3 days · **Category:** Tech → Website
+Development · **Tags:** Website design, Responsive website, Html/html5
+
+```
+WHAT YOU GET
+· Your existing pages (up to eight) rebuilt on a ready-made theme that
+  reads like a book rather than a dashboard — serif type, warm ground,
+  a layout that chooses one, two or three columns from what each page
+  holds
+· Recoloured to your brand: your colours and fonts, applied once and
+  followed everywhere — buttons, links, borders, hover states
+· A site outline drawn up first, so every page has a home in the menu
+  and nothing gets orphaned
+· Deployed live on your own domain, with SSL
+· Works properly on phones — most of your visitors are on one
+· A commercial licence for the theme, so it is yours to keep editing
+· Two rounds of changes included
+
+HOW IT WORKS
+1. You send me the link to your current site and your brand colours
+2. I draw the outline, rebuild the pages on the theme and send you a
+   link to review
+3. You ask for changes, I make them
+4. It goes live, and the code is yours
+
+WHAT I NEED FROM YOU
+The URL of your current site, your logo, your brand colours if you have
+them (or I will pick from your logo), and access to your domain.
+
+WHAT IS NOT INCLUDED
+New copy or new pages — this moves what you already have onto a better
+design. If you want a site built from nothing, my five-page website
+offer is the one for that. Hosting and the domain stay in your name, at
+cost; hosting is often free for a site this size.
+```
+
+Image still to make: 1200×800, the theme's three-column layout as a
+before/after, no name or URL on it. Once posted, move the row up into
+"Live" and drop this section's "not yet posted" heading.
 
 ---
 
