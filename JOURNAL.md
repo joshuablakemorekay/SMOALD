@@ -360,3 +360,69 @@ The product page edit went in unchanged. The deploy pipeline did not — the fir
 This Claude Code session; repo `joshuablakemorekay/SMOALD`, live at https://smoald.com. Buyer delivery in `docs/buyer-email.md`; offer wording in `docs/peopleperhour-profile.md`.
 
 ---
+## 2026-09-13 — The sale delivers itself
+
+**TL;DR:**
+- A buyer now gets the theme seconds after paying: Stripe → thank-you page → a Pages Function that checks the payment, then streams the zip from a private GitHub release. Proven with a real £39 purchase.
+- Repriced to £39 / £99 / £299 by script, not dashboard — the old prices and links archived in the same run.
+- A seventh PeoplePerHour offer, and a site outline for ThaiBridge and the theme, drawn after the fact from the real routes.
+
+**Type:** Feature / Decision / Learning
+
+**What I built or did**
+The day started with a question about a different project:
+
+> "We did not create an outline at the beginning of building this app. The fact is that the app is content rich it's full of content. Is it possible to create an outline now?"
+
+It was — reading the routes and nav back into a Figure 1-1 diagram found two orphan pages nothing linked to. Then:
+
+> "How can we add this as a sellable template on SMOALD and PPH?"
+
+The theme was already extracted, so this became the Store spoke, a £245 restyle offer, and — once the sale was set up — the discovery that `/products` had been on sale since yesterday at £29 / £249 with delivery by hand.
+
+**Why I did it this way**
+> "Should Stripe prices be increased slightly with this new premium design? Take me through it step by step what I need to do next."
+
+Yes, and no higher than £39 / £99 / £299 with zero reviews. Delivery went through a Function rather than Stripe's own "I'll email you" page because the repo is private and the zip must never be a public URL.
+
+**How We Did It**
+1) Outline from routes → 2) Store card and PPH copy → 3) offer posted — twice it hadn't, once because a required checkbox fails silently, once because the clicks were landing in a different Chrome window; on "tick it and post" it went up → 4) Stripe script in test mode → 5) live needed Josh at every gate:
+
+> "I don't know what I am doing. Please help"
+> "Did I have to click Apply changes for Prices too or just once after I did 2. ?"
+> "I've got an rk_live"
+
+→ 6) Function, thank-you page, GitHub release v1.1.0 → 7) three Cloudflare variables → 8) the proof:
+
+> "Yes, the button appeared and the zip downloaded — refunded myself too"
+
+**What I learned**
+Three of my edits silently did nothing — a Python heredoc replace that didn't match and never asserted — and each time the test run "passed" because it exercised a different path. The fix that stuck was reading the file back. Same lesson as yesterday's 200: green output is not evidence, the artefact is.
+
+> "I can see it on PPH but not on smoald.com ?"
+
+The server had it; the browser didn't. Cache, not code — but only a header check settled it.
+
+**Engineering Contribution**
+
+*Decisions made:*
+- **GitHub release + read-only token** for the file, not R2. R2 needs a bucket binding my Pages token can't create; a release is versioned by the same CHANGELOG that names the zip. Rejected embedding the zip in the site repo: it's public.
+- **Idempotent script over dashboard clicks** for prices. Prices can't be edited in Stripe, only replaced, so the script adopts existing products, adds prices, moves `default_price` (Stripe refuses to archive a default) and retires the rest. A re-run is the whole price change.
+- **Real purchase as the test.** The restricted key was created in live mode; rather than a second key and two swaps, one £39 order proved the exact customer path and cost 80p in fees.
+- **Tests outside `functions/`.** Pages routes every file in there — `/api/download.test` would have been a live URL.
+
+*Improvements made to generated code:*
+- Eight `node --test` cases for the Function: every refusal (bad id, unconfigured, unknown, unpaid, wrong product, no zip) plus HEAD-doesn't-touch-GitHub and the streamed happy path. First tests of a Function in this repo.
+- `aria-live="polite"` on the status line so "Payment confirmed" is announced, not just painted.
+- One walk of the Payment Links instead of two — `active_links()` shared by lookup and retirement.
+- The script grew `--confirm` (live writes prompt), `encoding="utf-8"` (cp1252 mangled the em-dash and broke name matching) and a hard stop on any non-JSON or error response — each from a real failed run.
+
+*Roughly how much was accepted as-is vs engineered on:*
+The Function and thank-you page went in close to first draft. The Stripe script did not: five live runs, five distinct failures, each one a line it now carries. The two dashboard rounds (key permissions, variables) were Josh's hands entirely.
+
+*Note on the verbatim ratio:* about 15%. Today's quotes are questions and gates rather than specifications; the ones kept are the ones that changed what happened.
+
+**References / Conversations**
+This Claude Code session; `docs/theme-downloads.md` (the flow and the variables); `scripts/stripe_theme_setup.py`; theme release https://github.com/joshuablakemorekay/classic-modern-theme/releases/tag/v1.1.0; PPH offer 1131818.
+
+---

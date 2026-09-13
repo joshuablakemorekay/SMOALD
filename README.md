@@ -22,9 +22,27 @@ The homepage of SMOALD — a single hub linking everything I build, learn, sell 
 - **Cloudflare Pages** — hosting; chosen after a [250+ source hosting comparison](./prompts/choose-hosting-platform/) for allowing commercial use on its free tier
 - **GitHub Actions** — deploys on every push to `main`: stages the public files from `.deployfilter`, ships them, then checks the live site is serving the new build *and* that nothing internal is reachable
 - **Cloudflare Pages Functions** — the enquiry form's server side, in `functions/api/`
-- **Stripe Payment Links** — the theme's three licence tiers, with Stripe as merchant of record
+- **Stripe Payment Links + a verified download Function** — three licence tiers, Stripe as merchant of record, the zip delivered automatically once a session is paid
 - **Cloudflare DNS** — the `smoald.com` custom domain
 - **`/prompts` library + GitHub Actions** — documents and auto-tests the prompts that built the site
+
+## Architecture
+Static HTML pages sharing one stylesheet and one script; everything dynamic is a
+Cloudflare Pages Function under `functions/api/`:
+
+- `enquiry.js` — the contact form → Resend → email
+- `download.js` — the theme download. Stripe Payment Link → `/templates-thanks`
+  → `GET /api/download?session_id=…` → asks Stripe whether that Checkout Session
+  is paid → streams the zip from the latest GitHub release of the private theme
+  repo. The zip is never a public URL.
+
+Deploys go through an **allowlist** (`.deployfilter`): nothing reaches smoald.com
+unless named there. `docs/`, `scripts/` and `tests/` never ship, and CI fails the
+build if any of them ever answer anything but 404.
+
+Stripe products, prices and links for the theme are managed by
+`scripts/stripe_theme_setup.py`, not by hand — it is idempotent, so a price change
+is a re-run.
 
 ## How to Run It
 1. Clone the repo
@@ -51,6 +69,32 @@ The homepage of SMOALD — a single hub linking everything I build, learn, sell 
    `/services` — keep canonicals, the sitemap and internal links on the clean
    form. And check a deploy by its **content**, never its status code: while the
    site was stale every path still returned 200.
+
+## Testing
+- `node --test` — eight cases for the download Function: every refusal (bad id,
+  unconfigured, unknown session, unpaid, wrong product, release without a zip),
+  HEAD never touching GitHub, and the streamed happy path. Stripe and GitHub are
+  stubbed, so it runs offline in under a second. Kept in `tests/`, not
+  `functions/`, because Pages would serve `/api/download.test` as a route.
+- **CI deploy checks** — after every deploy: is the new build actually live, is
+  anything internal reachable, did staging drop a load-bearing file.
+- **Prompt evals** — `/prompts` has its own runner and workflow.
+- Not covered yet: the enquiry Function, and the pages themselves. The live
+  purchase path was proven once by hand with a real £39 order, refunded.
+
+## Engineering Decisions
+- **Allowlist, not denylist, for what ships.** The failure mode becomes a missing
+  page instead of a leaked note. Learned the hard way.
+- **Stripe as merchant of record, prices tax-inclusive.** Keeps VAT off a sole
+  trader; the number on the page is the number charged.
+- **Download from a GitHub release, verified per session,** rather than R2 or an
+  emailed link. The release is versioned by the theme's own CHANGELOG, the repo
+  stays private, and a buyer can come back to the same page for the file later.
+- **Prices changed by script.** Stripe prices are immutable; the script adopts
+  existing products, adds the new price, moves the default and archives the old
+  link so a bookmarked £29 can't still be bought.
+- **Every failure path names an email address.** Unconfigured, unknown, unpaid,
+  no zip — a buyer is never left with a blank page.
 
 ## My Journey
 *In the order it happened — from first decision to live site.*
@@ -91,10 +135,13 @@ The Classic & Modern theme became genuinely buyable — three Stripe Payment Lin
 ### 2026-09-13 — Put the brand back on top of the business
 The commercial rebuild had quietly dropped the thing the site was built around: the red/gold **SMOALD** wordmark and the four doors. I compared the live page with the June version in git, found the wordmark, door and acronym styles were all still in the stylesheet — only the homepage had stopped using them — and re-assembled the hero: wordmark first, then the web-development headline and CTAs, then the Build / Learn / Shop / Live pills and the four door cards. Gold now runs through the eyebrows, step numbers and live tags too, using a darker readable gold for small text because the brand gold fails contrast on white. Built on a branch, compared full-page screenshots against `main`, then fast-forward merged and confirmed smoald.com was serving it. **Key lesson:** "we removed too much" is usually a re-assembly job, not a rebuild — check git before writing anything new; and a brand colour that works as a 100px wordmark can be unreadable as 12px text, so decide *where* gold goes, not just *whether*.
 
+### 2026-09-13 — The sale delivers itself
+A buyer now gets the theme seconds after paying: Stripe sends them to a thank-you page whose download button is backed by a Pages Function that checks the session is paid and streams the zip from a private GitHub release. I repriced to £39 / £99 / £299 with an idempotent script that adopted the existing products, added the prices, and archived the old links — five live runs, five different failures, each now a line in the script. Proved it with a real £39 purchase, refunded. Also: a seventh PeoplePerHour offer, a site outline drawn after the fact from ThaiBridge's real routes, and the repo's first Function tests. **Key lesson:** an edit that "succeeded" three times had done nothing — the replace never matched and never asserted. Read the file back; green output is not the artefact.
+
 ## What's Next
 - Flip the remaining "coming soon" spokes to "live" as more Store, Learn and Lifestyle products ship *(SMOALD Living ✓)*
 - Add a CV PDF + LinkedIn link to the portfolio page
 - Consider folding the standalone portfolio repo fully into this hub
-- Sell the first theme licence, and automate the delivery email once it is worth automating
 - A Flask/Jinja edition of the Classic &amp; Modern theme
-- No automated tests yet — the CI deploy checks (is the new build live, is anything internal public, did staging drop a required file) are the only safety net
+- Run `node --test` in CI so a Function change can't ship untested
+- Test the enquiry Function the same way as the download one
