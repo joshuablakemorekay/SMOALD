@@ -77,6 +77,24 @@ jobs:
           fi
           echo "✅ Everything the site needs is staged."
 
+      - name: Stamp the stylesheet and script links with this commit
+        # Cloudflare tells browsers to keep assets/*.css and *.js for four
+        # hours. A deploy that changes the CSS therefore reaches visitors as
+        # new HTML painted with the old stylesheet — the homepage looked
+        # unchanged for hours after a restyle. Appending ?v=<commit> makes
+        # every deploy a new URL, so browsers fetch fresh. Only the staged
+        # copy is touched; the files in the repo stay clean.
+        run: |
+          stamp="${GITHUB_SHA::7}"
+          find .deploy -name '*.html' -print0 | xargs -0 sed -i -E \
+            "s#(assets/[A-Za-z0-9_-]+\.(css|js))\"#\1?v=${stamp}\"#g"
+          hits=$(grep -rho "assets/style\.css?v=${stamp}" .deploy --include='*.html' | wc -l)
+          echo "Stamped ${hits} stylesheet links with v=${stamp}"
+          if [ "$hits" = "0" ]; then
+            echo "::error::The version stamp matched nothing — check the sed pattern."
+            exit 1
+          fi
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
@@ -92,7 +110,7 @@ jobs:
           echo "Waiting for the deployment to propagate…"
           for i in $(seq 1 10); do
             body=$(curl -s --max-time 20 "https://smoald.com/?cachebust=$RANDOM")
-            if echo "$body" | grep -q "Lichfield"; then
+            if echo "$body" | grep -q "style.css?v=${GITHUB_SHA::7}"; then
               echo "✅ smoald.com is serving the new build."
               exit 0
             fi
