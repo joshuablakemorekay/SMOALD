@@ -756,3 +756,40 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
   line-height:1.05;color:var(--text)}
 .tier-what{font-size:.84rem;color:var(--muted);margin-bottom:10px}
 .tier-btn{width:100%;justify-content:center;text-align:center;font-size:.88rem}
+
+/* ── Brand-first homepage (2026-09-13) ──────────────────────────────
+   The red/gold SMOALD wordmark and the four doors sit back on top of
+   the web-development offer. Gold (#ECA200) is too faint for body text
+   on white, so it goes on the big shapes; small text uses the darker
+   readable gold (#9A6B00), same as the Learn/Live buttons. */
+.brand-hero{padding:172px 0 72px}
+.brand-hero .hero-glow{background:radial-gradient(circle at center,rgba(236,162,0,.20),rgba(226,6,19,.09) 42%,transparent 70%)}
+.brand-hero .hero-tag{color:#9A6B00;margin-bottom:18px}
+.brand-hero .hero-wordmark{margin-bottom:26px;filter:drop-shadow(0 12px 34px rgba(236,162,0,.22))}
+.brand-hero h1{font-size:clamp(1.65rem,3.6vw,2.7rem);line-height:1.12;max-width:28ch;margin:0 auto 18px}
+.brand-hero .cta-row{justify-content:center}
+.brand-hero .hero-facts{justify-content:center}
+.brand-hero .hero-facts strong{color:#9A6B00}
+.brand-hero .hero-founder{margin:34px 0 16px;color:var(--muted)}
+.brand-hero .hero-btn.learn:hover,.brand-hero .hero-btn.life:hover{box-shadow:0 10px 26px rgba(236,162,0,.28)}
+
+.brand-home .doors{padding:0 0 70px}
+.brand-home .door.learn h2,.brand-home .door.life h2{color:#9A6B00}
+.brand-home .door.learn .verb,.brand-home .door.life .verb{color:#9A6B00}
+.brand-home .door.build .verb,.brand-home .door.shop .verb{color:var(--red)}
+
+/* gold threaded through the rest of the page */
+.brand-home .eyebrow{color:#9A6B00}
+.brand-home .section-head h2::after{content:"";display:block;width:56px;height:4px;border-radius:999px;margin-top:16px;
+  background:linear-gradient(90deg,var(--gold),#FFD75E 55%,var(--red))}
+.brand-home .step .num{color:#9A6B00}
+.brand-home .step:hover{border-color:var(--gold-line)}
+.brand-home .spoke:hover{border-color:var(--gold-line)}
+.brand-home .live-tag{color:#9A6B00;background:var(--gold-soft);border-color:var(--gold-line)}
+.brand-home .band-soft{background:linear-gradient(180deg,var(--ink-2),rgba(236,162,0,.05))}
+
+@media (max-width:640px){
+  .brand-hero{padding:132px 0 52px}
+  .brand-hero .hero-btns{gap:10px}
+  .brand-hero .hero-btn{padding:11px 18px;font-size:.92rem}
+}
