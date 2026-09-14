@@ -148,9 +148,13 @@ why-it-is-worth-paying-for section (copy in
 - **The delivery-policy checkbox must be a real click.** Ticking it through
   the DOM leaves it unticked as far as PPH is concerned, and the form then
   fails without visible error unless you scroll down to it. The `<input>`
-  itself is `display:none` — the box you see is its label — so click the
-  **label** ("I confirm that I am able to deliver…"), not the input and not
-  a screen coordinate. The label click is the reliable one.
+  itself is `display:none` — the box you see is its label. Mouse clicks on
+  the label (by reference or by coordinate) worked sometimes and missed
+  sometimes. The deterministic fix is to call the label's own `.click()` in
+  page JavaScript — it goes through the browser's activation path, so the
+  form registers a genuine change:
+  `[...document.querySelectorAll('input[type=checkbox]')].pop().closest('label').click()`
+  then read `.checked` back (must be `true`) before pressing Update.
 - A successful update lands on the "Feature your Offer" page. That redirect
   is the only confirmation you get — then check the public offer page.
 

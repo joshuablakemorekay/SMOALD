@@ -39,8 +39,9 @@ Two things changed between this draft and what is live on PPH:
 
 **Editing a live offer — what actually works.** The description can be set
 programmatically, but the "I confirm I can deliver" checkbox must be clicked
-with a real mouse click — on its **label**, since the input is `display:none`
-— or PPH silently refuses the save (an analytics
+— the input is `display:none`; setting `.checked` does nothing, mouse clicks
+on the label are hit-and-miss, and `label.click()` in page JavaScript is the
+one that always registers — or PPH silently refuses the save (an analytics
 `form_submit` fires, no request reaches PPH, no error shows until you scroll
 to the box). A successful save lands on `/hourlie/featureit?id=…`, which is
 the upsell page — decline it. Then read the public offer page back: the
