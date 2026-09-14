@@ -57,7 +57,8 @@ one that always registers — or PPH silently refuses the save (an analytics
 to the box). The Update Offer button itself can also miss a mouse click; `button.click()`
 in page JavaScript submits reliably. A successful save lands on
 `/hourlie/featureit?id=…`, which is the upsell page — decline it. Then read the public offer page back: the
-edit form is not proof.
+edit form is not proof. Read it signed in, though — the logged-out copy is
+cached and can lag a few minutes behind.
 
 ---
 

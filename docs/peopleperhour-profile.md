@@ -162,6 +162,11 @@ why-it-is-worth-paying-for section (copy in
   the checkbox → confirm `.checked === true` → `button.click()` on Update
   Offer → the page lands on `/hourlie/featureit` → open the PUBLIC offer
   page and read the change back.
+- **The logged-out page lags.** PPH caches the public offer page for
+  visitors who are not signed in. Logged in (the browser, or the buyer's
+  own account) the change shows at once; a plain `curl` or a phone that is
+  not signed in can show the old text for a few minutes. Not a failed save
+  — check signed in first, and give the anonymous copy a few minutes.
 - A successful update lands on the "Feature your Offer" page. That redirect
   is the only confirmation you get — then check the public offer page.
 
