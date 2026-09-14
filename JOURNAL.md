@@ -426,3 +426,66 @@ The Function and thank-you page went in close to first draft. The Stripe script 
 This Claude Code session; `docs/theme-downloads.md` (the flow and the variables); `scripts/stripe_theme_setup.py`; theme release https://github.com/joshuablakemorekay/classic-modern-theme/releases/tag/v1.1.0; PPH offer 1131818.
 
 ---
+## 2026-09-14 — The first buyer was me, and I couldn't work it
+
+**TL;DR:**
+- Bought my own theme on smoald.com, refunded it, unzipped it, and couldn't tell how to use it. The README explains the *theme*; nothing explained the *job*.
+- Fixed by adding `START-HERE.md` — ten plain-English steps from "decide what the site is for" to "upload it" — shipped as v1.2.0 and proven live through the real download path.
+- Found out along the way that a refund does not revoke a download.
+
+**Type:** Learning / Feature
+
+**What I built or did**
+Yesterday I tested the sale end to end by buying the theme. Today I came back to it as a buyer would:
+
+> "I bought this on smoald.com as a test payment but since I'm the developer and it's my business I refunded it immediately. I saved the downloadable and unzipped it. I forgot to look at and save the instructions how to use it. Can you tell me?"
+
+The instructions were there — `README.md`, twelve sections, correctly written. Read back to me, it was still wrong:
+
+> "It's too technical. I need very simple instructions telling me clearly how to use this template."
+
+A second attempt — "open `index.html`, edit line 16, change the `:root` block" — got the same verdict, and this time the question that cracked it:
+
+> "How would you approach this job? How would you start it? What is the procedure? Take me through it step by step. Summarise it. Use bullet points."
+
+That is not a question about HTML. It's a question about *the job* — where do you begin, what do you do before you touch a file. The answer was ten steps, and the first three (decide what the site is for, plan the pages, gather the words and pictures) have nothing to do with the theme at all. That's the document the download was missing.
+
+> "Add this as a START-HERE.md in the theme"
+> "Yes, commit it and release 1.2.0"
+> "Test the download on smoald.com"
+
+**Why I did it this way**
+The README was written by the person who built the theme, for the person who built the theme. It answers "how does this work?" Nobody buying a £39 template asks that first; they ask "what do I do?" So the guide went in as a *separate* file rather than a rewrite — the README is right for the second question, and a buyer who follows START-HERE will get to it at step 8 when they need it.
+
+It ships in the zip (added to `build_release.py`'s file list) and sits at the top of the README's file tree, so it's the first thing seen after unzipping. One commit, one release, no change to the site — the download Function always serves the latest GitHub release, so smoald.com picked up 1.2.0 the moment it was published.
+
+**How We Did It**
+1) Read the README back → 2) plain rewrite, rejected → 3) reframed as a procedure, accepted → 4) `START-HERE.md`, changelog, README tree, release script → 5) commit, push, `build_release.py`, `gh release create v1.2.0` → 6) proof: `curl` the live `/api/download` with yesterday's paid session id — `200`, `classic-modern-theme-1.2.0.zip`, 32,069 bytes, byte-for-byte the build, `START-HERE.md` inside.
+
+**What I learned**
+Two things.
+
+First: the one user test worth more than any amount of documentation is the author trying to use the product cold, a day later, without their notes. It took a single buyer — me — to find that the product had a manual and no instructions. Nothing in the code, the tests, or the sale flow could have found that.
+
+Second, a smaller one from the proof: a refunded Stripe Checkout Session still reports `payment_status: paid`, so the thank-you link keeps working after a refund. For a one-off zip that's fine and I'm leaving it — but it's now written down rather than assumed.
+
+**Engineering Contribution**
+
+*Decisions made:*
+- **A new file, not a rewritten README.** Two audiences, two documents. Rewriting the README simpler would have thrown away the reference the buyer needs at step 8.
+- **Cut 1.2.0 rather than patch.** A new document a buyer is meant to read first is a MINOR change by the changelog's own rule, and a versioned release is what the Function serves — no other way to get it to buyers.
+- **Prove it through the live path, not the build.** The zip in `dist/` was right; the question was whether smoald.com served it. The paid session from yesterday's purchase answered that without a second purchase.
+
+*Improvements made to generated code:*
+- The first two drafts of the guide were mine to reject, and I rejected both. The third exists because the question changed from "how do I edit this" to "how would you do this job". That reframe is the entire value of the file.
+- The guide points back into the README by section name at the two places a buyer will need detail (colours, support), so the two documents don't drift into saying the same thing twice.
+
+*Roughly how much was accepted as-is vs engineered on:*
+The ten steps are close to the third draft as spoken; the wiring (release list, README tree, changelog, release) went in first pass. The rejection of the first two drafts was the whole contribution.
+
+*Note on the verbatim ratio:* around 20%. Higher than usual, and rightly: today's turning point was a question, and the question is the finding.
+
+**References / Conversations**
+This Claude Code session; theme release https://github.com/joshuablakemorekay/classic-modern-theme/releases/tag/v1.2.0; `docs/theme-downloads.md` (the download flow the proof went through); `START-HERE.md` in the theme repo.
+
+---
