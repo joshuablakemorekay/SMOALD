@@ -29,13 +29,17 @@ Two things changed between this draft and what is live on PPH:
   section was dropped, except that on the Stripe offer "WHAT THIS IS" was
   folded into steps 1–2 and "THE PART PEOPLE GET WRONG" became the why
   section. The live offer text is the truth; this file is the source draft.
-- **Every offer also got a "why this is worth paying for" answer.** Three
-  offers gained a new `WHY THIS IS WORTH PAYING FOR` section (£445 site,
-  £395 Stripe, £245 restyle). The other four already had one under another
-  name — *The problem this solves*, *Why this matters more than it sounds*,
-  *The most common cause*, *Why this is worth doing* — and each got one
-  extra sentence that says the value in money-or-customers terms. On
-  smoald.com the why-paragraph sits above the steps in every block.
+- **Every offer also got a "why this is worth paying for" answer — under
+  that exact heading.** Three offers gained a new section (£445 site, £395
+  Stripe, £245 restyle). The other four already had one under another name
+  — *The problem this solves*, *Why this matters more than it sounds*, *The
+  most common cause*, *Why this is worth doing* — each got one extra
+  sentence that says the value in money-or-customers terms, and later the
+  same day all four were renamed to `WHY THIS IS WORTH PAYING FOR` after
+  Josh read one on his phone and could not find it. Same words everywhere
+  beats a cleverer heading. On smoald.com every block is labelled *Why
+  it's worth paying for* / *How the job goes*, and the theme card's
+  "What it actually saves you" became the same heading.
 
 **Editing a live offer — what actually works.** The description can be set
 programmatically, but the "I confirm I can deliver" checkbox must be clicked
