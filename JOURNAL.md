@@ -615,3 +615,43 @@ The sentences went in as proposed. The two form fixes were engineered from failu
 This Claude Code session; `docs/how-it-works-copy.md` (the same-heading and "you get" rules, and the save recipe); commits `2fc3d5a`, `3082f11`, `babb3f2` and the four docs commits between; PPH offers 1131720–1131724, 1131740, 1131818.
 
 ---
+## 2026-09-14 — Three questions, three headings
+
+**TL;DR:**
+- One more phone read, one more thing not found: the benefit was the last sentence of a paragraph, and a last sentence is not a heading.
+- Every PPH offer and every site card now carries HOW IT BENEFITS YOU as its own section, between the why and the how. Josh's three questions are three headings in his words.
+
+**Type:** Learning
+
+**What I built or did**
+> "Read the £95 contact form offer on my phone - I did this yet don't see these: why you should be willing to buy it? What it offers and how it benefit you?"
+
+The answers were all on the page: the offers under WHAT YOU GET, the why under WHY THIS IS WORTH PAYING FOR, the benefit as that section's closing sentence. Two out of three findable by heading; the third only by reading the whole paragraph, which a phone reader does not do. I offered to rename all three headings to his exact words.
+
+> "It's fine as it is just include How it benefits you to all of them please."
+
+So: the "you get…" sentence lifted out of each why-section into its own HOW IT BENEFITS YOU section, on all seven offers. Three were at the 2,500 cap and gave up a few words elsewhere. On smoald.com the same split, by script, on all thirteen cards — and the script showed two whose closing line was a reason ("cheaper than starting again", "quoted as a fixed list") rather than a benefit, so those two got a real one.
+
+**Why I did it this way**
+The pattern of the whole day, third time: the content was there and the *label* was not. A reader scanning for "how it benefits you" needs to see those words as a heading. The fix that respects the buyer is not a cleverer sentence, it is a heading.
+
+**What I learned**
+Each of Josh's three questions is a heading, not a quality of the prose. I had treated "how it benefits you" as something a good why-paragraph naturally contains. It does — and it still fails the test, because the test is a thumb on a phone looking for a word. By the third round I should have proposed the heading first; he had to ask for it.
+
+**Engineering Contribution**
+
+*Decisions made:*
+- **Keep WHAT YOU GET and WHY THIS IS WORTH PAYING FOR; add HOW IT BENEFITS YOU.** Josh's call over my rename-all-three proposal. Less churn, and the two existing headings already did their job.
+- **The benefit sits between the why and the how**, so the page reads problem → value → what you walk away with → how it happens.
+- **Split by script on the site, then read the results.** The script is what caught the two non-benefits.
+
+*Improvements made to generated code:*
+- A `__split` / `__save` pair of page-side helpers for PPH, so each offer was one call to move the sentence and one call to save — with the checkbox, the cap and the text presence asserted before the button is pressed. Nine saves, no failures.
+
+*Roughly how much was accepted as-is vs engineered on:*
+The finding was Josh's, again. The two site cards that needed new benefit sentences were the only new prose.
+
+**References / Conversations**
+This Claude Code session; commits `589875d`, `402a954`; `docs/how-it-works-copy.md` (three questions, three headings).
+
+---
