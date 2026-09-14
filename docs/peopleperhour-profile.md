@@ -147,7 +147,10 @@ why-it-is-worth-paying-for section (copy in
   pressed. Count with `len()` before pasting.
 - **The delivery-policy checkbox must be a real click.** Ticking it through
   the DOM leaves it unticked as far as PPH is concerned, and the form then
-  fails without visible error unless you scroll down to it.
+  fails without visible error unless you scroll down to it. The `<input>`
+  itself is `display:none` — the box you see is its label — so click the
+  **label** ("I confirm that I am able to deliver…"), not the input and not
+  a screen coordinate. The label click is the reliable one.
 - A successful update lands on the "Feature your Offer" page. That redirect
   is the only confirmation you get — then check the public offer page.
 
