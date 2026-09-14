@@ -94,6 +94,11 @@ is why the two big builds below were originally cut.
 | Set up your domain, DNS and SSL on Cloudflare | £145 | 5 days |
 | Add a contact form to your website that actually reaches you | £95 | 5 days |
 
+Every offer now carries a `HOW IT WORKS — STEP BY STEP` section (what the
+buyer does before paying, then what happens day by day) and a section that
+says why it is worth paying for. The five fixed-price jobs on
+smoald.com/services carry the same steps, so the two stay in step.
+
 The restyle offer (posted 2026-09-13) is the cheaper door into the theme: the
 £445 offer builds a site from nothing, this one moves a site that already
 exists — content and pages the buyer already has — onto the theme, in their
@@ -130,6 +135,21 @@ cheaper is the right trade while there are no reviews to trade on.
 - Tags come from a fixed list. "Small business website" and "Business website"
   do not exist; "Website design", "Website development", "Responsive website"
   and "Html/html5" do.
+
+### The description cap, and the checkbox that fails silently
+
+Added 2026-09-14, when every offer gained a step-by-step HOW IT WORKS and a
+why-it-is-worth-paying-for section (copy in
+[how-it-works-copy.md](how-it-works-copy.md)):
+
+- **The long description is capped at 2,500 characters.** Nothing on the
+  form says so; the error appears under the box only after Update is
+  pressed. Count with `len()` before pasting.
+- **The delivery-policy checkbox must be a real click.** Ticking it through
+  the DOM leaves it unticked as far as PPH is concerned, and the form then
+  fails without visible error unless you scroll down to it.
+- A successful update lands on the "Feature your Offer" page. That redirect
+  is the only confirmation you get — then check the public offer page.
 
 ### What PPH will not allow in an offer
 
