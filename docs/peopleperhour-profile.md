@@ -155,6 +155,13 @@ why-it-is-worth-paying-for section (copy in
   form registers a genuine change:
   `[...document.querySelectorAll('input[type=checkbox]')].pop().closest('label').click()`
   then read `.checked` back (must be `true`) before pressing Update.
+- **The Update Offer button can miss too.** Once, a click on it by reference
+  did nothing while the form was valid; `button.click()` in page JavaScript
+  submitted at once. The whole reliable recipe, in order: set the description
+  → one real keystroke in the box (Space, Backspace) → `label.click()` on
+  the checkbox → confirm `.checked === true` → `button.click()` on Update
+  Offer → the page lands on `/hourlie/featureit` → open the PUBLIC offer
+  page and read the change back.
 - A successful update lands on the "Feature your Offer" page. That redirect
   is the only confirmation you get — then check the public offer page.
 

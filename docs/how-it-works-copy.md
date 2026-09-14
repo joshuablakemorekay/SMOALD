@@ -43,8 +43,9 @@ programmatically, but the "I confirm I can deliver" checkbox must be clicked
 on the label are hit-and-miss, and `label.click()` in page JavaScript is the
 one that always registers — or PPH silently refuses the save (an analytics
 `form_submit` fires, no request reaches PPH, no error shows until you scroll
-to the box). A successful save lands on `/hourlie/featureit?id=…`, which is
-the upsell page — decline it. Then read the public offer page back: the
+to the box). The Update Offer button itself can also miss a mouse click; `button.click()`
+in page JavaScript submits reliably. A successful save lands on
+`/hourlie/featureit?id=…`, which is the upsell page — decline it. Then read the public offer page back: the
 edit form is not proof.
 
 ---
