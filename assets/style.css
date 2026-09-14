@@ -580,6 +580,19 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
 .faq summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 .faq details p{margin:0 0 16px;color:var(--muted);font-size:.95rem;max-width:68ch}
 
+/* ---- how the job goes (collapsible, inside cards) ---- */
+.how{margin-top:18px;border-top:1px solid var(--line);padding-top:4px}
+.how summary{cursor:pointer;padding:10px 0;font-weight:600;font-size:.95rem;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:14px}
+.how summary::-webkit-details-marker{display:none}
+.how summary::after{content:"+";font-family:"JetBrains Mono",monospace;color:var(--accent);font-size:1.15rem;flex-shrink:0}
+.how[open] summary::after{content:"\2212"}
+.how summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.how-why{margin:4px 0 12px;color:var(--muted);font-size:.93rem;max-width:68ch}
+.how-steps{margin:0 0 8px;padding-left:22px;display:flex;flex-direction:column;gap:8px;
+  color:var(--muted);font-size:.93rem;max-width:68ch}
+.how-steps li::marker{color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.85rem}
+
 /* ---- case study ---- */
 .case{background:var(--panel);border:1px solid var(--line);border-radius:16px;
   padding:32px;box-shadow:var(--shadow-lg)}
