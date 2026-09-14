@@ -489,3 +489,65 @@ The ten steps are close to the third draft as spoken; the wiring (release list, 
 This Claude Code session; theme release https://github.com/joshuablakemorekay/classic-modern-theme/releases/tag/v1.2.0; `docs/theme-downloads.md` (the download flow the proof went through); `START-HERE.md` in the theme repo.
 
 ---
+## 2026-09-14 — Every offer learns to answer "what do I do, and why should I pay?"
+
+**TL;DR:**
+- The START-HERE lesson from this morning, applied to everything for sale: all seven PeoplePerHour offers and every service and product on smoald.com now say how the job goes, step by step, and why it is worth paying for.
+- PPH fought back twice — a 2,500-character cap nobody mentions, and a checkbox that silently ignores anything but a real mouse click. Both are written down.
+- Two commits, deployed and read back live; the PPH copy read back from the public offer pages, not the edit form.
+
+**Type:** Feature / Learning
+
+**What I built or did**
+This morning a plain-English procedure fixed the theme download. This afternoon the question was whether the same thing belonged everywhere else:
+
+> "Very simple instructions telling me clearly how to use i.e. How would you approach this job? How would you start it? What is the procedure? Take me through it step by step. Summarise it. Use bullet points. […] Can you add this to all 7 offers necessary on my PPH account and to all digital products and services necessary on smoal.com each tailored?"
+
+So: seven PPH offers read back from the live pages, the site's thirteen service cards and the theme card, and a draft of a tailored procedure for each — day by day, the buyer's part first — in one file, before anything was posted.
+
+> "Approved, apply both — PPH first, show me each before saving"
+
+Halfway through the second offer, a bigger question:
+
+> "Hang on. For all 7 offers on PPH and all digital products and services on smoald.com if we have not already mentioned this should we add it to these instructions as well - Why this in particular is worth paying for and why you should be willing to buy it? What it offers and how it benefit you? Lets make sure this is done for all then Yes, save it and continue"
+
+That is a different question from "how does it go", and a better one. Four offers already answered it under other headings; three did not. All seven do now, and every card on the site has a why-paragraph above its steps.
+
+**Why I did it this way**
+The steps went into the existing home each time — PPH's own HOW IT WORKS section, expanded; a collapsible block inside each card on the site, closed by default so a page with thirteen cards does not triple in length. No new page, no new nav entry.
+
+The PPH copy and the site copy for the five fixed-price jobs are the same steps, because a buyer who finds two versions of the process stops trusting either — the same rule the prices already follow.
+
+> "Please confirm if these instructions being added are relevant as to when the client has paid for the product/service? Or if they only apply before the client has paid?"
+
+Both, and it matters which box they sit in. The description is the sales page, read before paying; the steps describe what happens after. PPH's separate "what do you need from the buyer" box is the post-purchase one, and it already said "the five days start when I have these". A buyer can also buy without ever messaging, so "before you buy, send me…" is an invitation, not a gate.
+
+**How We Did It**
+1) Read all seven offers from the live pages → 2) one draft file with every procedure → 3) approved → 4) each PPH offer: swap the section in the edit form, show the full text, wait for "save", click, read the public page back → 5) the site: a script that inserts one `<details class="how">` per card, matched to the FAQ's +/− pattern → 6) two commits, deploy, live check with cache-busting → 7) docs and memory.
+
+**What I learned**
+The first save on PPH did nothing, and looked like it had worked. An analytics event fired, the page moved, no error showed — but the public offer was unchanged. The cause was the delivery-policy checkbox: ticked through the form tool it was ticked in the DOM and unticked as far as PPH was concerned, and the only error appeared under the box, off-screen. A real click fixed it. Then the second offer hit a 2,500-character limit that appears only after you press Update. Three offers had to be trimmed to fit; nothing was dropped, but sentences got shorter and two overlapping sections were merged.
+
+The lesson is the same one as the last three days, in a new place: the thing that says it saved is not the proof. The public page is.
+
+**Engineering Contribution**
+
+*Decisions made:*
+- **Show each PPH edit before saving, one at a time.** Seven outward-facing edits to live sales copy; a batch would have been faster and would have hidden the checkbox failure behind six "successes".
+- **Trim to the cap rather than cut sections.** On the Stripe offer the "what this is" section was folded into steps 1–2 and "the part people get wrong" became the why-section — the argument survived, the duplication did not.
+- **Collapsible on the site, not inline.** Thirteen cards with seven steps each is a wall. `<details>` keeps the scan-and-compare page and gives the full procedure one click away.
+- **A script, not thirteen hand edits.** Idempotent, keyed on the card's `<h3>`, three insertion points for three card types. Re-runnable when a card is added.
+
+*Improvements made to generated code:*
+- The "why" question came from Josh, mid-run, and changed the deliverable. My first pass had answered "how"; the audit of which offers already said "why" — and under what heading — is what made it a complete job rather than a section pasted seven times.
+- The ordering rule — the buyer's step comes first — was carried over from the theme and applied to every procedure. On a five-day job it is the difference between an honest deadline and a clock that starts while the buyer hunts for their logo.
+
+*Roughly how much was accepted as-is vs engineered on:*
+The procedures went in close to draft. The PPH session was the engineered part: two silent failures diagnosed from network traffic and a scrolled-away error, and three descriptions cut to a cap with nothing lost. Josh's contributions were the scope, the second question, and the approval of every save.
+
+*Note on the verbatim ratio:* about 20%, and the quotes are the deliverable's shape — the "why should I pay" question is the reason the work looks the way it does.
+
+**References / Conversations**
+This Claude Code session; `docs/how-it-works-copy.md` (source copy and what was trimmed); `docs/peopleperhour-profile.md` (the cap and the checkbox); commits `d3720d3` and `b2dc7dc`; PPH offers 1131720–1131724, 1131740, 1131818.
+
+---
