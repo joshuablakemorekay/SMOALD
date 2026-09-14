@@ -551,3 +551,67 @@ The procedures went in close to draft. The PPH session was the engineered part: 
 This Claude Code session; `docs/how-it-works-copy.md` (source copy and what was trimmed); `docs/peopleperhour-profile.md` (the cap and the checkbox); commits `d3720d3` and `b2dc7dc`; PPH offers 1131720–1131724, 1131740, 1131818.
 
 ---
+## 2026-09-14 — Read on a phone, three questions, and the answer that wasn't there
+
+**TL;DR:**
+- Josh read the offers on his phone and asked where the "why it's worth paying for" bit was. It was there — under a cleverer heading. That is the same as not there.
+- He then asked whether all three of his questions had been answered — *why buy, what it offers, how it benefits you* — and on a strict read, four offers and five site cards only said what it cost *not* to buy. Every one now ends on what you get.
+- PPH's form fought a third and fourth time; the whole save recipe is now written down and has held for the last eight saves.
+
+**Type:** Learning / Feature
+
+**What I built or did**
+The evening was the afternoon's work read back cold, one offer at a time:
+
+> "Read the £445 offer on my phone"
+
+I can't reach a phone, so I read each as a thumb-scroller would and reported what landed and what didn't. Three small edits came out of it — "SSL (the padlock)", "a first migration run (your tables created)", and a restyle bullet that had drifted into theme-designer language. Then the one that mattered:
+
+> "Read the £165 business online offer on my phone - I did this but don't see the WhY THIS IS WORTH PAYING FOR bit?"
+
+Four offers had the why-section under their own headings — *The problem this solves*, *Why this matters more than it sounds*, *The most common cause*, *Why this is worth doing*. I had argued that counted. Josh, reading on a phone after the £445 and £395 pages, looked for the words he had just seen and did not find them.
+
+> "Just do as I asked at the start […] Lets make sure this is done for all then Yes, save it and continue"
+
+All four renamed to the same heading; the site blocks labelled *Why it's worth paying for* and *How the job goes*; the theme card's *What it actually saves you* given the same words. Then the audit he actually wanted:
+
+> "Good. What about these - why you should be willing to buy it? What it offers and how it benefit you? - Have these been added to them all aswell or not?"
+
+Honest answer: two of three, everywhere; the third only in six of seven, and only implied in three of those. Domain/DNS said a missing padlock costs you customers and never said what £145 gets you. Every why-section now ends with a plain "you get…" sentence.
+
+> "what about for all digital products and services on smoald.com ?"
+
+Same read, same finding — five cards behind their PPH twins. Fixed with the same sentences, and a script that checks every why-paragraph for a benefit close so it cannot drift again.
+
+> "Are we done yet?"
+
+Yes.
+
+**Why I did it this way**
+Consistency over cleverness. A buyer moving between offers is pattern-matching, not reading; the heading has to be the same string every time. And a why-section that only names the cost of inaction is half an answer — the other half is the sentence that starts "you get".
+
+**What I learned**
+The author's read and the buyer's read are different reads. I had audited the four offers and passed them because the *content* was there. Josh failed them in five seconds because the *words* weren't. Both audits were correct; only one was the buyer's.
+
+The PPH form also taught two more lessons: the delivery checkbox's real input is `display:none`, so the only tick that always registers is the label's own `.click()` in page JavaScript; and the Update button can miss a mouse click too — `button.click()` submits every time. Set text, one real keystroke, `label.click()`, check `.checked`, `button.click()`, land on `featureit`, read the public page. Eight saves in a row on that recipe.
+
+**Engineering Contribution**
+
+*Decisions made:*
+- **Same heading string on all seven and on the site**, over four specific headings that were arguably better. The buyer's scan wins.
+- **"You get" as the closing sentence of every why-section**, not a third labelled section — a third heading pushes the long offers past the cap and lengthens the phone scroll.
+- **A merge, not a trim, on the restyle offer** when the new sentence overlapped the old one and broke the cap — same content, 2,482.
+- **An automated check on the site** for the benefit close, so the rule survives the next card that gets added.
+
+*Improvements made to generated code:*
+- Every finding this evening was Josh's, from reading his own copy as a stranger. My contribution was the strict audit once asked — question by question, offer by offer, saying which passed and which only looked like they did.
+
+*Roughly how much was accepted as-is vs engineered on:*
+The sentences went in as proposed. The two form fixes were engineered from failures, one each.
+
+*Note on the verbatim ratio:* about 25%. The evening was six questions and the answers to them; the questions are the entry.
+
+**References / Conversations**
+This Claude Code session; `docs/how-it-works-copy.md` (the same-heading and "you get" rules, and the save recipe); commits `2fc3d5a`, `3082f11`, `babb3f2` and the four docs commits between; PPH offers 1131720–1131724, 1131740, 1131818.
+
+---
