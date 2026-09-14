@@ -37,11 +37,14 @@ Two things changed between this draft and what is live on PPH:
   sentence that says the value in money-or-customers terms, and later the
   same day all four were renamed to `WHY THIS IS WORTH PAYING FOR` after
   Josh read one on his phone and could not find it. Same words everywhere
-  beats a cleverer heading. And every why-section ends with a plain
-  **"you get…"** sentence — what the buyer walks away with — because Josh
-  asked whether "how it benefits you" had been answered and, on a strict
-  read, four offers only said what it cost *not* to buy. Site cards mirror
-  the same sentences. On smoald.com every block is labelled *Why
+  beats a cleverer heading. And the benefit — what the buyer walks
+  away with — sits under its own heading, `HOW IT BENEFITS YOU`, straight
+  after the why-section, on all seven offers and on every site card (*How
+  it benefits you*). It started as the closing sentence of the why-section;
+  Josh read the £95 offer on his phone, asked where "how it benefits you"
+  was, and the answer "it's the last sentence" was not good enough. His
+  three questions — what it offers / why buy / how it benefits you — are
+  now three headings a thumb-scroller can find. On smoald.com every block is labelled *Why
   it's worth paying for* / *How the job goes*, and the theme card's
   "What it actually saves you" became the same heading.
 
