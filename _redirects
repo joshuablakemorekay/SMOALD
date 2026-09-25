@@ -2,3 +2,5 @@
 /templates       /products.html   301
 /quote           /contact.html    301
 /prices          /pricing.html    301
+/store           /products        301
+/lifestyle       /                301

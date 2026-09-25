@@ -55,18 +55,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://smoald.com/store</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://smoald.com/lifestyle</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://smoald.com/ai/hire/</loc>
     <lastmod>2026-09-11</lastmod>
     <changefreq>yearly</changefreq>
