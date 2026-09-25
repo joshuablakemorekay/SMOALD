@@ -9,7 +9,7 @@
 The homepage of SMOALD — a single hub linking everything I build, learn, sell and live, founded and run by Joshua Kay.
 
 ## What It Does
-- A parent homepage with four "doors": **SMOALD AI** (build), **SMOALD Learn** (learn), **SMOALD Store** (shop) and **SMOALD Lifestyle** (live well)
+- A parent homepage with two "doors": **SMOALD AI** (build) and **SMOALD Learn** (learn)
 - A clean **red + gold theme** on white, with the SMOALD lightning-bolt logo
 - A **hub-and-spoke map** showing every product under each hub — live vs. coming soon
 - A page per mini-hub listing its spokes
@@ -139,7 +139,6 @@ The commercial rebuild had quietly dropped the thing the site was built around: 
 A buyer now gets the theme seconds after paying: Stripe sends them to a thank-you page whose download button is backed by a Pages Function that checks the session is paid and streams the zip from a private GitHub release. I repriced to £39 / £99 / £299 with an idempotent script that adopted the existing products, added the prices, and archived the old links — five live runs, five different failures, each now a line in the script. Proved it with a real £39 purchase, refunded. Also: a seventh PeoplePerHour offer, a site outline drawn after the fact from ThaiBridge's real routes, and the repo's first Function tests. **Key lesson:** an edit that "succeeded" three times had done nothing — the replace never matched and never asserted. Read the file back; green output is not the artefact.
 
 ## What's Next
-- Flip the remaining "coming soon" spokes to "live" as more Store, Learn and Lifestyle products ship *(SMOALD Living ✓)*
 - Add a CV PDF + LinkedIn link to the portfolio page
 - Consider folding the standalone portfolio repo fully into this hub
 - A Flask/Jinja edition of the Classic &amp; Modern theme
