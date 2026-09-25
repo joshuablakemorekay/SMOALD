@@ -6,6 +6,8 @@
 
 **🔗 Live:** [https://smoald.com](https://smoald.com) · also at [smoald.pages.dev](https://smoald.pages.dev)
 
+**🔍 Preview of this branch (`tidy-studio-focus`):** [tidy-studio-focus.smoald.pages.dev](https://tidy-studio-focus.smoald.pages.dev), the studio-only version before it goes live
+
 The homepage of SMOALD — a single hub linking everything I build, learn, sell and live, founded and run by Joshua Kay.
 
 ## What It Does
