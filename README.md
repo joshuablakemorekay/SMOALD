@@ -86,8 +86,12 @@ is a re-run.
   KV outage, failed-send retry and the no-JavaScript post. Resend, Turnstile,
   Anthropic and KV are all faked, so it runs offline too.
 - **Accessibility** — axe on the visible form (0 violations), colour contrast
-  measured by hand, and the empty-form path tested in a browser. The
-  browser-side validation has no automated test.
+  measured by hand, and the empty-form path tested in a browser.
+- Ten browser tests for the form's own checking (`tests/enquiry-form.test.js`):
+  jsdom builds the real contact and home pages and runs the real
+  `assets/enquiry.js`, so an empty form, a bad email, clearing an error and a
+  complete send are checked on both pages. jsdom is the repo's only package,
+  and it is test tooling — `npm ci` before `node --test`; nothing ships.
 - Not covered yet: the pages themselves. The live
   purchase path was proven once by hand with a real £39 order, refunded.
 
@@ -164,4 +168,3 @@ An accessibility check found four failures on the enquiry form. The worst: press
 - Add a CV PDF + LinkedIn link to the portfolio page
 - Consider folding the standalone portfolio repo fully into this hub
 - A Flask/Jinja edition of the Classic &amp; Modern theme
-- An automated browser test for the form's validation

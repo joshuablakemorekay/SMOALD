@@ -11,3 +11,6 @@ desktop.ini
 # Per-run eval results — the committed results-summary.md is the source of truth
 prompts/*/results/
 __pycache__/
+
+# Test tooling (see package.json)
+node_modules/

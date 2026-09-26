@@ -45,6 +45,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+      # jsdom, for the enquiry form's browser tests. Test tooling only:
+      # package.json and node_modules are not in .deployfilter, so neither ships.
+      - run: npm ci
       - run: node --test
 
       - name: Stage only the files that belong on the public site
@@ -147,6 +151,7 @@ jobs:
             scripts/stripe_theme_setup.py \
             scripts/make_og_image.py \
             .github/workflows/deploy.yml \
+            package.json \
             JOURNAL.md \
             .gitignore
           do

@@ -1,0 +1,12 @@
+{
+  "name": "smoald-site",
+  "private": true,
+  "description": "Test tooling only. The site itself is static and ships with no dependencies.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1"
+  }
+}
