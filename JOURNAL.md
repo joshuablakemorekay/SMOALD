@@ -698,3 +698,37 @@ Most of the first draft shipped. The engineering pass hardened the two failure p
 This Claude Code session; commits `63a7b14`, `22ce52c`.
 
 ---
+
+## 2026-09-27 — The enquiry form, checked for everyone who uses it
+
+**TL;DR:** An accessibility check found four failures on the enquiry form, including one that threw visitors off the page; all four are fixed and live.
+
+**Type:** Fix
+
+**What I built or did**
+> "do the accessibility check on the enquiry form"
+
+Ran axe on the live form, measured the colours by hand, and pressed Send on an empty form. The empty form left the page for a bare "That didn't send" error, with a link to the homepage and nothing typed kept. Fixed: the form stays put, names the missing fields and moves the cursor to the first. Faint grey text, near-invisible input borders and a colour-only link now meet WCAG AA.
+
+**Why I did it this way**
+Only the form changed, so nothing else on the site moved. Visitors without JavaScript keep the old behaviour.
+
+**What I learned**
+The first axe run said "no problems". The form hadn't faded in yet, so axe skipped every colour check. A clean automated result on invisible content proves nothing, so measure it yourself.
+
+**Engineering Contribution**
+
+*Decisions made:*
+- **Fix the form, not the site-wide grey.** The same grey is used across the site, but only the form's text was changed.
+- **Left the no-JavaScript error page as it is.** It now only affects a rare case.
+
+*Improvements made to generated code:*
+- The empty-form bug was already there before today, not something the spam work caused. Nobody had pressed Send on an empty form before.
+
+*Roughly how much was accepted as-is vs engineered on:*
+Short entry on purpose. It came from one instruction, and the findings came from testing rather than discussion.
+
+**References / Conversations**
+This Claude Code session; commit `1549600`.
+
+---

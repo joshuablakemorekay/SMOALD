@@ -85,6 +85,9 @@ is a re-run.
   down, rate limit, bot refusals, honeypot, `[Spam?]` tagging, blocklist,
   KV outage, failed-send retry and the no-JavaScript post. Resend, Turnstile,
   Anthropic and KV are all faked, so it runs offline too.
+- **Accessibility** — axe on the visible form (0 violations), colour contrast
+  measured by hand, and the empty-form path tested in a browser. The
+  browser-side validation has no automated test.
 - Not covered yet: the pages themselves. The live
   purchase path was proven once by hand with a real £39 order, refunded.
 
@@ -103,6 +106,9 @@ is a re-run.
   Each defence switches itself off until its key exists, and a KV or
   translation outage lets the enquiry through. A sales pitch arrives tagged
   `[Spam?]` — losing one real customer costs more than filing ten pitches.
+- **Check contrast by measuring it, not only with axe.** The form fades in,
+  and axe skips anything still invisible — its first run reported no
+  problems on a form it could not see.
 - **Every failure path names an email address.** Unconfigured, unknown, unpaid,
   no zip — a buyer is never left with a blank page.
 
@@ -151,8 +157,11 @@ A buyer now gets the theme seconds after paying: Stripe sends them to a thank-yo
 ### 2026-09-27 — The enquiry form stops spam and speaks every language
 The form was getting a steady stream of spam, much of it in other languages, from the same sender using different addresses. It now has a Cloudflare Turnstile bot check, a per-IP rate limit and a blocklist in one small KV store (no database), and Claude Haiku translates non-English enquiries into English while keeping the original. Suspected sales pitches still arrive, tagged `[Spam?]`, and every defence fails open so a real customer is never turned away. **Key lesson:** asking "rate limit or spend limit?" found that an organisation-wide spend cap would have switched off the ThaiBridge tutor too, so limits belong on the workspace, not the account.
 
+### 2026-09-27 — The enquiry form, checked for everyone who uses it
+An accessibility check found four failures on the enquiry form. The worst: pressing Send with a field missing threw the visitor off the page onto a bare error, losing what they had typed. The form now stays put, names the missing fields and moves the cursor to the first, and its faint text, borders and privacy link meet WCAG AA contrast. **Key lesson:** axe's first run said "no problems" because the form hadn't faded in yet — a clean automated result on invisible content proves nothing.
+
 ## What's Next
 - Add a CV PDF + LinkedIn link to the portfolio page
 - Consider folding the standalone portfolio repo fully into this hub
 - A Flask/Jinja edition of the Classic &amp; Modern theme
-- Accessibility check of the enquiry form now it carries the Turnstile widget
+- An automated browser test for the form's validation
