@@ -655,3 +655,46 @@ The finding was Josh's, again. The two site cards that needed new benefit senten
 This Claude Code session; commits `589875d`, `402a954`; `docs/how-it-works-copy.md` (three questions, three headings).
 
 ---
+
+## 2026-09-27 — The enquiry form stops spam and speaks every language
+
+**TL;DR:**
+- The enquiry form now blocks bots, rate-limits repeat senders and has a blocklist that works without a redeploy.
+- Enquiries in other languages arrive translated, with the original kept.
+
+**Type:** Feature
+
+**What I built or did**
+> "They appear to come from the same person or spam operation using different email addresses."
+
+> "Do not reject an enquiry simply because it is written in a foreign language."
+
+Turnstile, a KV rate limit (3 an hour per IP) and a `block:` list in front of the form. Claude Haiku detects the language, translates, and flags sales pitches, which arrive tagged `[Spam?]` instead of being dropped.
+
+**Why I did it this way**
+> "Do not over-engineer this."
+
+One KV store, no database. The spam was mostly about "a new business website" because that's the first option in the dropdown, which bots pick, so blocking that phrase would have hit real customers.
+
+**What I learned**
+> "Is it rate limits or spend limits?"
+
+That question found a trap: an organisation-wide $5 spend limit would have capped the ThaiBridge tutor too. The limit belongs on the workspace.
+
+**Engineering Contribution**
+
+*Decisions made:*
+- **Suspected spam is tagged, not dropped.** A real customer who trips a rule is never lost.
+- **Every defence fails open** until its key exists, so the form worked through setup.
+- **Key never expires, with a spend cap**, over 30 days, because an expired key would silently stop translation.
+
+*Improvements made to generated code:*
+- A KV outage no longer crashes the form, and a send that fails at Resend no longer uses up one of the 3 tries. Both have tests.
+
+*Roughly how much was accepted as-is vs engineered on:*
+Most of the first draft shipped. The engineering pass hardened the two failure paths, and the setup order came from walking through it step by step.
+
+**References / Conversations**
+This Claude Code session; commits `63a7b14`, `22ce52c`.
+
+---

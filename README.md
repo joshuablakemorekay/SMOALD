@@ -30,7 +30,9 @@ The homepage of SMOALD — a single hub linking everything I build, learn, sell 
 Static HTML pages sharing one stylesheet and one script; everything dynamic is a
 Cloudflare Pages Function under `functions/api/`:
 
-- `enquiry.js` — the contact form → Resend → email
+- `enquiry.js` — the contact form → Turnstile bot check + KV rate limit and
+  blocklist → Claude Haiku (language detection + English translation) →
+  Resend → email
 - `download.js` — the theme download. Stripe Payment Link → `/templates-thanks`
   → `GET /api/download?session_id=…` → asks Stripe whether that Checkout Session
   is paid → streams the zip from the latest GitHub release of the private theme
@@ -79,7 +81,11 @@ is a re-run.
 - **CI deploy checks** — after every deploy: is the new build actually live, is
   anything internal reachable, did staging drop a load-bearing file.
 - **Prompt evals** — `/prompts` has its own runner and workflow.
-- Not covered yet: the enquiry Function, and the pages themselves. The live
+- Fifteen cases for the enquiry Function: English, translated, translation
+  down, rate limit, bot refusals, honeypot, `[Spam?]` tagging, blocklist,
+  KV outage, failed-send retry and the no-JavaScript post. Resend, Turnstile,
+  Anthropic and KV are all faked, so it runs offline too.
+- Not covered yet: the pages themselves. The live
   purchase path was proven once by hand with a real £39 order, refunded.
 
 ## Engineering Decisions
@@ -93,6 +99,10 @@ is a re-run.
 - **Prices changed by script.** Stripe prices are immutable; the script adopts
   existing products, adds the new price, moves the default and archives the old
   link so a bookmarked £29 can't still be bought.
+- **Spam protection fails open; suspected spam is labelled, not deleted.**
+  Each defence switches itself off until its key exists, and a KV or
+  translation outage lets the enquiry through. A sales pitch arrives tagged
+  `[Spam?]` — losing one real customer costs more than filing ten pitches.
 - **Every failure path names an email address.** Unconfigured, unknown, unpaid,
   no zip — a buyer is never left with a blank page.
 
@@ -138,9 +148,11 @@ The commercial rebuild had quietly dropped the thing the site was built around: 
 ### 2026-09-13 — The sale delivers itself
 A buyer now gets the theme seconds after paying: Stripe sends them to a thank-you page whose download button is backed by a Pages Function that checks the session is paid and streams the zip from a private GitHub release. I repriced to £39 / £99 / £299 with an idempotent script that adopted the existing products, added the prices, and archived the old links — five live runs, five different failures, each now a line in the script. Proved it with a real £39 purchase, refunded. Also: a seventh PeoplePerHour offer, a site outline drawn after the fact from ThaiBridge's real routes, and the repo's first Function tests. **Key lesson:** an edit that "succeeded" three times had done nothing — the replace never matched and never asserted. Read the file back; green output is not the artefact.
 
+### 2026-09-27 — The enquiry form stops spam and speaks every language
+The form was getting a steady stream of spam, much of it in other languages, from the same sender using different addresses. It now has a Cloudflare Turnstile bot check, a per-IP rate limit and a blocklist in one small KV store (no database), and Claude Haiku translates non-English enquiries into English while keeping the original. Suspected sales pitches still arrive, tagged `[Spam?]`, and every defence fails open so a real customer is never turned away. **Key lesson:** asking "rate limit or spend limit?" found that an organisation-wide spend cap would have switched off the ThaiBridge tutor too, so limits belong on the workspace, not the account.
+
 ## What's Next
 - Add a CV PDF + LinkedIn link to the portfolio page
 - Consider folding the standalone portfolio repo fully into this hub
 - A Flask/Jinja edition of the Classic &amp; Modern theme
-- Run `node --test` in CI so a Function change can't ship untested
-- Test the enquiry Function the same way as the download one
+- Accessibility check of the enquiry form now it carries the Turnstile widget
