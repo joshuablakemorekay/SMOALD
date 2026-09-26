@@ -472,21 +472,22 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
   padding:26px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:15px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-size:.86rem;font-weight:600;color:var(--text)}
-.field .opt{font-weight:400;color:var(--muted-2)}
+.field .opt{font-weight:400;color:var(--muted)}
 .field input,.field select,.field textarea{
   font:inherit;font-size:.94rem;color:var(--text);background:var(--ink);
-  border:1px solid var(--line-strong);border-radius:8px;padding:10px 12px;width:100%;
+  border:1px solid #8C847A;border-radius:8px;padding:10px 12px;width:100%;
   transition:border-color .18s,box-shadow .18s}
 .field textarea{resize:vertical;min-height:96px}
 .field input:focus,.field select:focus,.field textarea:focus{
-  outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-.field input:user-invalid,.field textarea:user-invalid,.field select:user-invalid{
+  outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--red-line)}
+.field input:user-invalid,.field textarea:user-invalid,.field select:user-invalid,
+.field [aria-invalid="true"]{
   border-color:var(--red)}
 .field.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .form-submit{margin-top:4px;width:100%;justify-content:center;border:none;cursor:pointer}
 .form-submit[disabled]{opacity:.6;cursor:progress}
-.form-small{font-size:.8rem;color:var(--muted-2);margin:0;text-align:center}
-.form-small a{color:var(--muted)}
+.form-small{font-size:.8rem;color:var(--muted);margin:0;text-align:center}
+.form-small a{color:var(--text);text-decoration:underline;text-underline-offset:2px}
 .form-status{font-size:.9rem;margin:0;text-align:center;min-height:1.2em}
 .form-status.ok{color:#15794A;font-weight:600}
 .form-status.err{color:var(--red);font-weight:600}
