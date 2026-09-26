@@ -10,6 +10,11 @@
   var status = document.getElementById('efStatus');
   var submit = document.getElementById('efSubmit');
 
+  // A Turnstile token works once, so a failed send needs a fresh one.
+  function resetBotCheck() {
+    if (window.turnstile) window.turnstile.reset();
+  }
+
   function setStatus(msg, kind) {
     if (!status) return;
     status.textContent = msg;
@@ -46,6 +51,7 @@
           submit.textContent = 'Enquiry sent';
         } else {
           submit.disabled = false;
+          resetBotCheck();
           setStatus(
             (result.data && result.data.error) ||
             'That didn’t send. Please email joshua@smoald.com instead.',
@@ -55,6 +61,7 @@
       })
       .catch(function () {
         submit.disabled = false;
+        resetBotCheck();
         setStatus('That didn’t send — you may be offline. Please email joshua@smoald.com instead.', 'err');
       });
   });
