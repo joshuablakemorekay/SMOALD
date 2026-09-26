@@ -491,6 +491,7 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
 .form-status{font-size:.9rem;margin:0;text-align:center;min-height:1.2em}
 .form-status.ok{color:#15794A;font-weight:600}
 .form-status.err{color:var(--red);font-weight:600}
+.form-status a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 
 /* Footer legal block */
 .foot-legal{width:100%;margin-top:18px;padding-top:16px;border-top:1px solid var(--line);

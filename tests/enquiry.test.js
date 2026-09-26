@@ -242,3 +242,28 @@ test("a send that fails at Resend does not use up one of the three tries", async
   resendStatus = 200;
   for (let i = 0; i < 3; i++) assert.equal((await post(ENGLISH, fullEnv(kv))).status, 200);
 });
+
+// Visitors without JavaScript: an error page must lead back to the form.
+function noJsPost(fields, referer) {
+  const headers = { Origin: "https://smoald.com", "CF-Connecting-IP": "203.0.113.20" };
+  if (referer) headers.Referer = referer;
+  const request = new Request("https://smoald.com/api/enquiry", {
+    method: "POST", headers, body: new URLSearchParams(fields),
+  });
+  return onRequestPost({ request, env: fullEnv() });
+}
+
+test("a no-JavaScript error page links back to the form it came from", async () => {
+  const { "cf-turnstile-response": _, ...noToken } = ENGLISH;
+  const home = await (await noJsPost(noToken, "https://smoald.com/")).text();
+  assert.match(home, /href="\/#enquiryForm">← Back to the form/);
+  const contact = await (await noJsPost({ name: "" }, "https://www.smoald.com/contact")).text();
+  assert.match(contact, /href="\/contact#enquiryForm">← Back to the form/);
+});
+
+test("with no Referer, or someone else's, the error page links to the contact form", async () => {
+  for (const referer of [undefined, "https://evil.example/contact", "not a url"]) {
+    const html = await (await noJsPost({ name: "" }, referer)).text();
+    assert.match(html, /href="\/contact#enquiryForm"/, String(referer));
+  }
+});

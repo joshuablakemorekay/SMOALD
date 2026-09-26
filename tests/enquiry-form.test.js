@@ -106,3 +106,12 @@ for (const file of ["contact.html", "index.html"]) {
     assert.match(page.status(), /that's with me/);
   });
 }
+
+for (const file of ["contact.html", "index.html"]) {
+  test(`${file}: visitors without JavaScript are told to email instead`, () => {
+    const html = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
+    const note = html.match(/<noscript><p[^>]*>([\s\S]*?)<\/p><\/noscript>\s*<div class="cf-turnstile"/);
+    assert.ok(note, "the note sits right above the bot check");
+    assert.match(note[1], /mailto:joshua@smoald\.com/);
+  });
+}

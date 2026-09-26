@@ -87,8 +87,23 @@ function json(body, statusCode) {
   });
 }
 
+/**
+ * Where "back" should go from a no-JavaScript error page: the form the
+ * visitor came from, if the browser says it was ours; otherwise the contact
+ * page. Never the homepage — that left people hunting for the form again.
+ */
+function formUrl(request) {
+  try {
+    const from = new URL(request.headers.get('Referer'));
+    if (ALLOWED_ORIGINS.includes(from.origin)) return `${from.pathname}#enquiryForm`;
+  } catch {
+    // No Referer, or not a URL — fall through.
+  }
+  return '/contact#enquiryForm';
+}
+
 /** Plain HTML response for visitors without JavaScript. */
-function page(title, message, statusCode) {
+function page(title, message, statusCode, back = { href: '/', label: 'Back to smoald.com' }) {
   const html = `<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)} · SMOALD</title>
@@ -97,7 +112,7 @@ display:grid;place-items:center;min-height:100vh;margin:0;padding:24px;line-heig
 div{max-width:34rem;text-align:center}h1{font-size:1.6rem;margin:0 0 12px}
 a{color:#E20613}</style></head><body><div>
 <h1>${esc(title)}</h1><p>${esc(message)}</p>
-<p><a href="/">← Back to smoald.com</a></p></div></body></html>`;
+<p><a href="${esc(back.href)}">← ${esc(back.label)}</a></p></div></body></html>`;
   return new Response(html, {
     status: statusCode,
     headers: { 'Content-Type': 'text/html; charset=utf-8' },
@@ -251,7 +266,9 @@ export async function onRequestPost(context) {
       ? json({ ok: true }, 200)
       : page('Thank you', "That's with me. I'll reply within one working day.", 200);
   const refuse = (error, statusCode) =>
-    wantsJson ? json({ error }, statusCode) : page("That didn't send", error, statusCode);
+    wantsJson
+      ? json({ error }, statusCode)
+      : page("That didn't send", error, statusCode, { href: formUrl(request), label: 'Back to the form' });
 
   // Accept either a JSON body (from enquiry.js) or a normal form POST.
   let data;
