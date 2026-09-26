@@ -104,28 +104,48 @@ a{color:#E20613}</style></head><body><div>
   });
 }
 
+// Every KV call below fails open: if the store itself is down, a real
+// customer's enquiry still goes through rather than hitting a blank error.
+
 /** Is this email, its domain, or this IP on the blocklist? */
 async function isBlocked(kv, email, ip) {
   if (!kv) return false;
   const lower = email.toLowerCase();
   const keys = [`block:${lower}`, `block:${lower.slice(lower.lastIndexOf('@'))}`];
   if (ip) keys.push(`block:${ip}`);
-  const hits = await Promise.all(keys.map((k) => kv.get(k)));
-  return hits.some((v) => v !== null);
+  try {
+    const hits = await Promise.all(keys.map((k) => kv.get(k)));
+    return hits.some((v) => v !== null);
+  } catch (err) {
+    console.error('Blocklist lookup failed, letting the enquiry through:', err);
+    return false;
+  }
 }
 
 /**
- * Count this submission against the sender's IP. Returns true once they are
- * over the limit. KV is eventually consistent, so a burst of simultaneous
- * posts can slip one or two past — fine for stopping repeat senders.
+ * How many enquiries this IP has sent recently. Each send restarts the
+ * hour, so a steady trickle stays blocked until it stops for an hour. KV is
+ * eventually consistent, so a burst of simultaneous posts can slip one or
+ * two past — fine for stopping repeat senders.
  */
-async function isRateLimited(kv, ip) {
-  if (!kv || !ip) return false;
-  const key = `rate:${ip}`;
-  const count = Number(await kv.get(key)) || 0;
-  if (count >= RATE_LIMIT.max) return true;
-  await kv.put(key, String(count + 1), { expirationTtl: RATE_LIMIT.windowSeconds });
-  return false;
+async function recentSends(kv, ip) {
+  if (!kv || !ip) return 0;
+  try {
+    return Number(await kv.get(`rate:${ip}`)) || 0;
+  } catch (err) {
+    console.error('Rate-limit lookup failed, letting the enquiry through:', err);
+    return 0;
+  }
+}
+
+/** Only called once the email has gone, so a failed send never costs a try. */
+async function recordSend(kv, ip, previous) {
+  if (!kv || !ip) return;
+  try {
+    await kv.put(`rate:${ip}`, String(previous + 1), { expirationTtl: RATE_LIMIT.windowSeconds });
+  } catch (err) {
+    console.error('Could not record the send for the rate limit:', err);
+  }
 }
 
 /** Ask Cloudflare whether the Turnstile token proves a real browser. */
@@ -291,7 +311,8 @@ export async function onRequestPost(context) {
     console.warn('TURNSTILE_SECRET_KEY is not set — bot check is off.');
   }
 
-  if (await isRateLimited(kv, ip)) {
+  const previousSends = await recentSends(kv, ip);
+  if (previousSends >= RATE_LIMIT.max) {
     return refuse(
       "You've sent several enquiries in the last hour. Please email joshua@smoald.com instead.",
       429,
@@ -373,6 +394,7 @@ ${messageHtml}`;
     return refuse("That didn't send. Please email joshua@smoald.com instead.", 502);
   }
 
+  await recordSend(kv, ip, previousSends);
   return thanks();
 }
 

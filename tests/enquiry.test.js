@@ -222,3 +222,23 @@ test("a no-JavaScript form post still gets the plain thank-you page", async () =
   assert.match(await res.text(), /Thank you/);
   assert.equal(sentEmails.length, 1);
 });
+
+// Engineering pass: the store and the email provider can fail independently.
+test("a KV outage lets the enquiry through instead of crashing the form", async () => {
+  const broken = {
+    get: async () => { throw new Error("KV unavailable"); },
+    put: async () => { throw new Error("KV unavailable"); },
+  };
+  const res = await post(ENGLISH, fullEnv(broken));
+  assert.equal(res.status, 200);
+  assert.equal(sentEmails.length, 1);
+});
+
+test("a send that fails at Resend does not use up one of the three tries", async () => {
+  const kv = fakeKV();
+  resendStatus = 500;
+  assert.equal((await post(ENGLISH, fullEnv(kv))).status, 502);
+  assert.equal(kv.store.has("rate:203.0.113.7"), false);
+  resendStatus = 200;
+  for (let i = 0; i < 3; i++) assert.equal((await post(ENGLISH, fullEnv(kv))).status, 200);
+});
