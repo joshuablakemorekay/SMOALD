@@ -39,9 +39,9 @@
   --on-accent:#FFFFFF;  /* text colour that sits on the accent fill */
 
   --maxw:1120px;
-  --display:"Bricolage Grotesque",system-ui,sans-serif;
-  --body:"Hanken Grotesk",system-ui,sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --display:"Noto Sans",system-ui,sans-serif;
+  --body:"Noto Sans",system-ui,sans-serif;
+  --mono:"Noto Sans Mono",ui-monospace,monospace;
 }
 
 /* ---- per-hub theming: set <body data-hub="..."> and the page recolours ----
@@ -67,6 +67,10 @@ body[data-hub="life"] h1 .accent{
 /* ---- base ---- */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+/* One font family, matching ThaiBridge AI: Noto Sans for headings and
+   text, Noto Sans Mono for small labels. Browsers give buttons and form
+   boxes their own font (usually Arial), so make them inherit the site font. */
+button,input,select,textarea{font-family:inherit}
 body{background:var(--ink);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{max-width:100%}
@@ -423,7 +427,7 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
 .twoway{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
 .way{background:var(--panel);border:1px solid var(--line);border-radius:14px;
   padding:26px 26px 24px;box-shadow:var(--shadow);display:flex;flex-direction:column}
-.way-tag{display:inline-block;align-self:flex-start;font-family:"JetBrains Mono",monospace;
+.way-tag{display:inline-block;align-self:flex-start;font-family:var(--mono);
   font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;
   border-radius:999px;background:var(--red-soft);color:var(--red);margin-bottom:14px}
 .way-tag.alt{background:var(--gold-soft);color:#8a5e00}
@@ -438,12 +442,12 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
 .work.feature-work{border-color:var(--accent-soft);box-shadow:var(--shadow-lg)}
 .work-head{display:flex;justify-content:space-between;align-items:center;gap:12px;
   flex-wrap:wrap;margin-bottom:12px}
-.work-kind{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.08em;
+.work-kind{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;
   text-transform:uppercase;color:var(--muted-2)}
 .work h3{font-size:1.35rem;margin:0 0 8px}
 .work > p{color:var(--muted);font-size:.95rem;margin:0}
 .stack{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0;padding:0}
-.stack li{font-family:"JetBrains Mono",monospace;font-size:.72rem;padding:3px 9px;
+.stack li{font-family:var(--mono);font-size:.72rem;padding:3px 9px;
   border:1px solid var(--line-strong);border-radius:6px;color:var(--muted)}
 .work > p.work-note{font-size:.85rem;color:var(--muted-2);margin:14px 0 0;
   font-style:italic}
@@ -529,7 +533,7 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
   border-left:2px solid var(--gold);padding-left:14px}
 .svc-side{display:flex;flex-direction:column;gap:6px;align-items:flex-start;
   border-left:1px solid var(--line);padding-left:26px}
-.svc-price{font-family:"Bricolage Grotesque",sans-serif;font-size:1.6rem;font-weight:800;
+.svc-price{font-family:var(--display);font-size:1.6rem;font-weight:800;
   color:var(--text);line-height:1.1}
 .per{font-size:.8rem;font-weight:500;color:var(--muted)}
 .svc-time{font-size:.85rem;color:var(--muted-2)}
@@ -557,7 +561,7 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
 .ptable{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
 .ptable th,.ptable td{text-align:left;padding:13px 16px;
   border-bottom:1px solid var(--line);vertical-align:top}
-.ptable thead th{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.09em;
+.ptable thead th{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;
   text-transform:uppercase;color:var(--muted-2);font-weight:500;white-space:nowrap;
   background:var(--ink-2)}
 .ptable tbody tr:last-child td{border-bottom:none}
@@ -576,7 +580,7 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
 .faq summary{cursor:pointer;padding:14px 0;font-weight:600;font-size:1rem;
   list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-family:"JetBrains Mono",monospace;color:var(--accent);
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--accent);
   font-size:1.2rem;flex-shrink:0}
 .faq details[open] summary::after{content:"−"}
 .faq summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
@@ -587,14 +591,14 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
 .how summary{cursor:pointer;padding:10px 0;font-weight:600;font-size:.95rem;list-style:none;
   display:flex;justify-content:space-between;align-items:center;gap:14px}
 .how summary::-webkit-details-marker{display:none}
-.how summary::after{content:"+";font-family:"JetBrains Mono",monospace;color:var(--accent);font-size:1.15rem;flex-shrink:0}
+.how summary::after{content:"+";font-family:var(--mono);color:var(--accent);font-size:1.15rem;flex-shrink:0}
 .how[open] summary::after{content:"\2212"}
 .how summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
-.how-label{margin:10px 0 4px;font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.how-label{margin:10px 0 4px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .how-why{margin:4px 0 12px;color:var(--muted);font-size:.93rem;max-width:68ch}
 .how-steps{margin:0 0 8px;padding-left:22px;display:flex;flex-direction:column;gap:8px;
   color:var(--muted);font-size:.93rem;max-width:68ch}
-.how-steps li::marker{color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.85rem}
+.how-steps li::marker{color:var(--accent);font-family:var(--mono);font-size:.85rem}
 
 /* ---- case study ---- */
 .case{background:var(--panel);border:1px solid var(--line);border-radius:16px;
@@ -602,7 +606,7 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
 .case + .case{margin-top:20px}
 .case h3{font-size:1.75rem;margin:0 0 4px}
 .case-sub{color:var(--muted-2);font-size:.95rem;margin:0 0 22px}
-.case-body h4{font-size:.78rem;font-family:"JetBrains Mono",monospace;letter-spacing:.1em;
+.case-body h4{font-size:.78rem;font-family:var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--accent);margin:22px 0 7px}
 .case-body p:not(.case-sub):not(.work-note){color:var(--muted);
   font-size:.97rem;margin:0}
@@ -628,7 +632,7 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
   font-size:.95rem;color:var(--muted)}
 .numlist li::before{content:counter(n);position:absolute;left:0;top:0;width:24px;height:24px;
   border-radius:50%;background:var(--accent-soft);color:var(--accent);
-  font-family:"JetBrains Mono",monospace;font-size:.75rem;font-weight:500;
+  font-family:var(--mono);font-size:.75rem;font-weight:500;
   display:grid;place-items:center}
 .numlist strong{color:var(--text)}
 
@@ -652,14 +656,14 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,.eco-node:focus-visible{
 /* Declared after, and matched on the same element, so the subtitle keeps its
    gap — `.prod-body > p` (0,1,1) would otherwise flatten `.prod-sub` (0,1,0). */
 .prod-body > p.prod-sub{color:var(--muted-2);font-size:.94rem;margin:0 0 18px}
-.prod-body h4{font-size:.78rem;font-family:"JetBrains Mono",monospace;letter-spacing:.1em;
+.prod-body h4{font-size:.78rem;font-family:var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--accent);margin:22px 0 7px}
 .prod-caveat{margin-top:20px;background:var(--ink-2);border:1px solid var(--line);
   border-radius:10px;padding:14px 17px}
 .prod-caveat p{margin:0;font-size:.88rem;color:var(--muted)}
 .prod-side{display:flex;flex-direction:column;gap:7px;align-items:flex-start;
   border-left:1px solid var(--line);padding-left:28px}
-.prod-price{font-family:"Bricolage Grotesque",sans-serif;font-size:1.35rem;font-weight:800;
+.prod-price{font-family:var(--display);font-size:1.35rem;font-weight:800;
   line-height:1.15}
 .prod-note{font-size:.82rem;color:var(--muted-2)}
 .prod-btn{margin-top:12px;width:100%;justify-content:center;text-align:center}
