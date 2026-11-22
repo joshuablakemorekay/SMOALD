@@ -67,7 +67,7 @@ body[data-hub="life"] h1 .accent{
 /* ---- base ---- */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-/* One font family, matching ThaiBridge AI: Noto Sans for headings and
+/* One font family, matching Jaiway: Noto Sans for headings and
    text, Noto Sans Mono for small labels. Browsers give buttons and form
    boxes their own font (usually Arial), so make them inherit the site font. */
 button,input,select,textarea{font-family:inherit}
