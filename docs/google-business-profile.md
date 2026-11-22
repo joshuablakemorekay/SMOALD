@@ -118,7 +118,7 @@ is allowed.
 Google favours profiles with photos, and there is no requirement for them to be
 of an office.
 
-- Screenshots of sites you have built (the honey farm and ThaiBridge both look
+- Screenshots of sites you have built (the honey farm and Jaiway both look
   good on a phone)
 - The SMOALD logo as the profile picture
 - `assets/og-default.png` works as a cover image

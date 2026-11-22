@@ -53,7 +53,7 @@ Recent work:
   catalogue, gallery and contact pages, rebuilt from a dated site and now
   loading in under a second.
 
-· ThaiBridge AI — a subscription web app with user accounts, Stripe billing
+· Jaiway — a subscription web app with user accounts, Stripe billing
   and a built-in AI tutor. Around 9,000 lines, 1,500 automated tests, live on
   its own domain. Both are linked below and both are running right now.
 
@@ -234,7 +234,7 @@ Add in this order. Each needs a screenshot, a link and two or three sentences.
 1. **T.P.A. Honey Farm** — a real business, bilingual, live. Say plainly it
    was unpaid work for a friend's business; the honesty costs nothing and
    protects you if anyone asks.
-2. **ThaiBridge AI** — accounts, payments, AI. The depth piece.
+2. **Jaiway** — accounts, payments, AI. The depth piece.
 3. **smoald.com** — your own site. Shows you can do the whole job including
    the infrastructure.
 4. **SMOALD Living** — an e-commerce front end, if you want a fourth.
@@ -382,7 +382,7 @@ a buyer who finds two different numbers stops trusting either.
 Worth about two hours, then it becomes a truthful claim and a set of tags that
 get searched a lot.
 
-**What exists in thaibridge-ai:** a real integration — ~59 references in
+**What exists in jaiway:** a real integration — ~59 references in
 `app.py`, routes at `/subscribe/<tier>/paypal` and `/paypal/success`, OAuth
 token handling, order creation and capture, and a `provider` column on the
 payments table that already accepts `'paypal'`.
